@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "크래프톤 정글 주제별 탐구 - 세그멘테이션"
+title:  "PintOS 제작기 - 1"
 date:   2024-08-22 12:00:00 +0900
 categories: computer_structures
 tags: [C, 운영체제]
