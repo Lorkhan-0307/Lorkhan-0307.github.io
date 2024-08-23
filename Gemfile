@@ -4,6 +4,10 @@ source "https://rubygems.org"
 
 gemspec
 
+gem 'csv'
+gem 'base64'
+
+
 gem 'jekyll-target-blank'
 
 group :test do
