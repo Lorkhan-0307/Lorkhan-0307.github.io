@@ -1,0 +1,70 @@
+---
+layout: post
+title:  "백준 2665번 python 풀이 - 미로 만들기"
+date:   2024-07-16 11:05:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 그래프, 다익스트라]
+---
+
+## 문제 링크
+[2665번](https://www.acmicpc.net/problem/2665)
+
+## 해결책
+```python
+import sys
+
+N = int(sys.stdin.readline().rstrip())
+INF = 9999999999
+maze_map = []
+for _ in range(N):
+    maze_map.append(sys.stdin.readline().rstrip())
+is_visited = [[False for i in range(N)] for j in range(N)]
+val = [[INF for i in range(N)] for j in range(N)]
+
+"""
+아이디어 정리
+
+BFS를 이용해서 이동... 이때, 우선적으로 흰색 방을 먼저..?
+만약에 흰색 방들을 이동해서 안되면.,..? 아니 이거 아니넉 같은데...
+그냥 가는거? 그냥 이동해서 N,M으로 이동하기? 이미 이동한 곳만 막고?
+근데 검은색 지나갈때 +1하고, 현재의 최솟값보다 많이 나오면 break?
+"""
+
+
+def bfs():
+    ans = INF
+    que = [(0, 0)]
+    dx = [1, -1, 0, 0]
+    dy = [0, 0, 1, -1]
+
+    if maze_map[0][0] == 0:
+        val[0][0] = 1
+        ans += 1
+    else:
+        val[0][0] = 0
+
+    while que:
+        nx, ny = que.pop(0)
+        is_visited[nx][ny] = True
+        for i in range(4):
+            if -1 < nx + dx[i] < N and -1 < ny + dy[i] < N:
+                if(val[nx][ny] <= ans and val[nx][ny] < val[nx+dx[i]][ny+dy[i]]):
+                    if maze_map[nx + dx[i]][ny + dy[i]] == "1":
+                        val[nx+dx[i]][ny+dy[i]] = min(val[nx][ny], val[nx+dx[i]][ny+dy[i]])
+                    elif maze_map[nx + dx[i]][ny + dy[i]] == "0":
+                        val[nx + dx[i]][ny + dy[i]] = min(val[nx][ny] + 1, val[nx+dx[i]][ny+dy[i]])
+                    if(nx + dx[i] == N-1 and ny + dy[i] == N-1):
+                        ans = min(val[nx + dx[i]][ny + dy[i]], ans)
+                    elif(val[nx + dx[i]][ny + dy[i]] < ans):
+                        que.append((nx + dx[i], ny + dy[i]))
+    return ans
+
+
+print(bfs())
+```
+
+## 주석으로 달 설명
+
+BFS를 이용해서 해결했다.
+maze_map을 통해 미로의 구조를 파악하고, 이를 기반으로 검은 방을 지나갈때 +1을 하여 저장하는 지도를 새로 만들고, 이는 재방문도 허용이지만, 현재가 다음것의 값보다 작을 때만 가능하도록 진행해두었다.
+이러한 방식으로 풀 수 있었다.

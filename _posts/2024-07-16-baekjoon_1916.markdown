@@ -1,0 +1,58 @@
+---
+layout: post
+title:  "백준 1916번 python 풀이 - 최소비용 구하기"
+date:   2024-07-16 09:15:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 그래프, 다익스트라]
+---
+
+## 문제 링크
+[1916번](https://www.acmicpc.net/problem/1916)
+
+## 해결책
+```python
+import sys
+
+INF = 999999999
+
+N = int(sys.stdin.readline().rstrip())
+M = int(sys.stdin.readline().rstrip())
+
+path = [[INF for _ in range(N+1)]for _ in range(N+1)]
+
+for _ in range(M):
+    _from, _to, _weight = map(int, sys.stdin.readline().rstrip().split())
+    if path[_from][_to] != INF:
+        path[_from][_to] = min(path[_from][_to], _weight)
+    else:
+        path[_from][_to] = _weight
+
+_from, _to = map(int, sys.stdin.readline().rstrip().split())
+
+
+def dajixtra(_from, _to):
+    dist_list = []
+    for i in range(1, len(path[_from])):
+        if i != _from:
+            dist_list.append((path[_from][i], i))
+
+    while dist_list:
+        dist_list.sort(key=lambda x: x[0])
+        cur_val, cur_idx = dist_list.pop(0)
+        path[_from][cur_idx] = min(path[_from][cur_idx], cur_val)
+        cur_val = path[_from][cur_idx]
+
+        for i in range(len(dist_list)):
+            dist_val, dist_idx = dist_list[i]
+            dist_list[i] = (min(dist_val, cur_val + path[cur_idx][dist_idx]), dist_idx)
+
+
+dajixtra(_from, _to)
+
+print(path[_from][_to])
+```
+
+## 주석으로 달 설명
+
+어젯 밤에 풀기는 했지만, 내가 정확히 이해했는지 확인하기 위해 다시 풀었다.
+우선순위 큐로 해결할 수도 있고(지금의 dist_list를 우선순위큐로 교체하면 된다) 이에 익숙하지 않아 일단 리스트와 sort lambda식을 이용해서 해결해보았다.

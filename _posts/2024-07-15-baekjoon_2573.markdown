@@ -1,0 +1,90 @@
+---
+layout: post
+title:  "백준 2573번 python 풀이 - 빙산"
+date:   2024-07-15 09:15:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 트리, DFS]
+---
+
+## 문제 링크
+[2573번](https://www.acmicpc.net/problem/2573)
+
+## 해결책
+```python
+import sys
+
+N, M = map(int, sys.stdin.readline().rstrip().split())
+
+values = []
+iceburgs = []
+
+total_iceburg = N * M
+
+for i in range(N):
+    temp_list = list(map(int, sys.stdin.readline().rstrip().split()))
+    for _ in range(len(temp_list)):
+        if temp_list[_] == 0:
+            total_iceburg -= 1
+        else:
+            iceburgs.append((i,_))
+    values.append(temp_list)
+
+
+dx = [1, 0, -1, 0]
+dy = [0, -1, 0, 1]
+year = 0
+
+while True:
+    is_visited = [[False for i in range(M)] for j in range(N)]
+
+    if len(iceburgs) == 0:
+        print(0)
+        exit()
+
+    sx, sy = iceburgs[0]
+
+    remain_iceburg_modify = 1
+
+    stk = [(sx, sy)]
+    is_visited[sx][sy] = True
+    # 이번 년도에 녹은 애들을 저장하기 위한 새로운 values
+    melt_list = []
+    while stk:
+        nx, ny = stk.pop()
+        # ice에는 해당 칸이 이번 년도에 녹을 수치를 넣는다.
+        ice = 0
+        for i in range(4):
+            if -1 < nx + dx[i] < N and -1 < ny + dy[i] < M:
+                if values[nx + dx[i]][ny + dy[i]] <= 0:
+                    ice += 1
+                elif is_visited[nx + dx[i]][ny + dy[i]] is False:
+                    remain_iceburg_modify += 1
+                    stk.append((nx + dx[i], ny + dy[i]))
+                    is_visited[nx + dx[i]][ny + dy[i]] = True
+        melt_list.append((nx, ny, ice))
+
+    melted_cnt = 0
+    for nx, ny, ice in melt_list:
+        values[nx][ny] -= ice
+        if values[nx][ny] <= 0:
+            iceburgs.remove((nx, ny))
+            melted_cnt += 1
+
+    year += 1
+
+    if remain_iceburg_modify <= 0:
+        print(0)
+        exit()
+
+    if remain_iceburg_modify < total_iceburg:
+        print(year - 1)
+        exit()
+
+    total_iceburg -= melted_cnt
+```
+
+## 주석으로 달 설명
+
+해결하였다.
+시간초과의 원인은, 스택에 요소가 있는지 확인하는 부분에 있었다.
+그냥 추가할때 isVisited에 변화를 주면 된다.

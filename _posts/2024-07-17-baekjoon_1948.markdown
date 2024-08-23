@@ -1,0 +1,74 @@
+---
+layout: post
+title:  "백준 1948번 python 풀이 - 임계 경로"
+date:   2024-07-17 11:05:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 그래프, 위상정렬]
+---
+
+## 문제 링크
+[1948번](https://www.acmicpc.net/problem/1948)
+
+## 해결책
+```python
+import sys
+
+n = int(sys.stdin.readline().rstrip())
+m = int(sys.stdin.readline().rstrip())
+
+to_city = [[] for i in range(n + 1)]
+back_city = [[] for i in range(n + 1)]
+
+indegree = [0 for i in range(n + 1)]
+
+max_weights = [0 for i in range(n + 1)]
+
+is_visited = [[False for j in range(n + 1)] for i in range(n + 1)]
+line_cnt = 0
+
+def recur_bfs(cur, weight):
+    global line_cnt
+
+    for pa, val in back_city[cur]:
+        if weight == max_weights[pa] + val and is_visited[cur][pa] is False:
+            line_cnt += 1
+            to_visit.append((pa, weight - val))
+            is_visited[cur][pa] = True
+
+for _ in range(m):
+    _from, _to, weight = map(int, sys.stdin.readline().rstrip().split())
+    to_city[_from].append((_to, weight))
+    back_city[_to].append((_from, weight))
+    indegree[_to] += 1
+
+start, end = map(int, sys.stdin.readline().rstrip().split())
+
+que = [start]
+ans_path = []
+
+while que:
+    cur = que.pop(0)
+    for pa, val in to_city[cur]:
+        max_weights[pa] = max(max_weights[pa], max_weights[cur] + val)
+        indegree[pa] -= 1
+        if (indegree[pa] == 0):
+            que.append(pa)
+
+final_weight = max_weights[end]
+
+
+to_visit = [(end, final_weight)]
+
+while to_visit:
+    cur_v, cur_weight = to_visit.pop(0)
+    recur_bfs(cur_v, cur_weight)
+
+
+print(final_weight)
+print(line_cnt)
+```
+
+## 주석으로 달 설명
+
+목적지로 가는 경로의 수를 위상정렬로 해결하였고, 이후 목적지까지 가는 길의 량을 BFS를 이용해 해결하였다.
+근데 얘기를 들어보니... 목적지까지 가는 길 역시 outdegree를 이용한 위상 정렬으로 해결할 수 있다고 한다.

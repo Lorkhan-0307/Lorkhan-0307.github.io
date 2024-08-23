@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "백준 11724번 python 풀이 - 트리의 부모 찾기"
+date:   2024-07-15 09:15:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 트리, 이진트리, DFS]
+---
+
+## 문제 링크
+[11725번](https://www.acmicpc.net/problem/11725)
+
+## 해결책
+```python
+import sys
+sys.setrecursionlimit(10000)
+"""
+def dfs():
+    stk = [1]
+    cur = 0
+    tmp = cur
+    while stk:
+        if cur != 0:
+            tmp = cur
+        cur = stk.pop()
+        is_visited[cur] = True
+        parent[cur] = tmp
+        for i in path[cur]:
+            if is_visited[i] is False and i not in stk:
+                stk.append(i)
+"""
+
+def dfs_recur(cur, par):
+    is_visited[cur] = True
+    parent[cur] = par
+    for i in path[cur]:
+        if is_visited[i] is False:
+            dfs_recur(i, cur)
+
+
+
+N = int(sys.stdin.readline().rstrip())
+
+is_visited = [False for _ in range(N + 1)]
+path = [[] for _ in range(N + 1)]
+parent = [0 for _ in range(N + 1)]
+
+for _ in range(N-1):
+    _from, _to = map(int, sys.stdin.readline().rstrip().split())
+    path[_from].append(_to)
+    path[_to].append(_from)
+
+dfs_recur(1,1)
+
+for i in range(2, N + 1):
+    print(parent[i])
+```
+
+## 주석으로 달 설명
+
+DFS문제. 들어간 위치를 전달 같이 하는 방식의 재귀로 구현 완료했다.
+이전 괄호 추가 방식처럼 하면 될 것 같기는 한데... 도저히 아침이라 머리가 안굴러가서 재귀 + 재귀 한도 확장을 통해 해결했다.
+일단 돌아가는 것이 먼저...

@@ -1,0 +1,31 @@
+---
+layout: post
+title:  "백준 1904번 python 풀이 - 01타일"
+date:   2024-07-18 18:00:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, DP, 메모이제이션]
+---
+
+## 문제 링크
+[1904번](https://www.acmicpc.net/problem/1904)
+
+## 해결책
+```python
+import sys
+
+num_list = [0,1,2,3,5]
+
+N = int(sys.stdin.readline().rstrip())
+
+if(N <= 4):
+    print(num_list[N])
+else:
+    for i in range(4, N):
+        num_list.append(num_list[i]%15746 + num_list[i-1]%15746)
+    print(num_list[N]%15746)
+```
+
+## 주석으로 달 설명
+
+문제는 다르게 써있지만, 결국 조금 큰 수의 피보나치 수열.
+어렵지 않게 해결했다.

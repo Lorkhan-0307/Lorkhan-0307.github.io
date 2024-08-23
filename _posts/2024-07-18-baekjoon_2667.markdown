@@ -1,0 +1,57 @@
+---
+layout: post
+title:  "백준 2667번 python 풀이 - 단지번호붙이기"
+date:   2024-07-18 11:00:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 그래프, DFS]
+---
+
+## 문제 링크
+[2667번](https://www.acmicpc.net/problem/2667)
+
+## 해결책
+```python
+import sys
+
+N = int(sys.stdin.readline().rstrip())
+
+maps = []
+
+is_visited = [[False for i in range(N)] for j in range(N)]
+
+for i in range(N):
+    maps.append(list(sys.stdin.readline().rstrip()))
+
+apt_list = []
+cur_idx_apt = -1
+dx = [1,-1,0,0]
+dy = [0,0,1,-1]
+
+for i in range(N):
+    for j in range(N):
+        if(is_visited[i][j] is False and maps[i][j] == "1"):
+            cur_idx_apt += 1
+            stk = [(i,j)]
+            is_visited[i][j] = True
+            apt_list.append(1)
+            while stk:
+                nx, ny = stk.pop()
+                for way in range(4):
+                    nxt_x = nx + dx[way]
+                    nxt_y = ny + dy[way]
+                    if(-1<nxt_x<N and -1<nxt_y<N):
+                        if(maps[nxt_x][nxt_y] == "1" and is_visited[nxt_x][nxt_y] is False):
+                            stk.append((nxt_x, nxt_y))
+                            is_visited[nxt_x][nxt_y] = True
+                            apt_list[cur_idx_apt] += 1
+
+print(cur_idx_apt + 1)
+apt_list.sort()
+for ans in apt_list:
+    print(ans)
+```
+
+## 주석으로 달 설명
+
+시험으로 제시된 문제 2번.
+동일하게 각 구역별 완전 탐색을 이용해서 전체의 단지 그룹 수와 각 그룹의 대한 요소의 갯수를 오름차순으로 출력하면 되는 문제이다.

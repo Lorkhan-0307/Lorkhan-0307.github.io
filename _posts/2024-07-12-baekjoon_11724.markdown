@@ -1,0 +1,60 @@
+---
+layout: post
+title:  "백준 11724번 python 풀이 - 연결 요소의 개수"
+date:   2024-07-12 22:03:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 트리, 이진트리, 이진트리탐색]
+---
+
+## 문제 링크
+[11724번](https://www.acmicpc.net/problem/11724)
+
+## 해결책
+```python
+import sys
+
+def dfs(start):
+    stk = [start]
+    while stk:
+        cur = stk.pop()
+        is_Visited[cur] = True
+        for i in range(len(path[cur]) - 1, -1, -1):
+            if is_Visited[path[cur][i]] is False:
+                stk.append(path[cur][i])
+
+def bfs(start):
+    que = [start]
+    while que:
+        cur = que.pop(0)
+        is_Visited[cur] = True
+        for v in path[cur]:
+            if is_Visited[v] is False:
+                que.append(v)
+
+
+N, M = map(int, sys.stdin.readline().rstrip().split())
+
+path = [[] for _ in range(N+1)]
+is_Visited = [False for _ in range(N+1)]
+
+
+for _ in range(M):
+    _from, _to = map(int, sys.stdin.readline().rstrip().split())
+    path[_from].append(_to)
+    path[_to].append(_from)
+
+cnt = 0
+for i in range(1,N+1):
+    if(is_Visited[i] is False):
+        dfs(i)
+        cnt += 1
+
+print(cnt)
+
+```
+
+## 주석으로 달 설명
+
+이번에는 영역을 나누는 문제.
+기존에 DFS, BFS로도 비슷하게 푼 방식이었다.
+근데 시간이 좀 느려서, 다르게 푸는 방식을 좀 고민해봤는데, 마땅한 방법이 크게 떠오르지 않는다.

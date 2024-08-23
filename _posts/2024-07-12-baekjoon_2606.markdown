@@ -1,0 +1,59 @@
+---
+layout: post
+title:  "백준 2606번 python 풀이 - 바이러스"
+date:   2024-07-12 22:03:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 트리, 이진트리, 이진트리탐색]
+---
+
+## 문제 링크
+[2606번](https://www.acmicpc.net/problem/2606)
+
+## 해결책
+```python
+import sys
+
+def dfs(start):
+    stk = [start]
+    global cnt
+    while stk:
+
+        cur = stk.pop()
+        if is_Visited[cur] is False:
+            cnt += 1
+            is_Visited[cur] = True
+            for i in range(len(path[cur]) - 1, -1, -1):
+                if is_Visited[path[cur][i]] is False:
+                    stk.append(path[cur][i])
+
+def bfs(start):
+    que = [start]
+    while que:
+        cur = que.pop(0)
+        is_Visited[cur] = True
+        for v in path[cur]:
+            if is_Visited[v] is False:
+                que.append(v)
+
+
+N = int(sys.stdin.readline().rstrip())
+M = int(sys.stdin.readline().rstrip())
+
+path = [[] for _ in range(N+1)]
+is_Visited = [False for _ in range(N+1)]
+
+
+for _ in range(M):
+    _from, _to = map(int, sys.stdin.readline().rstrip().split())
+    path[_from].append(_to)
+    path[_to].append(_from)
+
+cnt = 0
+dfs(1)
+
+print(cnt-1)
+```
+
+## 주석으로 달 설명
+
+이전문제의 해결책과 거이 유사하다.

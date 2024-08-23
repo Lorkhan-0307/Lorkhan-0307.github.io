@@ -1,0 +1,71 @@
+---
+layout: post
+title:  "백준 18405번 python 풀이 - 경쟁적 전염"
+date:   2024-07-18 11:00:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 그래프, BFS]
+---
+
+## 문제 링크
+[18405번](https://www.acmicpc.net/problem/18405)
+
+## 해결책
+```python
+import sys
+
+N, K = map(int, sys.stdin.readline().rstrip().split())
+
+test_tube = [[]]
+
+# 열, 행, 바이러스 번호 순서
+virus_loc = [[] for i in range(K+1)]
+
+for x in range(1,N+1):
+    temp_list = list(map(int, sys.stdin.readline().rstrip().split()))
+    for y in range(N):
+        if(temp_list[y] != 0):
+            virus_loc[temp_list[y]].append((x,y+1))
+    temp_list = [0] + temp_list
+    test_tube.append(temp_list)
+
+S, targetX, targetY = map(int, sys.stdin.readline().rstrip().split())
+
+
+
+dx = [1,-1,0,0]
+dy = [0,0,1,-1]
+
+cur_time = 0
+
+is_Changed = False
+
+while cur_time < S:
+    cur_time += 1
+    for virus_num in range(1,K+1):
+        if len(virus_loc[virus_num]):
+            is_visited = [[False for i in range(N+1)] for j in range(N+1)]
+            new_virus = []
+            while virus_loc[virus_num]:
+                nx, ny = virus_loc[virus_num].pop(0)
+                is_visited[nx][ny] = True
+                for i in range(4):
+                    nxt_x = nx + dx[i]
+                    nxt_y = ny + dy[i]
+                    if(0<nxt_x<N+1 and 0<nxt_y<N+1):
+                        if test_tube[nxt_x][nxt_y] == 0 and is_visited[nxt_x][nxt_y] is False:
+                            new_virus.append((nxt_x, nxt_y))
+                            test_tube[nxt_x][nxt_y] = virus_num
+                            is_visited[nxt_x][nxt_y] = True
+                            is_Changed = True
+            virus_loc[virus_num] += new_virus
+    if(is_Changed is False):
+        break
+
+print(test_tube[targetX][targetY])
+```
+
+## 주석으로 달 설명
+
+시험으로 제시된 문제 3번.
+매 시간의 흐름에 따라 각 구역에서 상,하,좌,우로 아직 전염이 되지 않은 칸으로 확장하면 되는 문제이다.
+이때, 각 바이러스의 번호 순으로 진행되므로, 이를 기반으로 순차적으로 BFS를 진행하면 되며, 바이러스는 테두리들만 배열에 진입되서 확장되도록 구현하였다.

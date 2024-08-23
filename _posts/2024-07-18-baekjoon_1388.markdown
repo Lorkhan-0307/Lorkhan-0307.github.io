@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "백준 1388번 python 풀이 - 바닥 장식"
+date:   2024-07-18 11:00:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 그래프, DFS]
+---
+
+## 문제 링크
+[1388번](https://www.acmicpc.net/problem/1388)
+
+## 해결책
+```python
+import sys
+
+N, M = map(int, sys.stdin.readline().rstrip().split())
+floor = []
+
+for i in range(N):
+    temp_str = list(sys.stdin.readline().rstrip())
+    floor.append(temp_str)
+
+is_visited = [[False for i in range(M)] for j in range(N)]
+
+ans = 0
+
+dx = [1,-1,0,0]
+dy = [0,0,1,-1]
+
+for nx in range(N):
+    for ny in range(M):
+        if(is_visited[nx][ny] is False):
+            is_visited[nx][ny] = True
+            ans += 1
+            stk = []
+            stk.append((nx, ny))
+            while stk:
+                cur_x, cur_y = stk.pop()
+
+                start = 0
+                end = 0
+                if floor[cur_x][cur_y] == "-":
+                    start = 2
+                    end = 4
+                elif floor[cur_x][cur_y] == "|":
+                    start = 0
+                    end = 2
+                for i in range(start, end):
+                    nxt_x = cur_x + dx[i]
+                    nxt_y = cur_y + dy[i]
+                    if (-1 < nxt_x < N and -1 < nxt_y < M):
+                        if is_visited[nxt_x][nxt_y] is False and floor[nxt_x][nxt_y] == floor[cur_x][cur_y]:
+                            stk.append((nxt_x, nxt_y))
+                            is_visited[nxt_x][nxt_y] = True
+
+print(ans)
+```
+
+## 주석으로 달 설명
+
+시험으로 제시된 문제 1번.
+dx, dy를 이용해서, 현재의 값에 따라 좌,우 혹은 상,하로 움직이며 탐색하게 되는 문제이다.

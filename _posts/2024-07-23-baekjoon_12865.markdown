@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "백준 12865번 python 풀이 - 평범한 배낭"
+date:   2024-07-23 11:00:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, DP]
+---
+
+## 문제 링크
+[12865번](https://www.acmicpc.net/problem/12865)
+
+## 해결책
+```python
+import sys
+
+N, K = map(int, sys.stdin.readline().split())
+
+things = []
+
+for _ in range(N):
+    weight, value = map(int, sys.stdin.readline().split())
+    things.append((weight, value))
+
+things.sort(key=lambda x: x[0])
+
+dp = [[0 for i in range(K+1)] for j in range(N+1)]
+
+for i in range(1, N+1):
+    weight, val = things[i-1]
+    for j in range(1, K+1):
+        if(j < weight):
+            dp[i][j] = dp[i - 1][j]
+        else:
+            dp[i][j] = max(dp[i-1][j-weight] + val, dp[i-1][j])
+        # i 가 물건(열), j가 무게(행)
+print(dp[-1][-1])
+```
+
+## 주석으로 달 설명
+
+KNAPSACK 문제이다.
+
+DP문제에서 주된 생각의 흐름은 다음과 같다.
+
+1. 이 문제, 반복적이다 or Divide 가 가능하다
+2. 이로 인해 진행될 때, 반복적인 흐름이 보인다.
+
+이를 기반으로 문제의 크기를 분할하여 감소시켜야 하는데, 이 때 올바른 방식의 분할을 진행하여야 한다.
+
+KNAPSACP 문제의 경우에는, 분할할 때 ABCDE의 물건이 있고, 최대 무게가 K 라고 하면, E가 포함되는 경우와 포함되지 않는 경우로 분할한다.
+그렇게 되면, ABCD와 K-(A무게) 그리고 ABCD와 K 로 분할된다.
+이때, K-(무게) 가 0 미만이 되는 경우는 없다.
+
+이와 같이 분할한 뒤, 2차원배열을 사용하면 된다.

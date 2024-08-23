@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "백준 9084번 python 풀이 - 동전"
+date:   2024-07-18 18:00:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, DP, 메모이제이션]
+---
+
+## 문제 링크
+[9084번](https://www.acmicpc.net/problem/9084)
+
+## 해결책
+```python
+import sys
+
+T = int(sys.stdin.readline().rstrip())
+ans = []
+for _ in range(T):
+    N = int(sys.stdin.readline().rstrip())
+    coins = list(map(int, sys.stdin.readline().rstrip().split()))
+    target = int(sys.stdin.readline().rstrip())
+
+    dp = [0 for i in range(target+1)]
+    dp[0] = 1
+    for coin in coins:
+        for i in range(coin, target+1):
+            dp[i] += dp[i-coin]
+    ans.append(dp[target])
+
+for an in ans:
+    print(an)
+
+
+
+```
+
+## 주석으로 달 설명
+
+DP를 통한 동전 문제. coin.을 이용한 풀이이다.
+큰 차이는 없다.

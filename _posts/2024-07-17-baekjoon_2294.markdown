@@ -1,0 +1,49 @@
+---
+layout: post
+title:  "백준 2294번 python 풀이 - 동전2"
+date:   2024-07-17 11:05:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, DP]
+---
+
+## 문제 링크
+[2294번](https://www.acmicpc.net/problem/2294)
+
+## 해결책
+```python
+import sys
+
+n, k = map(int, sys.stdin.readline().rstrip().split())
+
+coins = []
+for i in range(n):
+    coin=int(sys.stdin.readline().rstrip())
+    if coin not in coins and coin <= k:
+        coins.append(coin)
+
+coins.sort()
+
+dp = [10001] * (k+1)
+dp[0] = 0
+
+
+for coin in coins:
+    for i in range(coin, k+1):
+        dp[i] = min(dp[i], dp[i-coin]+1)
+
+if dp[k] == 10001:
+    print(-1)
+else:
+    print(dp[k])
+
+```
+
+## 주석으로 달 설명
+
+DP를 이용한 해결.
+왜 그래프로 왔는지 정확히는 모르겠지만,
+이거를 그래프로 해결한다면 DFS가 어울릴 것 같다.
+
+[해설 영상](https://www.youtube.com/watch?v=z1dNX74bt9Y)
+[해설 블로그](https://velog.io/@grace0st/%EB%8F%99%EC%A0%842-%EB%B0%B1%EC%A4%80-2294%EB%B2%88-%ED%8C%8C%EC%9D%B4%EC%8D%AC)
+둘을 참고해도 좋다.

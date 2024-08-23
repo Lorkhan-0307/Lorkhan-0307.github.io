@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "백준 18352번 python 풀이 - 특정 거리의 도시 찾기"
+date:   2024-07-15 09:15:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 트리, DFS]
+---
+
+## 문제 링크
+[18352번](https://www.acmicpc.net/problem/18352)
+
+## 해결책
+```python
+import sys
+
+sys.setrecursionlimit(10 ** 6)
+
+N, M, K, X = map(int, sys.stdin.readline().rstrip().split())
+
+paths = [[] for _ in range(N + 1)]
+movement = [999999 for _ in range(N + 1)]
+
+for _ in range(M):
+    _from, _to = map(int, sys.stdin.readline().rstrip().split())
+    paths[_from].append(_to)
+
+
+ans = []
+def bfs(depth, target):
+    global chk
+    global K
+    movement[target] = min(depth, movement[target])
+    que = [target]
+    while que:
+        cur = que.pop(0)
+        for path in paths[cur]:
+            if movement[path] == 999999:
+                movement[path] = min(movement[path], movement[cur] + 1)
+                if(movement[path] == K):
+                    ans.append(path)
+                else:
+                    que.append(path)
+
+
+
+bfs(0, X)
+
+ans.sort()
+
+if(len(ans) == 0):
+    print(-1)
+else:
+    for an in ans:
+        print(an)
+```
+
+## 주석으로 달 설명
+
+BFS를 통한 해결...
+뭐 되기는 했는데... 좀 많이느리다.
+사실 느린것보다, 메모리가 짱짱크다...
+예상은 했지만... 좀 심하네...

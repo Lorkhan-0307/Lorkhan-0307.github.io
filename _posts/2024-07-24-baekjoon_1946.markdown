@@ -1,0 +1,57 @@
+---
+layout: post
+title:  "백준 1946번 python 풀이 - 신입사원"
+date:   2024-07-24 10:00:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 그리디]
+---
+
+## 문제 링크
+[1946번](https://www.acmicpc.net/problem/1946)
+
+## 해결책
+```python
+import sys
+
+T = int(sys.stdin.readline())
+
+ans = []
+
+for _ in range(T):
+
+    N = int(sys.stdin.readline())
+    t_score = []
+    for __ in range(N):
+        a_test, b_test = map(int, sys.stdin.readline().split())
+        t_score.append((a_test, b_test))
+
+    t_score.sort(key=lambda x: (x[0], x[1]), reverse=True)
+
+    b_min = 999999999
+
+    cnt = 0
+
+    for i in range(N - 1, -1, -1):
+        a, b = t_score[i]
+        if b >= b_min:
+            cnt += 1
+        else:
+            b_min = b
+
+    ans.append(N - cnt)
+
+for an in ans:
+    print(an)
+
+```
+
+## 주석으로 달 설명
+
+그리디. 정렬이 매우 중요!
+A, B 둘 다 누군가보다 높아야지만 가능하므로,
+A를 기준으로 정렬
+이때, 높은 등수부터 확인할 때, 자신보다 A 성적이 좋은 사람들의 min_a 를 저장하고,
+min_a 보다 본인이 더 높은 등수(낮은 숫자)라면 min_a를 본인의 것으로 교체하고,
+아니면 탈락자 수에 1을 더한다.
+
+마지막에, N에서 탈락자 수를 빼면 된다.

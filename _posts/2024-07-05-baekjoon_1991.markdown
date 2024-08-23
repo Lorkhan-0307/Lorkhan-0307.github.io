@@ -1,0 +1,46 @@
+---
+layout: post
+title:  "백준 1991번 python 풀이 - Hello World"
+date:   2024-07-05 10:37:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 입출력]
+---
+
+## 문제 링크
+[2557번](https://www.acmicpc.net/problem/2557)
+
+## 해결책
+```
+print("Hello World!")
+```
+
+## 주석으로 달 설명
+
+#### print문의 위치 및 builtins.py
+print문은 builtins.py 파일에 존재한다.
+builtins.py는 python에서 내장된 함수와 예외들을 처리해 둔 모듈이며, Python 인터프리터가 실행될 때 자동으로 실행되는 모듈이다.
+이 모듈이 바로 Python의 표준 라이브러리의 핵심 부분이다.
+이는 인터프리터에서 자동으로 실행되는 모듈으로, 따로 import 할 필요가 없다. 왜?
+
+1. 내장함수 -> print len range 등의 기본적으로 사용하는 함수들이 이곳에 정의되어 있다.
+2. 예외 클래스 -> Exception, ValueError, TypeError 등의 기본 예외 클래스들이 정의되어 있다.
+3. 기타 내장 객체: int, str, list, dict 같은 기본 자료형 클래스 역시 여기에 정의되어 있다.
+
+#### print문 분석
+print문은 다음과 같이 생겼다.
+def print(self, *args, sep=' ', end='\n', file=None)
+인자는 총 5개로, self, *args, sep, end, file이 존재한다.
+
+1. self -> 이는 일반적으로 클래스 메서드 정의에서 사용된다. 근데 인터넷에서는 그래서 그런지 self가 없다고 나오더라.
+2. *args는 출력할 값을 가변 인수로 받는다. 다시 말해, 인수의 갯수가 고정되어 있지 않다는 말이다.
+여러개의 문자,문자열을 입력하여 출력할 수 있다.
+3. sep는 *args로 받은 여러 개의 가변 인자들 사이를 어떻게 표기할지를 나타내는 것이다.
+기본적으로 공백으로 작성되어 있다. 여러 인자를 표기할 때 사이를 공백으로 나타낸다.
+4. end는 출력의 끝에 표기할 문자이다. \n이 기본으로, 마지막을 줄바꿈한다는 것이다.
+5. file은 출력할 파일 객체를 지정하며, 기본은 sys.stdout으로 되어있다.
+with open('output.txt', 'w') as f:
+    print("hello", file=f)
+이러한 방식으로 적으면 output.txt 파일에 hello 라고 찍힐 것이다.
+
+6. flush 매개변수가 있다고 한다. fulsh는 출력 스트림을 flush 할지를 결정한다고 하며, 기본은 false라고 하는데,
+이는 내 파일에서 보이지는 않는다. 출력 버퍼 문제가 있다면 여기를 다시 참고하자.

@@ -1,0 +1,63 @@
+---
+layout: post
+title:  "백준 1260번 python 풀이 - DFS와 BFS"
+date:   2024-07-12 22:03:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, DFS, BFS]
+---
+
+## 문제 링크
+[1260번](https://www.acmicpc.net/problem/1260)
+
+## 해결책
+```python
+import sys
+
+
+def dfs(start):
+    stk = [start]
+    while stk:
+        cur = stk.pop()
+        if is_Visited[cur] is False:
+            print(cur, end=" ")
+        is_Visited[cur] = True
+        for i in range(len(way_list[cur]) - 1, -1, -1):
+            if is_Visited[way_list[cur][i]] is False:
+                stk.append(way_list[cur][i])
+
+
+def bfs(start):
+    que = [start]
+    while que:
+        cur = que.pop(0)
+        if is_Visited[cur] is False:
+            print(cur, end=" ")
+        is_Visited[cur] = True
+        for v in way_list[cur]:
+            if is_Visited[v] is False:
+                que.append(v)
+
+
+N, M, V = map(int, sys.stdin.readline().rstrip().split())
+is_Visited = [False for _ in range(N + 1)]
+way_list = [[] for _ in range(N + 1)]
+for i in range(M):
+    _from, _to = map(int, sys.stdin.readline().rstrip().split())
+    if _to not in way_list[_from]:
+        way_list[_from].append(_to)
+    if _from not in way_list[_to]:
+        way_list[_to].append(_from)
+
+for i in range(N+1):
+    way_list[i].sort()
+
+dfs(V)
+is_Visited = [False for _ in range(N + 1)]
+print()
+bfs(V)
+
+```
+
+## 주석으로 달 설명
+
+BFS와 DFS. 탐색의 기본이다.

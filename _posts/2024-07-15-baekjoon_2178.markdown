@@ -1,0 +1,47 @@
+---
+layout: post
+title:  "백준 2178번 python 풀이 - 미로 탐색"
+date:   2024-07-15 09:15:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, BFS]
+---
+
+## 문제 링크
+[2178번](https://www.acmicpc.net/problem/2178)
+
+## 해결책
+```python
+import sys
+
+
+def bfs():
+    dx = [1, -1, 0, 0]
+    dy = [0, 0, 1, -1]
+    que = [(0, 0)]
+    maze_move[0][0] = 1
+    while que:
+        nx, ny = que.pop(0)
+        for i in range(4):
+            if -1 < nx + dx[i] < N and -1 < ny + dy[i] < M:
+                if maze[nx + dx[i]][ny + dy[i]] == "1" and maze_move[nx + dx[i]][ny + dy[i]] == 100001:
+                    maze_move[nx + dx[i]][ny + dy[i]] = min(maze_move[nx + dx[i]][ny + dy[i]], maze_move[nx][ny] + 1)
+                    if nx + dx[i] == N - 1 and ny + dy[i] == M - 1:
+                        return maze_move[nx + dx[i]][ny + dy[i]]
+                    que.append((nx + dx[i], ny + dy[i]))
+
+
+N, M = map(int, sys.stdin.readline().rstrip().split())
+
+maze = []
+maze_move = [[100001 for i in range(M)] for j in range(N)]
+
+for i in range(N):
+    maze.append(sys.stdin.readline().rstrip())
+
+print(bfs())
+
+```
+
+## 주석으로 달 설명
+
+BFS로 해결했다. 결과값을 만약 이걸 재귀적으로 만들었다면 더 쉽게 했겠지만...

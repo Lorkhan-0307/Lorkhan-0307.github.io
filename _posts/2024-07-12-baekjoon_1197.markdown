@@ -1,0 +1,60 @@
+---
+layout: post
+title:  "백준 1991번 python 풀이 - 최소 스패닝 트리"
+date:   2024-07-12 22:03:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 트리, MST, 최소 비용 신장 트리]
+---
+
+## 문제 링크
+[1197번](https://www.acmicpc.net/problem/1197)
+
+## 해결책
+```python
+import sys
+
+
+def get_Parent(val):
+    if parent_list[val] == val:
+        return val
+    parent_list[val] = get_Parent(parent_list[val])
+    return parent_list[val]
+
+
+def union_parent(a, b):
+    a = get_Parent(a)
+    b = get_Parent(b)
+    if a < b:
+        parent_list[b] = a
+    else:
+        parent_list[a] = b
+
+
+V, E = map(int, sys.stdin.readline().rstrip().split())
+
+weight_list = []
+parent_list = []
+
+for i in range(V):
+    parent_list.append(i)
+
+for i in range(E):
+    _from, _to, _weight = map(int, sys.stdin.readline().rstrip().split())
+    _from -= 1
+    _to -= 1
+    weight_list.append([_weight, _from, _to])
+weight_list.sort()
+
+_sum = 0
+for weight in weight_list:
+    if get_Parent(weight[1]) != get_Parent(weight[2]):
+        union_parent(weight[1], weight[2])
+        _sum += weight[0]
+
+print(_sum)
+```
+
+## 주석으로 달 설명
+
+[크루스칼 알고리즘](https://en.wikipedia.org/wiki/Kruskal%27s_algorithm)을 이용한 풀이이다.
+자세한 크루스칼 알고리즘의 대한 해설은 링크를 통해 작성해두었다.

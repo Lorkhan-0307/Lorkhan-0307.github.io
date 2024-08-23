@@ -1,0 +1,30 @@
+---
+layout: post
+title:  "백준 2748번 python 풀이 - 피보나치 수 2"
+date:   2024-07-18 18:00:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, DP, 메모이제이션]
+---
+
+## 문제 링크
+[2748번](https://www.acmicpc.net/problem/2748)
+
+## 해결책
+```python
+import sys
+
+fibo_list = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597]
+n = int(sys.stdin.readline().rstrip())
+
+
+if(n<18):
+    print(fibo_list[n])
+else:
+    for i in range(17, n+1):
+        fibo_list.append(fibo_list[i] + fibo_list[i-1])
+    print(fibo_list[n])
+```
+
+## 주석으로 달 설명
+
+피보나치 수열을 상향식으로 메모이제이션을 통해 해결했다. 문제에서 n = 17 일때까지의 범위를 줘서, 이를 사용했다.

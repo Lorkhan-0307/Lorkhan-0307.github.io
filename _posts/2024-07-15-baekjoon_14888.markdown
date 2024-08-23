@@ -1,0 +1,68 @@
+---
+layout: post
+title:  "백준 14888번 python 풀이 - 연산자 끼워넣기"
+date:   2024-07-15 09:15:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, DFS]
+---
+
+## 문제 링크
+[14888번](https://www.acmicpc.net/problem/14888)
+
+## 해결책
+```python
+import sys
+
+N = int(sys.stdin.readline().rstrip())
+
+nums = list(map(int, sys.stdin.readline().rstrip().split()))
+
+operators = list(map(int, sys.stdin.readline().rstrip().split()))
+
+_max = -10 ** 9
+_min = 10 ** 9
+
+def dfs(stage, _sum, _operator):
+    global _max
+    global _min
+
+    if _operator == 0:
+        _sum += nums[stage]
+    elif _operator == 1:
+        _sum -= nums[stage]
+    elif _operator == 2:
+        _sum *= nums[stage]
+    elif _operator == 3:
+        _sum /= nums[stage]
+        _sum = int(_sum)
+
+    if stage == len(nums) - 1:
+        if _sum > _max:
+            _max = _sum
+        if _sum < _min:
+            _min = _sum
+        return
+
+    for i in range(4):
+        if operators[i] > 0:
+            operators[i] -= 1
+            dfs(stage + 1, _sum, i)
+            operators[i] += 1
+
+
+for i in range(4):
+    if operators[i] > 0:
+        operators[i] -= 1
+        dfs(1, nums[0], i)
+        operators[i] += 1
+
+print(_max)
+print(_min)
+
+```
+
+## 주석으로 달 설명
+
+DFS로 거진 완전탐색을 진행했다.
+분명 더 쉬운 길이 있을텐데... 찾아봐도 나오지는 않는다.
+어쩌면 이 길이 맞을지도...

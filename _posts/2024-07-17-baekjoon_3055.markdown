@@ -1,0 +1,95 @@
+---
+layout: post
+title:  "백준 3055번 python 풀이 - 탈출"
+date:   2024-07-17 11:05:00 +0900
+categories: algorithm
+tags: [python, 크래프톤정글문제풀이, 그래프, BFS]
+---
+
+## 문제 링크
+[3055번](https://www.acmicpc.net/problem/3055)
+
+## 해결책
+```python
+import sys
+
+R, C = map(int, sys.stdin.readline().rstrip().split())
+
+path = []
+water = []
+stone = []
+dochi = []
+
+dx = [1, -1, 0, 0]
+dy = [0, 0, 1, -1]
+
+for i in range(R):
+    tempstr = list(sys.stdin.readline().rstrip())
+    for idx in range(len(tempstr)):
+        if tempstr[idx] == "D":
+            target = (i, idx)
+        elif tempstr[idx] == "*":
+            water.append((i, idx))
+        elif tempstr[idx] == "S":
+            dochi.append((i, idx))
+        elif tempstr[idx] == "X":
+            stone.append((i, idx))
+
+    path.append(tempstr)
+
+is_visited = [[False for i in range(C)] for i in range(R)]
+is_water_visited = [[False for i in range(C)] for i in range(R)]
+
+# # 물을 확장시킨다. 어짜피 물이 확장될 예정인 칸으로 이동할 수 없으므로, 미리 한칸을 채운다.
+# new_water = []
+# for nx, ny in water:
+#     for i in range(4):
+#         if (-1 < nx + dx[i] < R and -1 < ny + dy[i] < C):
+#             path[nx + dx[i]][ny + dy[i]] = "*"
+#             new_water.append((nx + dx[i], ny + dy[i]))
+#
+# water = new_water
+
+day = 0
+while True:
+    # 물의 범위를 확장시킨다.
+    new_water = []
+    for wx, wy in water:
+        for i in range(4):
+            if (-1 < wx + dx[i] < R and -1 < wy + dy[i] < C):
+                if (path[wx + dx[i]][wy + dy[i]] == "." and is_water_visited[wx + dx[i]][wy + dy[i]] is False):
+                    is_water_visited[wx + dx[i]][wy + dy[i]] = True
+                    path[wx + dx[i]][wy + dy[i]] = "*"
+                    new_water.append((wx + dx[i], wy + dy[i]))
+    water = new_water
+
+
+    isMoved = False
+    new_dochi = []
+    for nx, ny in dochi:
+        for i in range(4):
+            if (-1 < nx + dx[i] < R and -1 < ny + dy[i] < C):
+
+                if path[nx + dx[i]][ny + dy[i]] == "D":
+                    print(day + 1)
+                    exit()
+                elif (path[nx + dx[i]][ny + dy[i]] == "." and is_visited[nx + dx[i]][ny + dy[i]] is False):
+                    isMoved = True
+                    path[nx + dx[i]][ny + dy[i]] = "S"
+                    new_dochi.append((nx + dx[i], ny + dy[i]))
+                    is_visited[nx + dx[i]][ny + dy[i]] = True
+    dochi = new_dochi
+    if isMoved is False:
+        print("KAKTUS")
+        exit()
+    day += 1
+
+    # for _ in path:
+    #     print(_)
+    # print()
+```
+
+## 주석으로 달 설명
+
+BFS를 해체하여 구현하는 방식을 통해 해결했다.
+각 BFS(너비)에 따라 확장되도록 진행했다.
