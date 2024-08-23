@@ -4,6 +4,8 @@ source "https://rubygems.org"
 
 gemspec
 
+gem 'jekyll-target-blank'
+
 group :test do
   gem "html-proofer", "~> 5.0"
 end
