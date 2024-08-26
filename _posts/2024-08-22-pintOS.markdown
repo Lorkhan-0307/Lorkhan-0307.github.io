@@ -98,7 +98,7 @@ backtraces를 확인하며 kernel panic이나 assertion failure를 해결하기�
 
 ## Alarm Clock
 
-** `devices/timer.c`에 있는 `timer_sleep()`을 다시 구현해라 **
+**devices/timer.c`에 있는 `timer_sleep()`을 다시 구현해**
 
 물론 이미 작동되는 구현이  되어있지만, 이는 **busy wait** 방식을 사용한다.
 busy wait은 계속 `thread_yield()` 함수를 통해 현재 시간을 확인하는 루프 속에 계속 존재하여, 충분한 시간이 지날때까지를 기다리는 방식이다.
@@ -123,7 +123,7 @@ void timer_sleep (int64_t ticks);
 
 ## Priority Scheduling(우선순위 스케쥴링)
 
-** Pintos에서 Priority Scheduling과 Priority Donation을 구현하라 **
+**Pintos에서 Priority Scheduling과 Priority Donation을 구현하라**
 
 ready list에 추가된 쓰레드가 현재 작동중인 쓰레드보다 더 높은 우선순위를 가지고 있을 때, 현재 작동중인 쓰레드는 즉시 프로세서를 새로운 쓰레드에 양보해야 한다.
 유사하게, 쓰레드가 락, 세마포어나 환경 변수 등을 기다리고 있을 때, 가장 높은 우선 순위를 가지고 있는 대기중인 쓰레드가 가장 먼저 깨어나야 한다. 쓰레드는 우선순위가 시간의 경과에 따라 높아지거나 낮아질 수 있으나, 쓰레드의 우선순위가 낮아질 때, 자신이 가장 높은 우선순위 쓰레드가 아닌 경우 즉각적으로 CPU의 점유를 놓아야 할 것이다.
@@ -166,7 +166,7 @@ int thread_get_priority(void);
 
 ## Advanced Scheduler
 
-** [4.4 BSD Scheduler](https://casys-kaist.github.io/pintos-kaist/project1/advanced_scheduler.html#4.4BSD%20Scheduler)와 유사한 multilevel feedback 큐 스케쥴러를 현재 시스템에서 진행중인 작업들에 대한 평균 response time을 감소시키기 위해 구현해라 **
+**[4.4 BSD Scheduler](https://casys-kaist.github.io/pintos-kaist/project1/advanced_scheduler.html#4.4BSD%20Scheduler)와 유사한 multilevel feedback 큐 스케쥴러를 현재 시스템에서 진행중인 작업들에 대한 평균 response time을 감소시키기 위해 구현해라**
 
 우선순위 스케쥴러와 마찬가지로, advanced scheduler는 우선순위를 기반으로 쓰레드를 선택하고 작동한다. 하지만, Advanced scheduler는 우선순위 기부가 일어나지 않는다. 그러므로, 우리는 우선순위 스케쥴러를 먼저 작동시키고, 이에서 우선순위 기부를 제거한 다음 advanced scheduler를 구현하는 것을 추천한다.
 
