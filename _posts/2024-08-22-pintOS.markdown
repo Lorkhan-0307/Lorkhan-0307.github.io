@@ -398,16 +398,16 @@ Building an abstraction...
 
 how to make it easy to use hardware?
 
-![alt text](../assets/img/posts/Pintos_001.png)
+![alt text](/assets/img/posts/Pintos_001.png)
 
 마지막줄 OS designers provide APIs to application to use the abstraction -> They call them as system calls
 
-![alt text](../assets/img/posts/Pintos_002.png)
+![alt text](/assets/img/posts/Pintos_002.png)
 
 이중 우측 Memory와 I/O State는 Resources..
 좌측은 Sequential 한 명령들..
 
-![alt text](../assets/img/posts/Pintos_003.png)
+![alt text](/assets/img/posts/Pintos_003.png)
 
 일반적으로 프로세스의 가상 메모리 역시 stack/heap/data/text의 영역으로 나뉜다.
 로더는 나의 binary를 읽어서 이런 식으로 올려준다.
@@ -415,11 +415,11 @@ how to make it easy to use hardware?
 
 이제 각 추상화된 공간들을 따로 추상화해야...?
 
-![alt text](../assets/img/posts/Pintos_004.png)
+![alt text](/assets/img/posts/Pintos_004.png)
 
 4KB바이트의 페이지를 통해 Logical 및 physical 사이의 **mapping**을 진행한다.
 
-![alt text](../assets/img/posts/Pintos_005.png)
+![alt text](/assets/img/posts/Pintos_005.png)
 
 **Level of indirection** : 
 
@@ -428,7 +428,7 @@ address란 어떠한 값을 가지고 address translation mechanism을 통해 �
 
 즉 address translation mechanism을 가지고 변환을 진행하는데, 
 
-![alt text](../assets/img/posts/Pintos_006.png)
+![alt text](/assets/img/posts/Pintos_006.png)
 
 하드웨어와 커널은 서로 소통을 한다.
 
@@ -446,7 +446,7 @@ Page table은 어디에 저장되어 있는가?
 
 #### 계속...
 
-![alt text](../assets/img/posts/Pintos_007.png)
+![alt text](/assets/img/posts/Pintos_007.png)
 
 언제 physical memory를 allocate(찾을)것인가?
 
@@ -462,7 +462,7 @@ Protection이 중요하기 때문이다.
 이는 demand paging과는 또 다르다.
 조금 더 찾아보자.
 
-![alt text](../assets/img/posts/Pintos_008.png)
+![alt text](/assets/img/posts/Pintos_008.png)
 
 Page fault handling
 
@@ -475,7 +475,7 @@ file-backed는 page fault 시에 disk에서 읽어오는 메모리. 코드, 데�
 Anonymous memory는 page fault시에 zero the page하는 메모리...? 스택과 힙이 속한다.
 이것도 조금 더 찾아보자.
 
-![alt text](../assets/img/posts/Pintos_009.png)
+![alt text](/assets/img/posts/Pintos_009.png)
 
 DMA - CPU를 bypass해서 직접 메모리에 접근하는 것.
 (3) Read Done에 Device가 CPU에게 날려주는 Signal -> Inturrupt라고 한다.
@@ -498,17 +498,17 @@ Abstraction of storage(저장 추상화)
 
 File System: A Mapping Problem
 
-![alt text](../assets/img/posts/Pintos_010.png)
+![alt text](/assets/img/posts/Pintos_010.png)
 
 - <filename, data, metadata> -> <a set of blocks>
 
 Abstraction of stage
 
-![alt text](../assets/img/posts/Pintos_011.png)
+![alt text](/assets/img/posts/Pintos_011.png)
 
-![alt text](../assets/img/posts/Pintos_012.png)
+![alt text](/assets/img/posts/Pintos_012.png)
 
-![alt text](../assets/img/posts/Pintos_013.png)
+![alt text](/assets/img/posts/Pintos_013.png)
 
 internodes는 storage에 저장.
 
@@ -518,7 +518,7 @@ allocate physical block? 저장시 -> fsync
 
 Any performance optimization for slow storage device? -> Storage stack overview를 보시오.
 
-![alt text](../assets/img/posts/Pintos_014.png)
+![alt text](/assets/img/posts/Pintos_014.png)
 
 이것이 Layer of abstraction.
 
