@@ -502,3 +502,11 @@ Abstraction of storage(저장 추상화)
 File System: A Mapping Problem
 
 ![img-description](/assets/img/posts/Pintos_010.png)
+
+- filename, data, metadata -> a set of blocks
+
+Abstraction of stage
+
+![img-description](/assets/img/posts/Pintos_011.png)
+
+![img-description](/assets/img/posts/Pintos_012.png)
