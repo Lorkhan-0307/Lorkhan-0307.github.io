@@ -348,7 +348,10 @@ Problem size가 증가할수록 Complxity는 기하급수적으로 증가한다.
 
 #### John Ousterhout - A Philosophy of Software Design
 
-[유튜브 영상](https://www.youtube.com/watch?v=bmSAYlu0NcY&pp=ygUfYSBwaGlsb3NvcGh5IG9mIHNvZnR3YXJlIGRlc2lnbg%3D%3D)
+[유튜브 영상](https://youtu.be/bmSAYlu0NcY?feature=shared)
+
+{% include embed/{youtube}.html id='{bmSAYlu0NcY}' %}
+
 
 fundamental act가 소프트웨어 디자인에 없다는 것... 이건 너무 큰 문제라는 것이 영상의 중점이다.
 
