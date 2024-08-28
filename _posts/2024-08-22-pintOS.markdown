@@ -446,3 +446,59 @@ Page table은 어디에 저장되어 있는가?
 페이징을 할 때 OS의 역할은 무엇인가?
 페이징을 할 때 하드웨어의 역할은 무엇인가?
 
+
+#### 계속...
+
+![img-description](/assets/img/posts/Pintos_007.png)
+
+언제 physical memory를 allocate(찾을)것인가?
+
+Demand Paging : Application first accesses unallocated virtual(ppt 오타) memory. -> 필요할 때 가져온다~
+
+Page fault가 발생하면 그때 가져오는 것.
+
+이때, Zero the page의 부분이 가장 오래 걸린다.
+하지만, 이 부분은 지울 수 있을것 같다고 생각했지만, 0으로 만드는 과정이 반드시 필요하다.
+Protection이 중요하기 때문이다.
+
+하지만 malloc에서 0이 안되는 이유는, 같은 process에서 malloc으로 전달해 주는 것이기 때문이다.
+이는 demand paging과는 또 다르다.
+조금 더 찾아보자.
+
+![img-description](/assets/img/posts/Pintos_008.png)
+
+Page fault handling
+
+두개의 타입의 메모리가 있다. 
+
+Two types of memory : (file-backed memory and Anonymous Memory)
+
+file-backed는 page fault 시에 disk에서 읽어오는 메모리. 코드, 데이터 등.
+
+Anonymous memory는 page fault시에 zero the page하는 메모리...? 스택과 힙이 속한다.
+이것도 조금 더 찾아보자.
+
+![img-description](/assets/img/posts/Pintos_009.png)
+
+DMA - CPU를 bypass해서 직접 메모리에 접근하는 것.
+(3) Read Done에 Device가 CPU에게 날려주는 Signal -> Inturrupt라고 한다.
+
+
+
+
+Abstraction of storage(저장 추상화)
+
+- File: a logical unit of storage
+    - Identifier : pathname(path + filename)
+    - Location of data is identified by (offset)
+
+- Analogy
+    - Virtual memory is an abstraction of physical memory
+        - Level of indirection: (VA) -> (PA)
+    - File is an abstraction of physical storage
+        - Level of indirection: (filename, offset) -> (block address)
+
+
+File System: A Mapping Problem
+
+![img-description](/assets/img/posts/Pintos_010.png)
