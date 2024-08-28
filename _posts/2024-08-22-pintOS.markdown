@@ -399,3 +399,50 @@ Building an abstraction...
 how to make it easy to use hardware?
 
 ![img-description](/assets/img/posts/Pintos_001.png)
+
+
+
+마지막줄 OS designers provide APIs to application to use the abstraction -> They call them as system calls
+
+![img-description](/assets/img/posts/Pintos_002.png)
+
+이중 우측 Memory와 I/O State는 Resources..
+좌측은 Sequential 한 명령들..
+
+![img-description](/assets/img/posts/Pintos_003.png)
+
+일반적으로 프로세스의 가상 메모리 역시 stack/heap/data/text의 영역으로 나뉜다.
+로더는 나의 binary를 읽어서 이런 식으로 올려준다.
+이것은 lab 2 에서 진행하게 될 것이다...
+
+이제 각 추상화된 공간들을 따로 추상화해야...?
+
+![img-description](/assets/img/posts/Pintos_004.png)
+
+4KB바이트의 페이지를 통해 Logical 및 physical 사이의 **mapping**을 진행한다.
+
+![img-description](/assets/img/posts/Pintos_005.png)
+
+**Level of indirection** : 
+
+address란 어떠한 값을 가지고 address translation mechanism을 통해 변환...
+가상 주소 공간에서 func의 input은 virtual address. 이를 가지고 physical address를 반환해준다.
+
+즉 address translation mechanism을 가지고 변환을 진행하는데, 
+
+![img-description](/assets/img/posts/Pintos_006.png)
+
+하드웨어와 커널은 서로 소통을 한다.
+
+이때, 왜 memory 관련 부분만 하드웨어 부분에 구현이 되어 있을까??
+
+DRAM이 매우 빠르기 때문. 이를 소프트웨어로 구현하면, 이는 느리기 때문에 성능저하가 발생.
+그래서 하드웨어에서 제작한다.
+
+
+#### 잠시 추가...
+
+Page table은 어디에 저장되어 있는가?
+페이징을 할 때 OS의 역할은 무엇인가?
+페이징을 할 때 하드웨어의 역할은 무엇인가?
+
