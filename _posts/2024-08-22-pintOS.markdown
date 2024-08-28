@@ -234,3 +234,306 @@ CPU 시간을 최근에 아예 받지 못한 쓰레드가 recent_cpu 값으로 0
 
 
 
+# PinotOS 강의 - 권영진 교수님
+
+## 서론
+
+**운영체제를 이해하는 방법**
+
+bottom-up이 아닌 top-down 방식을 사용하라!
+기능을 구현하는 것에 집중하는 것이 아니고, 각 기능이 왜 필요한지를 이해하고, 이를 기반으로 내려가면서 만들어야 한다.
+
+
+## 1장 무엇이 일어나고 있는가!
+
+```c
+#include <stdio.h>
+#include <string.h>
+#include <sys/mman.h>
+#include <sys/time.h>
+
+int main(void)
+{
+    void *addr;
+    struct timeval start, end, elap;
+    addr = mmap(NULL, 1 << 20, PROT_READ | PROT_WRITE, MAP_ANONYMOUT | MAP_PRIVATE, -1, 0);
+
+    gettimeofday(&start, NULL);
+    memset(addr, 1, 1<<20);
+    gettimeofday(&end, NULL);
+
+    timersub(&end, &start, &elap);
+
+    printf("Time taken to memset1 %ld usec\n", elap.tv_usec);
+
+    gettimeofday(&start, NULL);
+    memset(addr, 2, 1<<20);
+    gettimeofday(&end, NULL);
+    timersub(&end, &start, &elap);
+
+    printf("Time taken to memset2 %ld usec\n", elap.tv_usec);
+
+    munmap(addr, 1 << 20);
+}
+```
+
+위에서 mmap은 2MB(1 << 20)의 공간을 할당한다.
+
+같은 작업에서 둘의 시간 차이가 나는 이유는 캐시 때문이다.
+
+이를 다음과 같이 수정해보자.
+
+```c
+#include <stdio.h>
+#include <string.h>
+#include <sys/mman.h>
+#include <sys/time.h>
+
+
+#define MAP_SIZE (1<<30)
+
+int main(void)
+{
+    void *addr;
+    struct timeval start, end, elap;
+    addr = mmap(NULL, MAP_SIZE, PROT_READ | PROT_WRITE, MAP_ANONYMOUT | MAP_PRIVATE, -1, 0);
+
+    gettimeofday(&start, NULL);
+    memset(addr, 1, MAP_SIZE);
+    gettimeofday(&end, NULL);
+
+    timersub(&end, &start, &elap);
+
+    printf("Time taken to memset1 %ld usec\n", elap.tv_usec);
+
+    gettimeofday(&start, NULL);
+    memset(addr, 2, MAP_SIZE);
+    gettimeofday(&end, NULL);
+    timersub(&end, &start, &elap);
+
+    printf("Time taken to memset2 %ld usec\n", elap.tv_usec);
+
+    munmap(addr, 1 << 20);
+}
+```
+
+이런식으로 수정하게 되면 기존 10배의 차이가 나던 것이 2배의 차이로 감소한다.
+그 이유는 무엇일까?
+
+이제 캐시의 영향은 감소하였다(location size가 1GB(1<<30)이 되었기 때문).
+그렇다면 지금의 차이가 나는 이유는 무엇일까?
+
+디맨드 페이징.
+
+운영체제가 실제로 page fault가 나서, page demanding을 하는 과정이 포함이 된다.
+두번째에는 이것이 발생하지 않는다.(이미 가상 메모리에 올린 것이 나오기 때문)
+
+## 추상화
+
+운영체제의 가장 중요한 requirements는 바로 **추상화**이다.
+모든 interface는 추상화를 통해 만들어져있고, 메모리의 관리 등의 관점에서 이에 대한 결과물을 봐야하기 때문.
+
+Problem size가 증가할수록 Complxity는 기하급수적으로 증가한다.
+
+운영체제도 마찬가지.
+
+그래서 이를 Divide and conquer를 해야한다.
+
+이를 분할해서 하나씩 추상화하면, 이는 계속 Layer가 쌓여가고, 이것이 Layer of Abstraction이 된다.
+
+운영체제에서는 결국 Resources 별로 쪼갠다!
+
+인터페이스를 통해 이 리소스에 접근하게 만든다!
+
+
+#### John Ousterhout - A Philosophy of Software Design
+
+[유튜브 영상](https://www.youtube.com/watch?v=bmSAYlu0NcY&pp=ygUfYSBwaGlsb3NvcGh5IG9mIHNvZnR3YXJlIGRlc2lnbg%3D%3D)
+
+fundamental act가 소프트웨어 디자인에 없다는 것... 이건 너무 큰 문제라는 것이 영상의 중점이다.
+
+딱 하나의 아이디어/컨셉트만 골라야 한다면? -> Abstraction. (Composition)(Complxity)?
+
+또 유명한 교수은 Layers of Abstraction.
+
+정의에 따르면 맞지만, 영상에서는 problem decomposition이라고 했다.
+
+
+
+추상화라는 것이 결국 제일 중심적인 것이다.
+
+
+## 왜 OS가 필요한가?
+
+기존 OS가 없었을 때에는 모든 기기를 사용자가 직접 관리해야 하지만, 이 사이의 API(Application Programming Interface)를 만들어, 다양한 하드웨어들을 마주할 수 있도록 만든 것.
+
+그렇기에, 디바이스에 따라 분할하여 추상화해야 한다.
+
+Abstraction / Protection & Isolation / Sharing
+
+## Abstraction 이란 무엇인가?
+
+디테일을 무시하여 쉽게 이해할 수 있도록 만든 것.
+
+Abstract(정글)을 만든다고 생각해보자.
+이는 정글을 인지 하고 이를 정의 하는 과정이 들어간다.
+
+여기에 불필요한 디테일은 전부 ignore 한다. 
+
+즉, 반드시 필요한 디테일만 가지고 추상화를 진행한다. 
+
+
+## OS designers' first thought
+
+하드웨어의 디테일을 신경쓰면서 프로그램을 만들고 싶지 않다. 즉, 쉽게 프로그래밍 할 수 있어야 한다.
+
+OS는 Application을 다뤄야 한다, (hardware resources를 utilize 해야 한다)(management unit of execution)
+
+Protect applications from each other(protection unit of execution)
+
+===> PROCESS
+
+Building an abstraction...
+
+
+how to make it easy to use hardware?
+
+![alt text](../assets/img/posts/Pintos_001.png)
+
+마지막줄 OS designers provide APIs to application to use the abstraction -> They call them as system calls
+
+![alt text](../assets/img/posts/Pintos_002.png)
+
+이중 우측 Memory와 I/O State는 Resources..
+좌측은 Sequential 한 명령들..
+
+![alt text](../assets/img/posts/Pintos_003.png)
+
+일반적으로 프로세스의 가상 메모리 역시 stack/heap/data/text의 영역으로 나뉜다.
+로더는 나의 binary를 읽어서 이런 식으로 올려준다.
+이것은 lab 2 에서 진행하게 될 것이다...
+
+이제 각 추상화된 공간들을 따로 추상화해야...?
+
+![alt text](../assets/img/posts/Pintos_004.png)
+
+4KB바이트의 페이지를 통해 Logical 및 physical 사이의 **mapping**을 진행한다.
+
+![alt text](../assets/img/posts/Pintos_005.png)
+
+**Level of indirection** : 
+
+address란 어떠한 값을 가지고 address translation mechanism을 통해 변환...
+가상 주소 공간에서 func의 input은 virtual address. 이를 가지고 physical address를 반환해준다.
+
+즉 address translation mechanism을 가지고 변환을 진행하는데, 
+
+![alt text](../assets/img/posts/Pintos_006.png)
+
+하드웨어와 커널은 서로 소통을 한다.
+
+이때, 왜 memory 관련 부분만 하드웨어 부분에 구현이 되어 있을까??
+
+DRAM이 매우 빠르기 때문. 이를 소프트웨어로 구현하면, 이는 느리기 때문에 성능저하가 발생.
+그래서 하드웨어에서 제작한다.
+
+
+#### 잠시 추가...
+
+Page table은 어디에 저장되어 있는가?
+페이징을 할 때 OS의 역할은 무엇인가?
+페이징을 할 때 하드웨어의 역할은 무엇인가?
+
+#### 계속...
+
+![alt text](../assets/img/posts/Pintos_007.png)
+
+언제 physical memory를 allocate(찾을)것인가?
+
+Demand Paging : Application first accesses unallocated virtual(ppt 오타) memory. -> 필요할 때 가져온다~
+
+Page fault가 발생하면 그때 가져오는 것.
+
+이때, Zero the page의 부분이 가장 오래 걸린다.
+하지만, 이 부분은 지울 수 있을것 같다고 생각했지만, 0으로 만드는 과정이 반드시 필요하다.
+Protection이 중요하기 때문이다.
+
+하지만 malloc에서 0이 안되는 이유는, 같은 process에서 malloc으로 전달해 주는 것이기 때문이다.
+이는 demand paging과는 또 다르다.
+조금 더 찾아보자.
+
+![alt text](../assets/img/posts/Pintos_008.png)
+
+Page fault handling
+
+두개의 타입의 메모리가 있다. 
+
+Two types of memory : (file-backed memory and Anonymous Memory)
+
+file-backed는 page fault 시에 disk에서 읽어오는 메모리. 코드, 데이터 등.
+
+Anonymous memory는 page fault시에 zero the page하는 메모리...? 스택과 힙이 속한다.
+이것도 조금 더 찾아보자.
+
+![alt text](../assets/img/posts/Pintos_009.png)
+
+DMA - CPU를 bypass해서 직접 메모리에 접근하는 것.
+(3) Read Done에 Device가 CPU에게 날려주는 Signal -> Inturrupt라고 한다.
+
+
+
+
+Abstraction of storage(저장 추상화)
+
+- File: a logical unit of storage
+    - Identifier : pathname(path + filename)
+    - Location of data is identified by (offset)
+
+- Analogy
+    - Virtual memory is an abstraction of physical memory
+        - Level of indirection: (VA) -> (PA)
+    - File is an abstraction of physical storage
+        - Level of indirection: (filename, offset) -> (block address)
+
+
+File System: A Mapping Problem
+
+![alt text](../assets/img/posts/Pintos_010.png)
+
+- <filename, data, metadata> -> <a set of blocks>
+
+Abstraction of stage
+
+![alt text](../assets/img/posts/Pintos_011.png)
+
+![alt text](../assets/img/posts/Pintos_012.png)
+
+![alt text](../assets/img/posts/Pintos_013.png)
+
+internodes는 storage에 저장.
+
+hardware는 indexing을 돕지 않는다.
+
+allocate physical block? 저장시 -> fsync
+
+Any performance optimization for slow storage device? -> Storage stack overview를 보시오.
+
+![alt text](../assets/img/posts/Pintos_014.png)
+
+이것이 Layer of abstraction.
+
+
+
+Any performance optimization for slow storage device?
+
+데이터를 먼저 DRAM에 올린다고 하자. DRAM Location 의 이름을 Page cache라고 한다.
+Page cache는 어디에 구현될까?
+
+기존에는 Generic Block Interface부터 Specific Block interface 사이에 구현되었으나, 이를 올려서
+현재는 VFS-POSIX API에 구현이 되어있다.
+
+I/O Queue는 어디에 구현되어 있을까?
+Generic Block Interface부터 Specific Block interface 사이에 구현되어 있다.
+
+
+
