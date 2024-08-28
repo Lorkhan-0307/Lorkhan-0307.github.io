@@ -510,3 +510,30 @@ Abstraction of stage
 ![img-description](/assets/img/posts/Pintos_011.png)
 
 ![img-description](/assets/img/posts/Pintos_012.png)
+
+![img-description](/assets/img/posts/Pintos_013.png)
+
+internodes는 storage에 저장.
+
+hardware는 indexing을 돕지 않는다.
+
+allocate physical block? 저장시 -> fsync
+
+Any performance optimization for slow storage device? -> Storage stack overview를 보시오.
+
+![img-description](/assets/img/posts/Pintos_014.png)
+
+이것이 Layer of abstraction.
+
+
+
+Any performance optimization for slow storage device?
+
+데이터를 먼저 DRAM에 올린다고 하자. DRAM Location 의 이름을 Page cache라고 한다.
+Page cache는 어디에 구현될까?
+
+기존에는 Generic Block Interface부터 Specific Block interface 사이에 구현되었으나, 이를 올려서
+현재는 VFS-POSIX API에 구현이 되어있다.
+
+I/O Queue는 어디에 구현되어 있을까?
+Generic Block Interface부터 Specific Block interface 사이에 구현되어 있다.
