@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "PintOS 제작기 - 2"
-date:   2024-09-03 12:00:00 +0900
+title:  "PintOS 제작기 - 3"
+date:   2024-09-19 12:00:00 +0900
 categories: computer_structures
 tags: [C, 운영체제]
 use_math: true
