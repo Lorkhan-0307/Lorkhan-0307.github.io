@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "PintOS 제작기 - 2 - 1 : Argument Passing"
+date:   2024-09-12 12:00:00 +0900
+categories: computer_structures
+tags: [C, 운영체제, Pintos]
+use_math: true
+---
+
+# 서론
+사실 제작기 라는 이름을 적어두었지만... 실제로는 후기에 더 가깝다.
+
+일단은 먼저, PintOS의 대한 깃북의 한국어 번역본(손번역, 매우구림)이 필요하다면 [여기](https://lorkhan-0307.github.io/posts/pintOS_2/)로...
+
+# 1. Argument Passing
+
+인자를 파싱하고, 파싱한 인자들을 전달하는 과정을 제작해야한다.
+
+```c
+void
+_start (int argc, char *argv[]) {
+    exit (main (argc, argv));
+}
+```
+
+이러한 형태의 `_start()` 함수로 인자가 전달이 되도록 진행해야 한다.
+
+이를 나는 `command_line`이라 부르기로 했다. 이곳은 예시를 든다고 하면, `/bin/ls -l foo bar` 라고 하자.
+그렇다면 인자들은 `" "`(공백) 을 기준으로 분할해야 한다. 콘솔 등의 어떠한 방식으로 string(char*)로 입력된 문장을 공백을 기준으로 파싱을 진행하면, 첫번째는 파일의 경로+이름, 나머지는 이를 실행할 때 전달되어야 하는 인자들이다.
+
+
+
