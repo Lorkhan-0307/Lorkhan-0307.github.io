@@ -1,14 +1,5 @@
 ---
 layout: post
-title:  "PintOS 제작기 - 3"
-date:   2024-09-19 12:00:00 +0900
-categories: computer_structures
-tags: [C, 운영체제]
-use_math: true
----
-
----
-layout: post
 title:  "백준 4542번 C++ 풀이 - Blue Jeans"
 date:   2024-12-01 18:00:00 +0900
 categories: algorithm
