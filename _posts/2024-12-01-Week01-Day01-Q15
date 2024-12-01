@@ -1,0 +1,136 @@
+---
+layout: post
+title:  "백준 4542번 C++ 풀이 - Blue Jeans"
+date:   2024-12-01 18:00:00 +0900
+categories: algorithm
+tags: [C++, 코테준비, DP, LCS]
+---
+
+## 문제 링크
+[4542번](https://www.acmicpc.net/problem/4542)
+
+## 문제 설명
+
+문제는 LCS를 구하되, 이것이 여러 문자열에서 역시 반복적으로 등장하냐는 질문이다.
+
+
+
+## 해결책
+
+DP를 이용해서 Common Substring들을 구하고, 이들을 unorderedmap으로 중복 제거한 상태로 길이 및 알파벳 순으로 정렬한다.
+이 때, Common Substring의 길이는 최소 3 이상이며, 이것이 없을 때에는 바로 "no significant commonalities" 을 출력하도록 한다.
+
+정렬한 뒤에는 첫번째 것부터 다른 string에서 find가 되는지 확인하고, 제일 먼저 찾은 것을 출력한다.
+
+물론 문자열 탐색 알고리즘을 쓰는 게 더 나을 수도 있지만... LCS 구하는 것으로도 진이 다 빠져서 일단 find로 구현했다.
+
+```c++
+#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_set>
+#include <algorithm>
+
+using namespace std;
+
+
+string LongestCommonSubsequence()
+{
+    int patternNum;
+    cin >> patternNum;
+
+    // LCS를 구할 때, 전부 가지고 있어야...? 아니면 찾고 검색 뒤에 없으면 다시...?
+
+    vector<string> patternVector(patternNum);
+
+    for(int i = 0; i < patternNum; i++){
+        cin >> patternVector[i];
+    }
+
+    // DP를 이용해서 공통부분을 저장
+
+    vector<vector<int>> dp(61, vector<int>(61,0));
+    unordered_set<string> commonPatterns;
+
+    for(int i = 1; i <= patternVector[0].size(); ++i){
+        for(int j = 1; j <= patternVector[1].size(); ++j){
+            if(patternVector[0][i-1] == patternVector[1][j-1]){
+                dp[i][j] = dp[i-1][j-1] + 1;
+
+                if(dp[i][j] >= 3){
+                    string curPattern = patternVector[0].substr(i - dp[i][j], dp[i][j]);
+                    commonPatterns.insert(curPattern);
+                }
+            }
+        }
+    }
+
+    if(commonPatterns.empty()){
+        return "no significant commonalities";
+    }
+
+    vector<string> commonPatternVector(commonPatterns.begin(), commonPatterns.end());
+
+    sort(commonPatternVector.begin(), commonPatternVector.end(), [](const std::string& a, const std::string& b){
+        if(a.size() == b.size()){
+            return a < b;
+        }
+        return a.size() > b.size();
+    });
+
+
+
+    // 만약 패턴이 두개라면 LCS가 최대
+    if(patternNum == 2){
+        return commonPatternVector[0];
+    }
+
+    // 패턴이 3개 이상이라면 LCS를 가지고 있는지 비교해야 함.
+    else{
+        // 여기에서 다른 애들과의 비교를
+        for(int i = 0; i<commonPatternVector.size(); i++){
+            bool isNotPattern = false;
+            for(int curPatternNum = 2; curPatternNum<min(patternNum, (int)patternVector.size()); curPatternNum++){
+                if (patternVector[curPatternNum].find(commonPatternVector[i]) == std::string::npos){
+                    isNotPattern = true;
+                    break;
+                }
+            }
+            if(!isNotPattern) {
+                return commonPatternVector[i];
+            }
+        }
+        return "no significant commonalities";
+    }
+}
+
+// 생각... LCS로 찾은 공통 문자열 중 3 이상인 것들만 모아서, 이것들을 다른 문자열들에게 패턴 포함 여부를 확인하게 만들면 되지 않을까?
+
+int main() {
+    int testcase;
+    cin >> testcase;
+
+    vector<string> ans;
+    ans.reserve(testcase);
+
+    for(int testNum = 0; testNum < testcase; testNum++){
+        ans.push_back(LongestCommonSubsequence());
+    }
+
+    for(int testNum = 0; testNum < testcase; testNum++){
+        cout << ans[testNum] << endl;
+    }
+
+    return 0;
+}
+
+```
+
+
+## 피드백
+
+먼저, 첫번째 난관은 find에서 발생했다.
+
+find가 당연히 bool 값을 반환할거라 생각했는데, 다시 보니 그게 아니고 일치하는 값의 value의 첫번째 인덱스를 반환하는 방식이었다.
+그래서 찾지 못하면 `string::npos`를 반환한다는 것을 기억해 다시 설정해주고 나니, 문제가 해결되었다.
+
