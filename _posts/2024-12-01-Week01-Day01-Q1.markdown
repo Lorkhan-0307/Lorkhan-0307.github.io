@@ -1,5 +1,14 @@
 ---
 layout: post
+title:  "PintOS 제작기 - 3"
+date:   2024-09-19 12:00:00 +0900
+categories: computer_structures
+tags: [C, 운영체제]
+use_math: true
+---
+
+---
+layout: post
 title:  "백준 4542번 C++ 풀이 - Blue Jeans"
 date:   2024-12-01 18:00:00 +0900
 categories: algorithm
@@ -24,7 +33,7 @@ DP를 이용해서 Common Substring들을 구하고, 이들을 unorderedmap으�
 
 물론 문자열 탐색 알고리즘을 쓰는 게 더 나을 수도 있지만... LCS 구하는 것으로도 진이 다 빠져서 일단 find로 구현했다.
 
-```c++
+```cpp
 #include <iostream>
 #include <vector>
 #include <string>
