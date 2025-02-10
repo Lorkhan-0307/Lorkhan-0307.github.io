@@ -1,0 +1,121 @@
+---
+layout: post
+title:  "UE Study 1.기본타입과 문자열"
+date:   2024-12-16 18:00:00 +0900
+categories: algorithm
+tags: [C++, 코테준비, DP, LCS]
+---
+
+## 용어 정리
+
+
+1. Super
+
+상속을 받은 클래스를 만들고, 이중의 가상 함수를 가져와서 재정의한다고 할 때, 부모에서 정의된 부분을 실행하는 코드.
+혹은, 일반 함수를 상속받아서 재정의 할 때의 기존 함수를 실행하는 코드.
+
+잠시, 가상 함수와 일반 함수 상속의 차이에 대해 짚고 넘어가자.
+
+#### 가상 함수와 일반 함수 상속의 차이
+
+1. 가상 함수(Virtual Function)
+    - 자식 클래스에서 부모 클래스의 함수를 재정의한다.
+    - 런타임에 다형성(Polymorphism)이 적용되고, 부모 클래스 포인터나 참조를 통해 호출해도 자식 클래스의 재정의된 함수가 실행된다.
+    - 다형성은 가상 함수 테이블인 V-Table을 통해 구현된다.
+
+2. 일반 함수
+    - 자식 클래스에서 동일한 이름과 시그니처로 부모 클래스의 함수를 재정의할 수 있다.
+    - 하지만 이는 **새로운 함수** 로 간주되며, 런타임 다형성은 적용되지 않는다.
+    - 부모 클래스의 포인터나 참조를 통해 호출하면 항상 부모 클래스의 함수가 실행된다.
+
+
+
+```cpp
+class AParent  // 부모 클래스
+{
+public:
+    virtual void BeginPlay()  // 일반 가상 함수
+    {
+        UE_LOG(LogTemp, Warning, TEXT("AParent: BeginPlay"));
+    }
+
+    virtual void CustomAction() = 0;  // 추상 함수(순수 가상 함수)
+};
+
+class AChild : public AParent  // 자식 클래스
+{
+public:
+    virtual void BeginPlay() override
+    {
+        Super::BeginPlay();  // 부모 클래스의 BeginPlay 호출
+        UE_LOG(LogTemp, Warning, TEXT("AChild: BeginPlay"));
+    }
+
+    virtual void CustomAction() override  // 순수 가상 함수 구현
+    {
+        UE_LOG(LogTemp, Warning, TEXT("AChild: CustomAction"));
+    }
+};
+```
+
+
+설명을 하자면, AParent를 상속받은 AChild가 있다고 하자.
+이때, AParent의 함수인 BeginPlay는 가상 함수이다. 이를 가져와서 재정의한다고 하면, AChild에서 BeginPlay 함수는 반드시 Super 코드가 들어가야 한다.
+
+
+2. 로그 찍기
+
+```cpp MyGameInstance
+#include "MyGameInstance.h"
+
+void UMyGameInstance::Init()
+{
+	Super::Init();
+
+	TCHAR LogCharArray[] = TEXT("Hello, Unreal!");
+	UE_LOG(LogTemp, Log, LogCharArray);
+
+	FString LogCharString = LogCharArray;
+	UE_LOG(LogTemp, Log, TEXT("%s"), *LogCharString);
+}
+```
+
+```cpp
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Engine/GameInstance.h"
+#include "MyGameInstance.generated.h"
+
+/**
+ * 
+ */
+UCLASS()
+class NEWPROJECT_API UMyGameInstance : public UGameInstance
+{
+	GENERATED_BODY()
+
+public:
+	virtual void Init() override;
+	
+private:
+	
+};
+
+```
+
+기본적으로 위와 같이 선언했다고 하자.
+이렇게 하면, UMyGameInstance는 UGameInstance를 상속받고, public 한 Init을 UGameInstance에서 가져와 이를 재정의하게 된다.
+이때, TCHAR를 통해 문자열을 선언했었다.
+
+하지만 좀 더 다양한 문자열 관리를 위해서는 FString Class를 사용해야 한다.
+FString으로 선언한 LogCharString 변수를 이용해 건내줄 수 있는데, UE_LOG 함수를 보면 네번째 인자는 반드시 FString의 포인터가 오도록 되어 있다.
+이에 따라, `*LogCharString` 을 전달하면 된다.
+
+문자열 선언은 TCHAR를 통해, 또한 FString 선언을 통해 진행하는 것을 확인하자.
+또한, TEXT() 를 통해 진행하는 부분도 기억하자.
+
+대부분의 구조체는 ToString API를 통해 FString으로 바꿀 수 있게 되어있다.
+
+- ctrl + alt + F11 -> 라이브 빌드
+

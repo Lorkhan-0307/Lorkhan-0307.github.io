@@ -1,0 +1,189 @@
+---
+layout: post
+title:  "UE Study 2.Udemy 강의 1일차"
+date:   2025-02-02 18:00:00 +0900
+categories: GameProgramming
+tags: [C++, UE5]
+---
+
+# 하늘의 구성
+
+## 게임 속 하늘의 구성 요소
+
+- Sky Atmosphere
+- Directional Light
+- Sky Light
+- Exponential Height Fog
+- Volumetric Clouds
+
+
+
+### Sky Atmosphere
+
+- Creates an Earth-like atmosphere
+- Scatters light like a real atmosphere -> Like Sunsets and Sunrises
+- Can have up to two atmospheric lights -> Sun and Moon
+
+### Directional Light
+
+- Light Source infinitely far away
+- Shadows cast from it are all parallel
+- Simulates the sun or moon
+
+
+
+#### Mobility
+
+- Static
+    - Lighting cannot be changed in-game
+    - Fastest... minimum calc
+    - Allows baked lighting... cheap
+
+- Stationary
+    - Color and Intensity can change in-game
+    - Allows partially-baked lighting
+    - 
+
+- Movable
+    - Can be moved and changed in-game
+    - Dynamic shadows
+
+
+### Sky Light
+
+- Captures distant parts of the level
+- Applies to the scene as light(reflections)
+- Global illumination
+- "Captures" only in certain conditions:
+    - For static lights, updates when building lights
+    - For stationary and movable lights, updates once on load and on "Capture"
+    - Constantly when Real-Time Capture is enabled
+
+
+
+### Fog and Clouds
+
+- Exponential Height Fog(old)
+    - Simulates Fog
+    - Gets thicker the lower you go
+    - Two colors
+        - Hemisphere of a planet facing the sun
+        - The other hemisphere
+
+- Volumetric Clouds(new)
+    - Dynamic Clouds
+    - 3-dimensional
+    - Material driven
+    - Light-scattering
+
+
+
+
+## C++ Review
+
+### Classes and Inheritance
+
+
+Parent Class -> Child Class 로 상속한다고 하면,
+당연히 Parent Class에는 variables(변수) 와 functions(함수)가 존재할 것이다.
+이에 함수를 Child Class에서도 이용하려면 Inheritance(상속)이 이루어져야 한다. 즉, Virtual 커맨드를 작성함으로써, 가상함수를 만든다.
+(추상함수와는 다르다 추상함수와는! 근데 추상함수로도 할수는 있지만, 지금 방식과는 요구하는 것이 다름. 상속의 개념이라기 보다는, 이것이 있어야 한다는 정의에 가까움.)
+
+Child Class에서는 override 커맨드로 가상함수를 덮어쓴다. 정확히 말하자면 Parent의 virtual 함수에서 실행되야 하는 부분과, Child의 override 함수에서 새로 정의한 부분들이 추가적으로 실행될 곳을 지정하는 것. 이는 다시말해 재정의 이다.
+
+Child Class가 계속해서 Child Class를 새로 만든다면, 이것은 Inheritance Hierarchy나 Inheritance Chain 이라고 한다.
+그래서 자주 이것이 복잡해지는데...
+
+Parent*이 있다면, 이는 부모 클래스를 가리키는 포인터가 될 것이고, 또한 이는 자식 클래스를 가리킬 수도 있다. Hierarchy의 아래의 어떤 것이든 가리킬 수 있을 것이다.
+
+부모 클래스가 A func가 있고, 자식들이 다 이를 가지고 있을 것이다.
+이때 A가 virtual이면 자식들이 모두 이를 재정의(override)할수 있을 것이다.
+
+이때, Parent*로 A func를 부른다면, 이때 Parent 포인터 가 가르키고 있는 Child의 함수가 실행된다.
+
+Parent Class -> ChildOne -> ChildTwo -> ChildThree
+가 있을때,
+ChildOne* 이 FirstChild라는 이름으로 ChildThree를 가르키고 있다면, 이때 ChildThree에서 재정의된 함수를 부를 수 없다.
+그래서 Cast()로 ChildOne 포인터를 ChildThree 포인터로 교체해야 한다.
+그러면 가능해진다. (당연하게도, Cast() 하기 전에 이 변수가 ChildThree변수여야 한다.)
+
+이렇게 체인의 아래로 Cast 하는 것을 DownCast라고 한다.
+
+우리는 static Cast와 Dynamic Cast를 배웠다.
+이거 잘 모르니 찾아볼 것.
+
+Static Cast는 컴파일 시간에 실행되고, 어떤 타입으로부터 어디로 가는지를 알때 쓴다.
+하지만 이를 모를 때에는 Dynamic Cast를 사용한다.
+
+이래서 Runtime Type Checking이 필요하다.
+
+위와 같은 DownCast는 Dynamic Cast이며, Dynamic Cast를 할 때에는 캐스팅 목표가 Null Ptr이 아닌지 확인해야 한다.
+
+
+### UE5에서는...
+
+UObject -> AActor -> APawn -> ACharacter
+순서로 상속된다.
+UObject를 상속받으며 Actor가 아닌것은 모두 U가 접두사로 붙으므로 이로 판단하면 좋다.
+반대로 Actor인것은 모두 A가 접두사로 붙는다.
+
+- UObject
+    - store data
+    - **cannot** be placed in a level
+
+- AActor
+    - **can** be placed in the level
+    - can have a visual representation
+
+- APawn
+    - can be possessed by a controller
+
+- ACharacter
+    - has a character movement component
+    - has Character-specific functionality
+
+### "Is A" vs "Has A" Relationships
+
+- Parent Class 
+    - a Parent **is not a** Child
+    - a Parent **is not a** Grandchild
+
+- Child Class 
+    - a Child **is a** Parent
+    - a Child **is not a** Grandchild
+
+- Grandchild Class
+    - a Grandchild **is a** Parent
+    - a Grandchild **is a** Child
+
+
+- UObject Class 
+    - a UObject **is not a** AActor
+    - a UObject **is not a** APawn
+
+- AActor Class 
+    - a AActor **is a** UObject
+    - a AActor **is not a** APawn
+
+- APawn Class
+    - a APawn **is a** UObject
+    - a APawn **is a** AActor
+
+
+
+### UE5에서는...2
+
+Package -> World -> Level -> Actor 순서로 상속되는 것이다.
+Actor 이 안에 Component가 있을 것이다.
+
+
+## Reflection
+
+Reflection is an ability of a program to examine itself on runtime.
+[언리얼 엔진 도큐먼트 링크 - 언리얼 프로퍼티 시스템(리플렉션)](https://www.unrealengine.com/ko/blog/unreal-property-system-reflection)
+
+
+
+
+
+
