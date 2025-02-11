@@ -182,6 +182,47 @@ Actor 이 안에 Component가 있을 것이다.
 Reflection is an ability of a program to examine itself on runtime.
 [언리얼 엔진 도큐먼트 링크 - 언리얼 프로퍼티 시스템(리플렉션)](https://www.unrealengine.com/ko/blog/unreal-property-system-reflection)
 
+리플렉션은 데이터를 먼저 모은다.
+- Unreal Editor System
+- Expose data to Blueprints
+- Garbage Collection
+
+
+## Garbage Collection
+
+AActor가 있고, 이를 가리키는 AActor ptr이 있을 때, AActor ptr이 없어지면(오브젝트를 참조하는 모든 포인터가 없어지면) 해당 오브젝트를 자동으로 삭제하는 것이 GC이다.
+또한, UE에서 GC를 특정 오브젝트에 실행시키기 위해서는 해당 '매크로' 를 입력하여야 한다.
+
+- UHT(Unreal Header Tool)
+UCLASS() 매크로를 기입한다.
+클래스 위에 선언한다.
+
+UPROPERTY()
+개별 변수를 입력
+
+UFUNCTION()
+개별 함수를 입력
+
+
+
+예시
+
+```cpp
+#include "Fighter.generated.h"
+
+UCLASS()
+class AFighter : public AActor
+{
+    GENERATED_BODY()
+
+    UPROPERTY()
+    UStaticMesh SwordMesh;
+
+    UFUNCTION()
+    void SwingSword();
+}
+```
+
 
 
 
