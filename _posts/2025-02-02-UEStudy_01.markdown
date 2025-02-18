@@ -224,7 +224,46 @@ class AFighter : public AActor
 ```
 
 
+### 전방 선언 및 불완전 선언
+
+코드 확장을 방지(불필요한 헤더를 지속적으로 추가하는 것을 방지)하기 위해 사용됨.
+header에서 모든 header를 추가하는 것이 아니라, cpp에서만 추가하면 된다. 헤더에서는 이를 전방선언한 포인터를 사용하는 것.
+
+또한 순환 종속성을 방지하기 위함이다.
 
 
+```cpp
+// Fill out your copyright notice in the Description page of Project Settings.
 
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Pawn.h"
+#include "Bird.generated.h"
+
+class UCapsuleComponent;
+
+UCLASS()
+class SLASH_API ABird : public APawn
+{
+	GENERATED_BODY()
+
+public:
+	ABird();
+	
+	virtual void Tick(float DeltaTime) override;
+
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+protected:
+	virtual void BeginPlay() override;
+
+private:
+	UPROPERTY(VisibleAnywhere)
+	UCapsuleComponent* Capsule;
+};
+```
+
+이렇게 쓴 다음에 cpp에서 header를 추가하면 된다.
 
