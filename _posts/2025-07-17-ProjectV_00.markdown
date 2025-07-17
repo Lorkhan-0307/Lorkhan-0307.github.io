@@ -1,0 +1,81 @@
+---
+layout: post
+title:  "UE Project V 작업 진행 기록 00"
+date:   2025-07-17 09:30:00 +0900
+categories: ProjectV
+tags: [C++, UE5]
+---
+
+## 📌 목표
+
+- 신규 Woochi 캐릭터의 궁극기를 GAS 시스템을 이용해 제작
+
+---
+
+## 🚩 오늘의 기록/문제 해결
+
+### 1. 로직 설계
+
+기존 기획자가 BP로 단순설계한 흐름을 먼저 검토하고, 이를 cpp로 컨버팅하려고 한다.
+일단 기존 방식에 대해 설명을 해보자.
+
+#### 입력
+
+1. 일단 임시로 신규 궁극기이다 보니, 별개의 입력을 통해 'T' 키를 누르면 `Ult Server` 함수를 실행시킨다.
+
+- Ult Server 함수
+    - Run On Server, Reliable 함수이다.
+    - Public 함수이다.
+
+- Reliable 함수란?
+    - Reliable 키워드는 주로 UFUNCTION() 매크로에서 사용한다.
+    - `UFUNCTION(Server, Reliable)`` 또는 `UFUNCTION(Client, Reliable)` 같은 식으로 사용한다.
+    - 함수가 네트워크를 통해 전송될 때, 만약 패킷이 유실(손실)되더라도 Unreal Engine이 재전송을 시도해서, 결국 해당 함수 호출이 반드시 도착하도록 보장한다.
+    - 반대로, Unreliable 함수는 패킷이 유실되면 재전송하지 않으므로, 호출이 보장되지 않는다.
+
+2. `Ult Server` 함수는 `Ult_Multicast` 함수를 실행시킨다.
+
+- Ult Multicast 함수
+    - Multicast, Reliable 함수이다.
+    - Public 함수이다.
+
+- Multicast 함수란?
+    - `UFUNCTION(NetMulticast, Reliable)` 또는 `UFUNCTION(NetMulticast, Unreliable)` 형태로 선언한다.
+    - 서버에서만 호출 가능 (클라이언트가 직접 Multicast 함수 호출 X)
+    - 호출하면 서버와 모든 클라이언트에서 함수가 실행됨 (즉, 모든 플레이어의 게임에서 동일한 이벤트 발생)
+
+3. `Ult_Multicast` 의 구조
+    - 1. Character Movement를 flying으로 바꾼다.
+    - 2. Mesh 의 `AM_Woochi_StormStrike_Launch` Animation Montage를 실행시킨다.
+    - 3. 여기에서 On Notify Begin이 실행되면(해당 Notify는 Animation의 마지막 부분에 있다.) `AM_Woochi_StormStrike_Loop` 를 실행시킨다.
+    - 4. 루프를 실행시키면 Character Movement를 None으로 만든다.
+    - 5. Create WB Determine Ult Location Widget 노드를 실행시킨다. (간단히 줄여서, Timer UI를 띄운다.)
+    - 6. 반환값으로 Ult Location Wiget 변수를 받고, 이를 Add to Viewport를 한다.
+    - 7. Actor Tick Enabled를 한다. 
+
+
+
+
+### 2. 고민/문제  
+- 7/18일자 고민
+    - 현재 Anim Montage 재생 중에 Notify를 기준으로 다음 Anim으로 Transition한다. 이를 어떻게 하면 PlayMontageAndWait에서 유사하도록 작동시킬 수 있을까?
+
+### 3. 해결/시도한 방법  
+
+
+### 4. 결과/적용  
+
+---
+
+## 💬 메모/배운 점/기타
+
+- UE5 GAS에서의 Animation Montage 재생
+- 왜 이번에는 별다른 조건 없이 빠르게 Multicast가 적용되었을까?
+
+---
+
+## 🔜 다음 할 일/To-Do
+
+- Anim Notify 진행
+- 캐릭터 상단 고정(비행시)
+
