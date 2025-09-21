@@ -4,6 +4,7 @@ title: "기본 자료구조 마스터하기 - 배열, 연결리스트, 스택, �
 date: 2025-09-21 15:02:00 +0900
 categories: [Tech Interview, Data Structure]
 tags: [data-structure, array, linked-list, stack, queue, algorithm, big-o, memory]
+slug: data-structure-basic
 ---
 
 ## 📌 학습 목표

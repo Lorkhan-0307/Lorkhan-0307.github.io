@@ -4,6 +4,7 @@ title: "C++ 객체지향 프로그래밍 완벽 가이드: 클래스, 상속, �
 date: 2025-09-21 15:03:00 +0900
 categories: [Tech Interview, C++]
 tags: [C++, OOP, class, inheritance, polymorphism, virtual function, vtable, abstract class]
+slug: cpp-oop-fundamentals
 ---
 
 ## 📌 학습 목표

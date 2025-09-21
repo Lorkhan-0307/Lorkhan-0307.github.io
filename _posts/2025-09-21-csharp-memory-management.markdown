@@ -3,6 +3,7 @@ layout: post
 title: "C# 메모리 관리: GC, IDisposable, async/await 완벽 가이드"
 date: 2025-09-21 15:00:00 +0900
 categories: [Tech Interview, C#]
+slug: csharp-memory-management
 tags: [C#, memory management, garbage collector, IDisposable, async await, boxing unboxing]
 ---
 

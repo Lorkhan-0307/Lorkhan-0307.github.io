@@ -4,6 +4,7 @@ title: "C# 기본 문법과 OOP 핵심 정리 - class vs struct, 인터페이스
 date: 2025-09-21 15:03:00 +0900
 categories: [Tech Interview, C#]
 tags: [csharp, oop, class, struct, interface, inheritance, dotnet, memory]
+slug: csharp-basic-oop
 ---
 
 ## 📌 학습 목표

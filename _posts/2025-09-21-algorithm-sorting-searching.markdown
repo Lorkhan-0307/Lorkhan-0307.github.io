@@ -3,6 +3,7 @@ layout: post
 title: "알고리즘 완벽 가이드: 정렬(퀵소트, 머지소트)과 이진 탐색"
 date: 2025-09-21 15:01:00 +0900
 categories: [Tech Interview, Algorithm]
+slug: algorithm-sorting-searching
 tags: [algorithm, sorting, quick sort, merge sort, binary search, time complexity]
 ---
 

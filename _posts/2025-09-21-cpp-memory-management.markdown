@@ -4,6 +4,7 @@ title: "C++ 메모리 관리 완전 정복 - 스택 vs 힙, 스마트 포인터,
 date: 2025-09-21 15:01:00 +0900
 categories: [Tech Interview, C++]
 tags: [c++, memory-management, smart-pointer, raii, stack, heap, unique_ptr, shared_ptr, weak_ptr]
+slug: cpp-memory-management
 ---
 
 ## 📌 학습 목표

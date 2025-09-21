@@ -3,6 +3,7 @@ layout: post
 title: "고급 자료구조: 해시맵, 셋, 트리, 힙 완벽 가이드"
 date: 2025-09-21 15:02:00 +0900
 categories: [Tech Interview, Data Structure]
+slug: data-structures-advanced
 tags: [data structure, hashmap, set, tree, heap, binary search tree, hash table, priority queue]
 ---
 
