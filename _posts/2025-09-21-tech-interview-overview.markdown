@@ -15,13 +15,13 @@ tags: [c++, c#, computer-science, algorithm, data-structure, operating-system, n
 ## Week 1 – 기초 & 기본기 다지기
 **목표: CS 기본 개념 정리 + C++ / C# 언어 기초 복습**
 
-- [x] Day 1: [C++ 기본 문법 & 객체지향 복습]({{ site.baseurl }}/tech%20interview/c++/2025/09/21/cpp-oop-fundamentals.html)
-- [x] Day 2: [C++ 메모리 관리]({{ site.baseurl }}/tech%20interview/c++/2025/09/21/cpp-memory-management.html)
-- [x] Day 3: [C# 기본 문법과 OOP]({{ site.baseurl }}/tech%20interview/c%23/2025/09/21/csharp-basic-oop.html)
-- [x] Day 4: [C# 메모리 관리]({{ site.baseurl }}/tech%20interview/c%23/2025/09/21/csharp-memory-management.html)
-- [x] Day 5: [자료구조 – 배열, 연결리스트, 스택, 큐]({{ site.baseurl }}/tech%20interview/data%20structure/2025/09/21/data-structure-basic.html)
-- [x] Day 6: [자료구조 – 해시맵, 셋, 트리, 힙]({{ site.baseurl }}/tech%20interview/data%20structure/2025/09/21/data-structures-advanced.html)
-- [x] Day 7: [알고리즘 – 정렬, 탐색]({{ site.baseurl }}/tech%20interview/algorithm/2025/09/21/algorithm-sorting-searching.html)
+- [x] Day 1: [C++ 기본 문법 & 객체지향 복습]({{ site.baseurl }}/posts/c++-객체지향-프로그래밍-완벽-가이드-클래스-상속-가상-함수/)
+- [x] Day 2: [C++ 메모리 관리]({{ site.baseurl }}/posts/c++-메모리-관리-완전-정복-스택-vs-힙-스마트-포인터-raii/)
+- [x] Day 3: [C# 기본 문법과 OOP]({{ site.baseurl }}/posts/c#-기본-문법과-oop-핵심-정리-class-vs-struct-인터페이스-상속/)
+- [x] Day 4: [C# 메모리 관리]({{ site.baseurl }}/posts/c#-메모리-관리-gc-idisposable-async-await-완벽-가이드/)
+- [x] Day 5: [자료구조 – 배열, 연결리스트, 스택, 큐]({{ site.baseurl }}/posts/기본-자료구조-마스터하기-배열-연결리스트-스택-큐/)
+- [x] Day 6: [자료구조 – 해시맵, 셋, 트리, 힙]({{ site.baseurl }}/posts/고급-자료구조-해시맵-셋-트리-힙-완벽-가이드/)
+- [x] Day 7: [알고리즘 – 정렬, 탐색]({{ site.baseurl }}/posts/알고리즘-완벽-가이드-정렬-퀵소트-머지소트-과-이진-탐색/)
 
 ---
 
