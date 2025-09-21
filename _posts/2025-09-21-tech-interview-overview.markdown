@@ -15,13 +15,13 @@ tags: [c++, c#, computer-science, algorithm, data-structure, operating-system, n
 ## Week 1 – 기초 & 기본기 다지기
 **목표: CS 기본 개념 정리 + C++ / C# 언어 기초 복습**
 
-- [x] Day 1: [C++ 기본 문법 & 객체지향 복습]({{ site.baseurl }}/tech%20interview/cpp/2025/09/21/cpp-basic-oop.html)
-- [x] Day 2: [C++ 메모리 관리]({{ site.baseurl }}/tech%20interview/cpp/2025/09/21/cpp-memory-management.html)
-- [x] Day 3: [C# 기본 문법과 OOP]({{ site.baseurl }}/tech%20interview/csharp/2025/09/21/csharp-basic-oop.html)
-- [x] Day 4: [C# 메모리 관리]({{ site.baseurl }}/tech%20interview/csharp/2025/09/21/csharp-memory-management.html)
-- [x] Day 5: [자료구조 – 배열, 연결리스트, 스택, 큐]({{ site.baseurl }}/tech%20interview/data-structure/2025/09/21/data-structure-basic.html)
-- [x] Day 6: [자료구조 – 해시맵, 셋, 트리, 힙]({{ site.baseurl }}/tech%20interview/data-structure/2025/09/21/data-structure-advanced.html)
-- [x] Day 7: [알고리즘 – 정렬, 탐색]({{ site.baseurl }}/tech%20interview/algorithm/2025/09/21/algorithm-sort-search.html)
+- [x] Day 1: [C++ 기본 문법 & 객체지향 복습]({{ site.baseurl }}/tech%20interview/c++/2025/09/21/cpp-oop-fundamentals.html)
+- [x] Day 2: [C++ 메모리 관리]({{ site.baseurl }}/tech%20interview/c++/2025/09/21/cpp-memory-management.html)
+- [x] Day 3: [C# 기본 문법과 OOP]({{ site.baseurl }}/tech%20interview/c%23/2025/09/21/csharp-basic-oop.html)
+- [x] Day 4: [C# 메모리 관리]({{ site.baseurl }}/tech%20interview/c%23/2025/09/21/csharp-memory-management.html)
+- [x] Day 5: [자료구조 – 배열, 연결리스트, 스택, 큐]({{ site.baseurl }}/tech%20interview/data%20structure/2025/09/21/data-structure-basic.html)
+- [x] Day 6: [자료구조 – 해시맵, 셋, 트리, 힙]({{ site.baseurl }}/tech%20interview/data%20structure/2025/09/21/data-structures-advanced.html)
+- [x] Day 7: [알고리즘 – 정렬, 탐색]({{ site.baseurl }}/tech%20interview/algorithm/2025/09/21/algorithm-sorting-searching.html)
 
 ---
 
