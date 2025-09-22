@@ -74,7 +74,7 @@ public class TempSensor : Sensor {
 - “무엇을 할 수 있는가(계약)” 만 노출하고 “어떻게 하는가(구현)”는 감춘다.  
 - 추상화 계층이 과도하면 오히려 복잡도 ↑. 실사용 지점과 **의미 있는 경계**에서만 도입.
 
-**연결 개념**: [추상클래스]({{ site.baseurl }}/posts/whatis-abstractclass/), [순수가상함수]({{ site.baseurl }}/posts/whatis-purevirtualclass/), [클래스]({{ site.baseurl }}/posts/whatis-class/), [상속]({{ site.baseurl }}/posts/whatis-inheritance/), [다형성]({{ site.baseurl }}/posts/whatis-polymorphism/)
+**연결 개념**: [추상클래스]({{ site.baseurl }}/posts/whatis-abstractclass/), [순수가상함수]({{ site.baseurl }}/posts/whatis-purevirtualfunction/), [클래스]({{ site.baseurl }}/posts/whatis-class/), [상속]({{ site.baseurl }}/posts/whatis-inheritance/), [다형성]({{ site.baseurl }}/posts/whatis-polymorphism/)
 
 ---
 
