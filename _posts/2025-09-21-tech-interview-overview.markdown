@@ -4,6 +4,7 @@ title: "📅 4주 기술면접 학습 일정 - C++/C#/CS 기초"
 date: 2025-09-21 15:00:00 +0900
 categories: [Tech Interview, Study Plan]
 tags: [c++, c#, computer-science, algorithm, data-structure, operating-system, network, database, design-pattern]
+slug: tech-interview-overview
 ---
 
 ## 📚 4주 완성 기술면접 준비 로드맵

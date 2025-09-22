@@ -4,7 +4,9 @@
       "Read(//c/Users/Lorkhan/OneDrive/바탕 화면/DoubleA/Obsidian/기술면접대비/**)",
       "Bash(git add:*)",
       "Bash(git push:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(jekyll build)",
+      "Bash(bundle exec:*)"
     ],
     "deny": [],
     "ask": []
