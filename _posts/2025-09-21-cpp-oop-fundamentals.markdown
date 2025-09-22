@@ -23,6 +23,7 @@ slug: cpp-oop-fundamentals
 - 객체지향 프로그래밍의 기본 단위
 - 데이터(멤버 변수)와 동작(멤버 함수)을 하나로 묶는 사용자 정의 타입
 - 캡슐화를 통한 데이터 은닉과 인터페이스 제공
+- 접근 지정자: `public`, `protected`, `private`
 
 **접근 지정자:**
 ```cpp
@@ -112,6 +113,10 @@ public:
 
 ### 2. 상속 (Inheritance)
 
+- 기존 [클래스]({{ site.baseurl }}/posts/whatis-class/)의 속성과 기능을 재사용  
+- [객체지향]({{ site.baseurl }}/posts/whatis-oop/)의 중요한 특징  
+- [다형성]({{ site.baseurl }}/posts/whatis-polymorphism/)을 지원하는 기반  
+
 **기본 상속:**
 ```cpp
 class Vehicle {
@@ -189,6 +194,11 @@ public:
 ```
 
 ### 3. 다형성 (Polymorphism)
+
+- 같은 인터페이스로 다양한 동작을 구현  
+- 정적 다형성: 함수 오버로딩, 템플릿  
+- 동적 다형성: [가상함수vptr]({{ site.baseurl }}/posts/whatis-vptr/) / [vtable]({{ site.baseurl }}/posts/whatis-vtable/) 기반  
+
 
 **컴파일 타임 다형성 (정적 다형성):**
 ```cpp
@@ -276,7 +286,11 @@ public:
 };
 ```
 
-### 4. 가상 함수와 vtable
+### 4. [가상함수vptr]({{ site.baseurl }}/posts/whatis-vptr/)와 [vtable]({{ site.baseurl }}/posts/whatis-vtable/)
+
+- `virtual` 키워드로 선언된 함수 → 실행 시점에 실제 함수 결정  
+- 객체 내부에 vptr이 존재, vtable에서 실제 함수 주소를 찾음  
+- [순수가상함수]({{ site.baseurl }}/posts/whatis-purevirtualfunction/) → [추상클래스]({{ site.baseurl }}/posts/whatis-abstractclass/) 생성  
 
 **vtable 동작 원리:**
 ```cpp
@@ -343,7 +357,7 @@ void demonstrateVirtualDestructor() {
 
 ## 💻 실무 활용 예제
 
-### 1. 추상 클래스와 팩토리 패턴
+### 1. [추상클래스]({{ site.baseurl }}/posts/whatis-abstractclass/)와 팩토리 패턴
 ```cpp
 class Database {
 public:
@@ -398,6 +412,9 @@ public:
 ```
 
 ### 2. 다이아몬드 상속 문제 해결
+
+좀 더 자세한 내용은 [다이아몬드상속문제]({{ site.baseurl }}/posts/whatis-diamondinheritanceproblem/)를 참고하자.
+
 ```cpp
 class Animal {
 public:
@@ -445,7 +462,7 @@ void demonstrateDiamondInheritance() {
 }
 ```
 
-### 3. 컴포지션 vs 상속
+### 3. [컴포지션]({{ site.baseurl }}/posts/whatis-composition/) vs [상속]({{ site.baseurl }}/posts/whatis-inheritance/)
 ```cpp
 // 상속 방식
 class Engine {
