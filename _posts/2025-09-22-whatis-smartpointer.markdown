@@ -178,6 +178,56 @@ void main() {
 - `enable_shared_from_this` 사용법  
 - `scoped_ptr`(Boost)와 표준 스마트 포인터 비교  
 
+
+
+### 1. Shared pointer 의 제어 블록 구조
+
+Shared pointer는 다음 네개의 정보를 가진다.
+
+1. Strong Reference Count
+- 현재 객체를 소유하는 갯수(shared_ptr)
+- `shared_ptr`이 복사/이동되면 증가하고 소멸하면 감소한다.
+- 0이 되면 실제 객체를 삭제한다(delete 호출).
+
+2. Weak Reference Count
+- `weak_ptr` 개수 추적
+- `shared_ptr`가 모두 사라져도, `weak_ptr`가 남아있으면 제어 블록은 유지된다.
+- 마지막 `weak_ptr`가 해제될 때 제어 블록 자체도 해제된다(즉, 객체는 사라져도 제어 블록은 남아있을 수 있다).
+
+3. 삭제자(Deleter)
+- 객체를 삭제할 방법을 저장한다(delete, free, custom 함수 등).
+
+4. 할당자(Allocator)
+- 메모리 해제를 제어할 수 있도록 선택적으로 저장된다.
+
+
+### 2. enable_shared_from_this
+
+enable_shared_from_this<T>를 상속받으면, 객체가 `shared_ptr`로 관리될 때 내부적으로 자신의 제어 블록을 알고 있는 **약한 참조(weak_ptr)**를 저장한다.
+이를 통해, enable_shared_from_this() 를 통해 신규 제어 블록이 아닌, 기존 제어 블록을 공유하는 `shared_ptr`를 제공받는 함수이다.
+
+```
+#include <iostream>
+#include <memory>
+
+struct Foo : std::enable_shared_from_this<Foo> {
+    std::shared_ptr<Foo> getPtr() {
+        return shared_from_this(); // ✅ 안전
+    }
+    ~Foo() { std::cout << "Foo destroyed\n"; }
+};
+
+int main() {
+    auto sp1 = std::make_shared<Foo>();
+    auto sp2 = sp1->getPtr(); // 같은 control block 공유
+
+    std::cout << sp1.use_count() << "\n"; // 2
+    std::cout << sp2.use_count() << "\n"; // 2
+}
+```
+
+3. Boost ptr는 Obsolete. 이제는 사용하지 않는다.
+
 ---
 
 ## 🪞 회고
