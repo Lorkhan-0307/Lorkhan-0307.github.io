@@ -1,0 +1,15 @@
+---
+layout: post
+title: "Garbage Collector(가비지 컬렉터) - C++/C#/CS 기초"
+date: 2025-09-22 15:00:00 +0900
+categories: [Tech Interview, Study Plan]
+tags: [c++, c#, computer-science, algorithm, data-structure, operating-system, network, database, design-pattern]
+slug: whatis-gc
+---
+
+# Garbage Collector(가비지 컬렉터)
+
+## 📌 개념 정리
+- 메모리 관리를 자동화하는 메커니즘
+- 사용하지 않는 객체를 자동으로 찾아 해제
+- C#, Java 등에서 사용되는 메모리 관리 기법
