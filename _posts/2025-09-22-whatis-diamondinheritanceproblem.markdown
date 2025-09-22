@@ -4,6 +4,7 @@ title: "다이아몬드 상속 문제(Diamond Inheritance Problem) - C++/C#/CS �
 date: 2025-09-22 15:00:00 +0900
 categories: [Tech Interview, Study Plan]
 tags: [c++, c#, computer-science, algorithm, data-structure, operating-system, network, database, design-pattern]
+slug: whatis-diamondinheritanceproblem
 ---
 
 # 다이아몬드 상속 문제(Diamond Inheritance Problem)
