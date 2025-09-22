@@ -1,4 +1,3 @@
-```
 ---
 layout: post
 title: "C++ 메모리 관리 (스택 vs 힙, 스마트 포인터, RAII)"
