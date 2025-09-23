@@ -2,8 +2,8 @@
 layout: post
 title: "박싱과 언박싱(Boxing and Unboxing) - C++/C#/CS 기초"
 date: 2025-09-22 15:00:00 +0900
-categories: [Tech Interview, Study Plan]
-tags: [c++, c#, computer-science, algorithm, data-structure, operating-system, network, database, design-pattern]
+categories: [Tech Interview, Study Plan, c-sharp]
+tags: [c++, c-sharp, computer-science, algorithm, data-structure, operating-system, network, database, design-pattern]
 slug: whatis-boxingunboxing
 ---
 

@@ -2,20 +2,10 @@
 layout: post
 title: "C# 기본 문법과 OOP 핵심 정리 - class vs struct, 인터페이스, 상속"
 date: 2025-09-21 15:03:00 +0900
-categories: [Tech Interview, C#]
+categories: [Tech Interview, c-sharp]
 tags: [csharp, oop, class, struct, interface, inheritance, dotnet, memory]
 slug: csharp-basic-oop
 mermaid: true
----
-
-
----
-layout: post
-title: "C# 기본 문법과 OOP 핵심 정리 - class vs struct, 인터페이스, 상속"
-date: 2025-09-21 15:03:00 +0900
-categories: [Tech Interview, C#]
-tags: [csharp, oop, class, struct, interface, inheritance, dotnet, memory]
-slug: csharp-basic-oop
 ---
 
 # C# 기본 문법과 OOP 핵심 정리
