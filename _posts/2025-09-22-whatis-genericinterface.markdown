@@ -30,6 +30,43 @@ mermaid: true
 
 ---
 
+### 성능 이점의 대한 예시
+
+제네릭 인터페이스는 “값 형식(struct)”을 다룰 때 object로 바꾸는 박싱/언박싱을 피할 수 있게 설계되어서 성능 이점이 생긴다.
+
+- 박싱: struct 값을 힙에 새 객체로 복사해서 object(또는 비제네릭 인터페이스)의 형태로 다루는 것
+
+- 언박싱: 그 object에서 원래 값으로 다시 꺼내는 것
+→ 추가 할당/복사 + GC 부담 + 분기비용 → 성능 저하
+
+비제네릭 API는 보통 인자/반환형이 object나 비제네릭 인터페이스여서 값 형식을 쓰면 항상 박싱이 섞이기 쉽다.
+
+- 비제네릭 사용 예(박싱이 발생)
+```csharp
+IComparable c = new Money { Won = 100 }; // ← 여기서 struct가 인터페이스로 저장되며 **박싱**
+c.CompareTo(new Money { Won = 50 });     // 인자도 object로 다뤄져 **박싱**
+```
+
+- 제네릭 제약을 통한 사용(박싱 미발생)
+```csharp
+static T Max<T>(T a, T b) where T : IComparable<T>
+    => a.CompareTo(b) >= 0 ? a : b;  // 여기서 JIT가 'constrained call'을 써서 **박싱 없이** 호출
+```
+
+
+그래서, 다음과 같은 결과가 나온다.
+
+
+```csharp
+var arr  = new System.Collections.ArrayList();
+arr.Add(123);        // int(값 형식) → object로 **박싱**
+int v1 = (int)arr[0]; // 다시 꺼낼 때 **언박싱**
+
+var list = new List<int>();
+list.Add(123);       // **박싱 없음** (값이 그대로 저장)
+int v2 = list[0];    // **언박싱 없음**
+```
+
 ## 🧩 기본 형태와 사용 예
 
 ### 1) 리포지토리 패턴
