@@ -141,14 +141,19 @@ public interface IValueOnly<T> where T : struct { } // 값형만
 - **불변(Invariance)**: 아무 쪽도 아님 (기본)
 
 ```csharp
-public interface IProducer<out T> { T Get(); }       // 공변: 반환 위치
-public interface IConsumer<in T>  { void Put(T v); } // 반공변: 매개변수 위치
+// 공변의 예시
+IEnumerable<Cat> cats = new List<Cat>();
+IEnumerable<Animal> animals = cats; // ✅ 공변: Cat → Animal
 
-IProducer<string> ps = /*...*/;
-IProducer<object> po = ps; // OK (공변)
+Func<Cat> makeCat = () => new Cat();
+Func<Animal> makeAnimal = makeCat;  // ✅ 반환형 공변
 
-IConsumer<object> co = /*...*/;
-IConsumer<string> cs = co; // OK (반공변)
+// 반공변의 예시
+Action<Animal> handleAnimal = a => { /* ... */ };
+Action<Cat> handleCat = handleAnimal; // ✅ 반공변: Animal 소비자는 Cat에도 사용 가능
+
+IComparer<Animal> cmpA = /* ... */;
+IComparer<Cat>    cmpC = cmpA;        // ✅ 반공변
 ```
 
 > **주의**: `out`은 반환 전용, `in`은 입력 전용에 적합. 컬렉션처럼 **입출력 혼합**이면 불변이어야 안전.
