@@ -52,6 +52,7 @@ int m = (int)obj;    // 언박싱: object → 값 타입
 
 ## 📌 박싱/언박싱 회피법
 1. **제네릭(Generic) 사용**  
+
 ```csharp
 // 박싱 발생
 ArrayList list = new ArrayList();
