@@ -11,7 +11,7 @@ slug: csharp-memory-management
 - .NET [GC]({{ site.baseurl }}/posts/whatis-gc/)의 세대(Gen0/1/2), LOH/POH, Compact/Non-compacting, Server/Workstation 모드와 트리거를 설명한다.
 - [IDisposable 패턴]({{ site.baseurl }}/posts/whatis-idisposable/) / [IAsyncDisposable]({{ site.baseurl }}/posts/whatis-idisposable/) 패턴과 [using 및 await using]({{ site.baseurl }}/posts/whatis-using/), 파이널라이저, `SafeHandle`, `GC.SuppressFinalize`의 역할과 모범 구현을 제시한다.
 - [async/await]({{ site.baseurl }}/posts/whatis-asyncawait/)의 상태 머신, 컨텍스트 캡처, 할당/클로저 비용, `ValueTask`, `ConfigureAwait(false)`의 의미를 실전 예제로 설명한다.
-- Unity/게임·서버 시나리오에서의 메모리/GC 튜닝 원칙을 제시한다. (참고: **준비 예정** → [Unity 메모리 최적화]({{ site.baseurl }}/posts/whatis-unity-memory-optimization/))
+- Unity/게임·서버 시나리오에서의 메모리/GC 튜닝 원칙을 제시한다. (참고: **준비 예정** → Unity 메모리 최적화 -> link 만들것)
 
 ---
 
