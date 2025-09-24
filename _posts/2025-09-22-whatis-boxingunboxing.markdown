@@ -75,7 +75,7 @@ int Sum<T>(List<T> data) where T : struct
 }
 ```
 
-3. **Span<T>, Memory<T> 사용 (고급)**  
+3. `Span<T>`, `Memory<T>` 사용 (고급)**  
 - 값 타입 데이터를 힙 할당 없이 안전하게 다룰 수 있다.  
 - 참고: [고급 메모리 관리]({{ site.baseurl }}/posts/csharp-memory-management/)
 
