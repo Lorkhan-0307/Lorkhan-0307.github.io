@@ -199,7 +199,6 @@ int SumGood<T>(ReadOnlySpan<T> xs) where T : unmanaged
 - **LINQ 임시 할당**: GC 부담 → 핫패스에서는 for 루프/Span/NativeArray 고려.  
 - **대형 배열/버퍼 재사용**: LOH 단편화 완화.  
 - **Pinned/Native 메모리**: 고정 시간 최소화, 네이티브 리소스는 `IDisposable` 철저.  
-- 더 읽기(작성 예정): [Unity 메모리 최적화]({{ site.baseurl }}/posts/whatis-unity-memory-optimization/)
 
 ---
 
@@ -278,7 +277,7 @@ public class AsyncResource : IAsyncDisposable
 1) `IDisposable` 패턴을 갖는 `TempFile` 클래스를 만들고 파일 생성→쓰기→삭제를 `using`으로 보장하라. → [IDisposable]({{ site.baseurl }}/posts/whatis-idisposable/)  
 2) `async` 핫패스에서 `ValueTask`로 전환하여 할당을 줄이고 벤치마크를 비교하라. → [async/await]({{ site.baseurl }}/posts/whatis-asyncawait/)  
 3) LOH에 올라가는 버퍼를 `ArrayPool<byte>`로 재사용하는 코드 작성.  
-4) Unity `Update()`에서 발생하는 GC 알로케이션을 프로파일러로 찾아 제거하라. → [Unity 메모리 최적화]({{ site.baseurl }}/posts/whatis-unity-memory-optimization/)
+4) Unity `Update()`에서 발생하는 GC 알로케이션을 프로파일러로 찾아 제거하라.
 
 ---
 
