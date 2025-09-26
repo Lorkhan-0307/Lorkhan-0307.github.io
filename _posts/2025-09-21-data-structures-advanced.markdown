@@ -71,6 +71,7 @@ public:
 ```
 
 2. **개방 주소법 (Open Addressing)**:
+
 ```cpp
 class HashMapOpenAddressing {
 private:
@@ -499,6 +500,7 @@ vector<int> topKFrequent(vector<int>& nums, int k) {
 ```
 
 ### 자료구조 성능 비교표
+
 | 자료구조 | 탐색 | 삽입 | 삭제 | 공간복잡도 | 특징 |
 |---------|------|------|------|------------|------|
 | 해시맵 | O(1) | O(1) | O(1) | O(n) | 순서 없음, 충돌 가능 |
