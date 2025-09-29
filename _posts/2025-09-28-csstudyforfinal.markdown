@@ -15,13 +15,22 @@ slug: csstudyforfinal
    
 <details>
 <summary><strong>1) 폰 노이만 구조와 하버드 구조의 차이는 무엇인가요?</strong></summary>
+
 **A.** 폰 노이만 구조는 명령과 데이터가 같은 버스를 공유해 설계가 단순하지만 병목이 생길 수 있고, 하버드 구조는 명령과 데이터 버스를 분리해 병렬성이 높습니다.
+
 </details>
+
+
 
 <details>
 <summary><strong>2) CPU의 주요 구성 요소는?</strong></summary>
+
 **A.** ALU는 연산을 담당하고, CU는 제어 신호를 관리하며, 레지스터는 초고속 임시 저장소 역할을 합니다.
+
 </details>
+
+
+
 
 <details>
 <summary><strong>3) 파이프라이닝이란?</strong></summary>
