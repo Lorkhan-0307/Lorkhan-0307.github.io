@@ -310,7 +310,14 @@ slug: csstudyforfinal
 ---
 
 <details>
-<summary><strong>20) C++20에서 추가된 주요 기능은 무엇인가요?</strong></summary>
+<summary><strong>20) interface와 virtual의 차이는 무엇인가요?</strong></summary>
+<strong>A.</strong> <strong>virtual 함수</strong>는 기본 클래스에서 구현을 제공할 수도 있고, 파생 클래스에서 재정의해 다형성을 구현하는 데 사용됩니다. 반면 <strong>interface</strong>는 순수 가상 함수만 모아둔 형태로, 모든 메서드가 구현 없이 선언만 되어 있습니다. 즉, virtual은 선택적 재정의가 가능하지만, interface는 반드시 구현을 강제합니다. 이 차이 덕분에 interface는 설계 계약(Contract) 역할을 하고, virtual은 기본 구현을 공유하면서도 확장을 허용합니다.
+</details>
+
+---
+
+<details>
+<summary><strong>21) C++20에서 추가된 주요 기능은 무엇인가요?</strong></summary>
 <strong>A.</strong> <strong>C++20</strong>에서는 Concepts를 통한 제약 기반 템플릿, Ranges 라이브러리, Coroutines, 삼항 비교 연산자(<=>), Module 시스템 등이 추가되었습니다. 이로 인해 코드의 가독성과 안전성이 크게 향상되었고, 비동기 프로그래밍과 모듈화를 더 쉽게 구현할 수 있게 되었습니다.
 </details>
 
@@ -452,7 +459,14 @@ slug: csstudyforfinal
 ---
 
 <details>
-<summary><strong>20) C# 9 이후에 추가된 주요 기능은 무엇인가요?</strong></summary>
+<summary><strong>20) sync와 async는 무엇인가요?</strong></summary>
+<strong>A.</strong> <strong>동기(sync)</strong> 방식은 작업이 끝날 때까지 다음 코드 실행이 차단되는 방식입니다. 반면 <strong>비동기(async)</strong> 방식은 작업이 백그라운드에서 진행되고, 완료 시 콜백이나 await를 통해 결과를 받습니다. 예를 들어 파일 읽기를 동기적으로 하면 작업이 끝날 때까지 대기해야 하지만, 비동기로 하면 UI 스레드가 멈추지 않고 다른 작업을 이어갈 수 있습니다.
+</details>
+
+---
+
+<details>
+<summary><strong>21) C# 9 이후에 추가된 주요 기능은 무엇인가요?</strong></summary>
 <strong>A.</strong> C# 9에서는 <strong>record</strong> 타입, <strong>init-only property</strong>, <strong>top-level statements</strong>, <strong>패턴 매칭 확장</strong> 등이 추가되었습니다. 이 기능들은 불변 객체 생성, 간결한 코드 작성, 데이터 중심 프로그래밍을 더 쉽게 만들어 줍니다.
 </details>
 
@@ -596,6 +610,18 @@ slug: csstudyforfinal
 <details>
 <summary><strong>20) 모바일 게임 최적화에서 특별히 고려해야 할 점은 무엇인가요?</strong></summary>
 <strong>A.</strong> 모바일은 성능과 메모리 제한이 심하기 때문에 <strong>Draw Call 최소화</strong>, <strong>텍스처 압축</strong>, <strong>밧데리 소모 줄이는 최적화</strong>, <strong>네트워크 최적화</strong>가 중요합니다. 또한 다양한 기기 해상도와 노치 영역을 고려한 UI 설계도 필수적입니다.
+</details>
+
+<details>
+<summary><strong>21) Unity와 Unreal에서 최적화를 위해 사용한 것은 무엇이 있나요?</strong></summary>
+<strong>A.</strong> Unity에서는 <strong>Object Pooling, Batching, Profiler 분석, Addressable Asset System</strong>을 통해 메모리와 CPU 부하를 줄였습니다. Unreal에서는 <strong>LOD, Occlusion Culling, World Partition, GAS 네트워크 최적화</strong> 같은 기능을 활용했습니다. 공통적으로 <strong>Draw Call 최소화, GC 관리, 멀티스레딩 활용</strong>을 통해 성능을 확보했습니다.
+</details>
+
+<details>
+<summary><strong>22) 언리얼 GC와 유니티 GC는 무엇이 다른가요?</strong></summary>
+<strong>A.</strong> <strong>Unity GC</strong>는 .NET 기반의 관리 힙을 사용하는 세대별 GC(Generational GC + Mark-Sweep Algorithm)로, C# 객체를 추적해 더 이상 참조되지 않는 객체를 수집합니다. 반면 <strong>Unreal GC</strong>는 UPROPERTY 매크로로 표시된 UObject 참조만 추적하는 마크-스윕(마크스윕만 사용! Generational 개념은 없다) 방식입니다. Unity는 .NET 런타임 규칙을 따르고, Unreal은 자체 메모리 관리 시스템을 가지며, UObject 외의 자원은 스마트 포인터나 RAII로 관리해야 한다는 점이 큰 차이입니다.
+Unity에 경우, 이를 확장하기 위해 점진적 가비지 컬렉션(Incremental GC)를 사용하기도 합니다.
+Incremental GC는 2019년에 도입된 것으로, GC Spike(Stop the world 문제)를 해결하고자, GC 작업을 여러 프레임에 나눠서 조금씩 수행하도록 하여, GC 한번 돌때 100ms 멈춤 같은 현상을 여러 프레임에 걸쳐 1~2ms씩 처리로 분산된 방식입니다.
 </details>
 
 ---
@@ -882,4 +908,77 @@ slug: csstudyforfinal
 <details>
 <summary><strong>10) 게임 로그 데이터는 어떻게 저장하고 분석하나요?</strong></summary>
 <strong>A.</strong> 게임 로그 데이터는 보통 <strong>NoSQL</strong>이나 <strong>빅데이터 파이프라인</strong>을 통해 저장하고, Elasticsearch, Hadoop, Spark 같은 시스템으로 분석합니다. 이를 통해 유저 행동 분석, 밸런스 조정, 치팅 탐지를 수행할 수 있습니다.
+</details>
+
+---
+
+## 🎨 그래픽스 Q/A
+
+<details>
+<summary><strong>1) 게임에서 그래픽스 과정은 어떻게 이루어지나요?</strong></summary>
+<strong>A.</strong> 게임 그래픽스는 일반적으로 <strong>Application 단계 → Geometry 단계 → Rasterization 단계 → Pixel 단계</strong> 순으로 처리됩니다.  
+애플리케이션 단계에서는 게임 로직과 카메라 좌표 계산이 이루어지고, Geometry 단계에서는 정점 변환과 조명 계산이 수행됩니다. 이후 Rasterization 단계에서 3D 공간의 삼각형이 2D 픽셀로 변환되며, Pixel 단계에서 텍스처, 라이팅, 쉐이딩이 적용됩니다. 최종적으로 프레임 버퍼에 그려진 이미지가 화면에 출력됩니다.
+</details>
+
+---
+
+<details>
+<summary><strong>2) GPU와 CPU의 역할 차이는 무엇인가요?</strong></summary>
+<strong>A.</strong> <strong>CPU</strong>는 게임 로직, 물리 연산, AI 같은 범용 작업을 처리하고, <strong>GPU</strong>는 정점 변환, 픽셀 연산처럼 병렬화 가능한 그래픽스 연산을 처리합니다. CPU는 적은 스레드에서 강력한 연산을 수행하고, GPU는 수천 개의 코어를 활용해 대량의 연산을 동시에 처리하는 것이 차이입니다.
+</details>
+
+---
+
+<details>
+<summary><strong>3) 렌더링 파이프라인이란 무엇인가요?</strong></summary>
+<strong>A.</strong> <strong>렌더링 파이프라인</strong>은 그래픽스 데이터가 화면에 출력되기까지의 일련의 단계입니다. 대표적으로 입력 조립(Input Assembly) → 정점 셰이더(Vertex Shader) → 래스터라이저(Rasterizer) → 픽셀 셰이더(Pixel Shader) → 출력 병합(Output Merger) 단계가 있습니다. 이 과정에서 3D 모델이 최종적으로 2D 이미지로 변환됩니다.
+</details>
+
+---
+
+<details>
+<summary><strong>4) Forward Rendering과 Deferred Rendering의 차이는 무엇인가요?</strong></summary>
+<strong>A.</strong> <strong>Forward Rendering</strong>은 각 픽셀을 그릴 때마다 모든 조명을 계산하는 방식이라 단순하지만 많은 조명이 있을 경우 성능이 떨어집니다. <strong>Deferred Rendering</strong>은 지오메트리 패스에서 정보를 G-Buffer에 저장한 후, 라이트 패스에서 조명을 한 번에 처리해 많은 조명을 효율적으로 다룰 수 있습니다. 대신 메모리 사용량은 더 큽니다.
+</details>
+
+---
+
+<details>
+<summary><strong>5) 텍스처 매핑(Texture Mapping)이란 무엇인가요?</strong></summary>
+<strong>A.</strong> <strong>텍스처 매핑</strong>은 2D 이미지를 3D 모델 표면에 입히는 기술입니다. UV 좌표계를 통해 각 정점에 텍스처 좌표를 할당하고, 이를 픽셀 단위로 보간하여 모델에 적용합니다. 게임에서는 Diffuse, Normal, Specular 맵 등 다양한 텍스처를 활용해 사실감을 높입니다.
+</details>
+
+---
+
+<details>
+<summary><strong>6) 그림자(Shadow) 렌더링은 어떻게 이루어지나요?</strong></summary>
+<strong>A.</strong> 대표적인 방식은 <strong>Shadow Mapping</strong>입니다. 먼저 빛의 시점에서 깊이 맵을 렌더링한 후, 실제 렌더링 시 픽셀이 그림자 맵 안에서 가려져 있는지 확인합니다. 또 다른 방식으로 <strong>Shadow Volume</strong>이 있지만, 성능 문제로 게임에서는 보통 Shadow Mapping을 사용합니다.
+</details>
+
+---
+
+<details>
+<summary><strong>7) 안티 앨리어싱(Anti-Aliasing)의 종류와 차이는 무엇인가요?</strong></summary>
+<strong>A.</strong> <strong>MSAA</strong>는 멀티 샘플링 기반으로 에지 부분의 픽셀을 부드럽게 처리합니다. <strong>FXAA</strong>는 포스트 프로세싱 기반으로 빠르지만 디테일 손실이 있을 수 있습니다. <strong>TAA</strong>는 시간 축을 활용해 더 부드러운 결과를 제공하지만 잔상(ghosting)이 생길 수 있습니다. 게임에서는 성능과 품질의 균형에 따라 선택합니다.
+</details>
+
+---
+
+<details>
+<summary><strong>8) LOD(Level of Detail)란 무엇인가요?</strong></summary>
+<strong>A.</strong> <strong>LOD</strong>는 객체의 거리에 따라 다른 해상도의 메시를 사용하는 기술입니다. 가까이 있는 객체는 고해상도 메시를, 멀리 있는 객체는 저해상도 메시를 사용해 성능을 절약합니다. 이를 통해 프레임율을 유지하면서도 시각적 품질 저하를 최소화할 수 있습니다.
+</details>
+
+---
+
+<details>
+<summary><strong>9) V-Sync는 무엇이고 장단점은 무엇인가요?</strong></summary>
+<strong>A.</strong> <strong>V-Sync</strong>는 모니터 주사율과 GPU 프레임 출력을 동기화하여 화면 찢김(티어링)을 방지하는 기술입니다. 장점은 화면 일관성이지만, 단점은 입력 지연(input lag)과 프레임 드랍 시 부드러움이 크게 저하된다는 점입니다. 대안으로 Adaptive Sync, G-Sync, FreeSync 같은 기술이 있습니다.
+</details>
+
+---
+
+<details>
+<summary><strong>10) Ray Tracing과 Rasterization의 차이는 무엇인가요?</strong></summary>
+<strong>A.</strong> <strong>Rasterization</strong>은 삼각형을 픽셀로 투영해 빠르게 화면을 그리는 전통적인 방식이고, <strong>Ray Tracing</strong>은 광선을 추적해 물리적으로 정확한 빛 반사와 그림자를 계산하는 방식입니다. Ray Tracing은 사실적이지만 무겁고, Rasterization은 빠르지만 단순화된 결과를 냅니다. 최신 게임은 두 기술을 혼합해 사용합니다.
 </details>
