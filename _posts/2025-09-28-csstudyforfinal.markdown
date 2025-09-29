@@ -20,7 +20,11 @@ slug: csstudyforfinal
 
 </details>
 
+---
 
+테스트를 위해 줄넘김
+
+---
 
 <details>
 <summary><strong>2) CPU의 주요 구성 요소는?</strong></summary>
