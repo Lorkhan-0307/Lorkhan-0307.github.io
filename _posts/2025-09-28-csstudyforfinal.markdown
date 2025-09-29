@@ -612,10 +612,14 @@ slug: csstudyforfinal
 <strong>A.</strong> 모바일은 성능과 메모리 제한이 심하기 때문에 <strong>Draw Call 최소화</strong>, <strong>텍스처 압축</strong>, <strong>밧데리 소모 줄이는 최적화</strong>, <strong>네트워크 최적화</strong>가 중요합니다. 또한 다양한 기기 해상도와 노치 영역을 고려한 UI 설계도 필수적입니다.
 </details>
 
+---
+
 <details>
 <summary><strong>21) Unity와 Unreal에서 최적화를 위해 사용한 것은 무엇이 있나요?</strong></summary>
 <strong>A.</strong> Unity에서는 <strong>Object Pooling, Batching, Profiler 분석, Addressable Asset System</strong>을 통해 메모리와 CPU 부하를 줄였습니다. Unreal에서는 <strong>LOD, Occlusion Culling, World Partition, GAS 네트워크 최적화</strong> 같은 기능을 활용했습니다. 공통적으로 <strong>Draw Call 최소화, GC 관리, 멀티스레딩 활용</strong>을 통해 성능을 확보했습니다.
 </details>
+
+---
 
 <details>
 <summary><strong>22) 언리얼 GC와 유니티 GC는 무엇이 다른가요?</strong></summary>
