@@ -472,6 +472,84 @@ slug: csstudyforfinal
 
 ---
 
+# 🔷 Unity 기술 질문 – 초급 (주니어 1-2년차)
+
+---
+
+### ✅ 기본 개념
+
+<details>
+<summary><strong>1) MonoBehaviour의 주요 라이프사이클 메서드들을 실행 순서대로 나열해주세요.</strong></summary>
+<strong>A.</strong> Unity의 MonoBehaviour는 게임 오브젝트의 동작 단위를 정의하는 핵심 클래스입니다. 실행 순서는 Awake → OnEnable → Start → Update → LateUpdate → OnDisable → OnDestroy 순서로 진행됩니다. Awake는 객체가 생성될 때, Start는 첫 프레임 직전에, Update는 매 프레임마다, LateUpdate는 Update 이후에 호출되며, OnDisable과 OnDestroy는 오브젝트가 비활성화되거나 파괴될 때 실행됩니다.
+</details>
+
+---
+
+<details>
+<summary><strong>2) GameObject와 Component의 관계를 설명하고, 왜 이런 구조를 사용하는지 말씀해주세요.</strong></summary>
+<strong>A.</strong> Unity에서 GameObject는 단순한 컨테이너이고, 실제 동작은 Component가 담당합니다. 예를 들어 Transform, Renderer, Collider 같은 기능은 모두 Component입니다. 이 구조는 컴포지션 기반 아키텍처를 제공해, 상속보다 유연하게 기능을 조합할 수 있는 장점이 있습니다.
+</details>
+
+---
+
+<details>
+<summary><strong>3) Prefab과 Instance의 차이점과 각각의 활용 사례를 설명해주세요.</strong></summary>
+<strong>A.</strong> Prefab은 재사용 가능한 오브젝트 원형이고, Instance는 그 원형으로부터 생성된 복제본입니다. Prefab을 활용하면 UI 버튼, 몬스터, 아이템 등 반복 사용되는 자산을 관리하기 편리하며, Instance를 씬에서 배치해 수정할 수 있습니다. Prefab 변경은 모든 Instance에 반영되어 생산성이 높아집니다.
+</details>
+
+---
+
+<details>
+<summary><strong>4) Transform 컴포넌트의 position, localPosition, rotation의 차이점은 무엇인가요?</strong></summary>
+<strong>A.</strong> position은 월드 좌표계에서의 절대 위치를 의미하고, localPosition은 부모를 기준으로 한 상대 위치입니다. rotation은 오브젝트의 월드 기준 회전값이고, localRotation은 부모 기준의 회전값입니다. 계층 구조가 깊을수록 local 단위가 유용합니다.
+</details>
+
+---
+
+<details>
+<summary><strong>5) Update, FixedUpdate, LateUpdate의 차이점과 각각 언제 사용해야 하나요?</strong></summary>
+<strong>A.</strong> Update는 매 프레임 호출되며 일반적인 게임 로직에 적합합니다. FixedUpdate는 물리 엔진과 동기화된 고정 시간 간격으로 실행되므로 Rigidbody 기반 물리 연산에 사용합니다. LateUpdate는 Update 이후 실행되어 카메라 추적이나 애니메이션 후처리처럼 다른 업데이트 결과를 참조할 때 활용됩니다.
+</details>
+
+---
+
+### ✅ 기본 시스템
+
+<details>
+<summary><strong>1) Unity의 씬 관리 시스템과 씬 전환 방법에 대해 설명해주세요.</strong></summary>
+<strong>A.</strong> Unity는 Scene을 통해 게임 환경을 분리 관리합니다. 전환은 SceneManager.LoadScene() 또는 LoadSceneAsync()로 수행하며, Additive 모드를 사용하면 여러 씬을 동시에 로드해 멀티 씬 구조를 만들 수 있습니다. 이를 통해 로딩 화면, UI, 맵을 분리 관리할 수 있습니다.
+</details>
+
+---
+
+<details>
+<summary><strong>2) 태그(Tag)와 레이어(Layer)의 차이점과 활용 방법을 설명해주세요.</strong></summary>
+<strong>A.</strong> Tag는 오브젝트 식별을 위해 사용되며 주로 GameObject.FindWithTag 등 검색에 쓰입니다. Layer는 충돌 감지, 카메라 Culling Mask 등 렌더링/물리 처리 최적화에 활용됩니다. 즉, Tag는 논리적 분류, Layer는 물리적/렌더링 제어 용도라고 구분할 수 있습니다.
+</details>
+
+---
+
+<details>
+<summary><strong>3) Rigidbody와 Collider를 이용한 물리 시뮬레이션의 기본 원리를 설명해주세요.</strong></summary>
+<strong>A.</strong> Rigidbody는 질량, 힘, 속도 같은 물리 속성을 적용해 오브젝트를 Unity 물리 엔진에서 시뮬레이션하도록 합니다. Collider는 충돌 영역을 정의해 다른 오브젝트와 상호작용을 가능하게 합니다. Rigidbody와 Collider가 함께 있어야 물리적으로 충돌이 감지되고 반응할 수 있습니다.
+</details>
+
+---
+
+<details>
+<summary><strong>4) Unity의 좌표계(월드, 로컬, 스크린, 뷰포트)에 대해 설명해주세요.</strong></summary>
+<strong>A.</strong> 월드 좌표는 전역 공간 기준이고, 로컬 좌표는 부모 오브젝트 기준입니다. 스크린 좌표는 모니터 픽셀 좌표로 (0,0)은 좌하단입니다. 뷰포트 좌표는 카메라 시야를 (0~1) 범위로 정규화한 좌표로, 해상도와 무관하게 상대적 위치를 표현합니다.
+</details>
+
+---
+
+<details>
+<summary><strong>5) Inspector에서 public 변수와 [SerializeField] 속성의 차이점은 무엇인가요?</strong></summary>
+<strong>A.</strong> public 변수는 코드와 Inspector 양쪽에서 접근 가능하지만, 캡슐화가 약해집니다. [SerializeField]는 private 변수도 Inspector에 노출할 수 있어, 데이터 드리븐 설계는 가능하면서 외부 접근은 막아 안정성을 유지할 수 있습니다.
+</details>
+
+---
+
 ## 🎮 Unity Q/A
 
 <details>
