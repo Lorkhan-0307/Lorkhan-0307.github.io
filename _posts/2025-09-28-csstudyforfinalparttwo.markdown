@@ -4,7 +4,7 @@ title: "기술면접 대비 CS 공부 - 01"
 date: 2025-09-28 16:00:00 +0900
 categories: [Tech Interview, Study Plan]
 tags: [c++, c-sharp, computer-science, algorithm, data-structure, operating-system, network, database, design-pattern, unity, unreal]
-slug: csstudyforfinal
+slug: csstudyforfinalparttwo
 ---
 
 # 면접 대비 사전 QnA 정리 - 엔진을 좀 더 중심적으로!
