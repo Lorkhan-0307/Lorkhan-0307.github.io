@@ -559,6 +559,8 @@ slug: cs-study-unreal-advanced
 <strong>A.</strong> GAS는 Ability와 Effect가 서버 권위로 처리되며, 클라이언트는 Prediction Key를 통해 예상 결과를 미리 적용합니다. 서버는 authoritative 결과를 보내고 클라이언트는 이를 Reconciliation하여 차이를 보정합니다. 이를 통해 액션 게임에서 빠른 반응성과 동기화 안정성을 모두 확보할 수 있습니다.
 </details>
 
+해당 Prediction Key는 다음 [링크](https://redchiken.tistory.com/380)를 참고하면 좋을 것 같습니다.
+
 ---
 
 ### ✅ 고급 시스템 & 아키텍처
