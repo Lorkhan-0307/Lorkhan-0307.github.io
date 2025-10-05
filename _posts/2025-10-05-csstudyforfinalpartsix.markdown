@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "기술면접 대비 CS 공부 - 05"
-date: 2025-10-05 18:00:00 +0900
+date: 2025-10-05 16:00:00 +0900
 categories: [Tech Interview, Study Plan]
 tags: [c++, c-sharp, computer-science, algorithm, data-structure, operating-system, network, database, design-pattern, unity, unreal]
 slug: csstudyforfinalpartsix
