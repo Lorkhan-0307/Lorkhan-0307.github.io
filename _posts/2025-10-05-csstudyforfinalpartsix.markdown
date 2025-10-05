@@ -14,7 +14,7 @@ slug: csstudyforfinalpartsix
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>1. C#의 주요 특징은 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -40,7 +40,7 @@ C#은 객체지향 언어로서 생산성과 안정성을 동시에 제공합니
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>2. C#과 C++의 주요 차이는 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -68,7 +68,7 @@ C#은 .NET 런타임에서 GC로 메모리를 관리해 안정적이고 개발 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>3. CLR(Common Language Runtime)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -91,7 +91,7 @@ GC, 예외 처리, 보안 등을 관리해 개발자가 안정적으로 프로�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>4. Boxing과 Unboxing이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -122,7 +122,7 @@ Unboxing은 그 반대입니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>5. Value Type과 Reference Type의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -148,7 +148,7 @@ Value Type은 스택에 직접 값이 저장되고, Reference Type은 힙에 저
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>6. C#에서 class와 struct의 차이는 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -171,7 +171,7 @@ struct는 값 타입으로 가볍고 빠르며 주로 작은 데이터 묶음을
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>7. interface와 abstract class의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -198,7 +198,7 @@ interface는 규약을 정의하고, abstract class는 공통 로직을 포함�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>8. override, overload의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -232,7 +232,7 @@ Override는 부모 클래스의 virtual 메서드를 재정의하는 것입니�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>9. delegate란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -259,7 +259,7 @@ Delegate는 메서드를 변수처럼 저장하고 실행할 수 있는 참조 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>10. event와 delegate의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -286,7 +286,7 @@ event는 외부에서 직접 실행할 수 없다는 점이 다릅니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>11. LINQ(Language Integrated Query)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -315,7 +315,7 @@ LINQ는 C#에 내장된 데이터 질의 언어로, SQL처럼 데이터를 직�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>12. IEnumerable와 IQueryable의 차이는 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -338,7 +338,7 @@ IEnumerable은 메모리 내 컬렉션용, IQueryable은 DB 질의용입니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>13. async / await 키워드의 역할은?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -368,7 +368,7 @@ async/await는 비동기 작업을 동기식처럼 작성할 수 있게 해주�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>14. Task와 Thread의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -395,7 +395,7 @@ Task는 예외 처리와 스케줄링을 자동으로 관리하기 때문에 더
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>15. C#의 Garbage Collector(GC)는 어떻게 동작하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -419,7 +419,7 @@ C#의 GC는 세대별 수집 방식을 사용해 성능을 최적화합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>16. IDisposable 인터페이스의 역할은?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -447,7 +447,7 @@ using 문을 사용하면 Dispose가 자동 호출되어 누수를 방지합니�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>17. using과 await using의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -475,7 +475,7 @@ await using은 비동기 리소스를 해제하기 위한 구문으로,
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>18. Exception 처리 방식에 대해 설명해주세요.</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -499,7 +499,7 @@ C#의 예외는 객체 기반으로 전달되며, try-catch-finally로 안전하
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>19. Reflection이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -528,7 +528,7 @@ DI 컨테이너나 JSON 직렬화 라이브러리 내부에서 많이 사용됩�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>20. 람다(Lambda Expression)란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -554,7 +554,7 @@ LINQ나 콜백 함수에서 자주 활용됩니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>21. Property와 Field의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -583,7 +583,7 @@ Field는 단순한 데이터 저장소이고, Property는 이를 제어하는 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>22. 접근 제한자(access modifier)의 종류와 역할은?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -612,7 +612,7 @@ Field는 단순한 데이터 저장소이고, Property는 이를 제어하는 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>23. static 키워드의 역할은?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -634,7 +634,7 @@ static은 모든 인스턴스가 공유하는 멤버를 정의할 때 사용합�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>24. sealed 키워드는 언제 사용하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -659,7 +659,7 @@ sealed는 클래스나 메서드의 상속·재정의를 막아 안정성과 의
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>25. const와 readonly의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -686,7 +686,7 @@ const는 컴파일 시 고정되는 상수이고, readonly는 런타임에 한 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>26. Thread.Sleep()과 Task.Delay()의 차이는 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -714,7 +714,7 @@ UI나 서버 환경에서는 Task.Delay를 사용해야 효율적입니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>27. ThreadPool이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -736,7 +736,7 @@ ThreadPool은 재사용 가능한 스레드 모음으로, 매번 새 스레드�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>28. lock 키워드는 내부적으로 어떻게 작동하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -765,7 +765,7 @@ lock은 Monitor 기반으로 동작하며, 한 번에 한 스레드만 임계 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>29. volatile 키워드는 언제 사용하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -788,7 +788,7 @@ volatile은 멀티스레드 환경에서 변수의 최신 값을 보장하기 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>30. Immutable 객체란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -816,7 +816,7 @@ string이나 record가 대표적인 예입니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>31. Record와 Class의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -843,7 +843,7 @@ record는 값 자체로 동일성을 판단하고, class는 참조로 판단합�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>32. 구조체(struct)와 클래스(class)의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -866,7 +866,7 @@ class는 참조 타입으로, 더 큰 객체나 다형성이 필요한 경우 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>33. Boxing과 Unboxing이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -895,7 +895,7 @@ Boxing은 값 타입을 object로 감싸는 과정이고, Unboxing은 반대로 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>34. Nullable 타입이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -917,7 +917,7 @@ DB나 입력 데이터에서 값이 비어 있을 수 있는 경우 유용합니
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>35. pattern matching이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -945,7 +945,7 @@ switch와 is 구문을 간결하게 만들어줍니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>36. Delegate와 Event의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -966,7 +966,7 @@ Delegate는 함수를 직접 참조하는 타입이고, Event는 이를 안전�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>37. GC.Collect()를 직접 호출하면 안 되는 이유는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -989,7 +989,7 @@ GC.Collect()는 런타임의 최적화된 타이밍을 깨뜨리므로, 직접 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>38. Span&lt;T&gt;와 Memory&lt;T&gt;의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1011,7 +1011,7 @@ Span은 빠른 메모리 접근용 스택 기반 구조체고, Memory는 비동�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>39. IDisposable 패턴을 직접 구현한다면?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1041,7 +1041,7 @@ GC가 중복으로 호출하지 않게 SuppressFinalize를 사용합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>40. ValueTask란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1062,7 +1062,7 @@ ValueTask는 경량 비동기 반환 타입으로, 자주 호출되는 함수에
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>41. LINQ에서 지연 실행(Lazy Evaluation)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1083,7 +1083,7 @@ LINQ는 기본적으로 지연 실행을 사용해, 결과가 필요할 때만 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>42. async void는 왜 피해야 할까?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1103,7 +1103,7 @@ async void는 호출자가 완료 여부나 예외를 알 수 없기 때문에, 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>43. Parallel.ForEach()의 장단점은?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1125,7 +1125,7 @@ Parallel.ForEach는 CPU 코어를 활용해 반복문을 병렬 실행하지만,
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>44. LINQ의 Select와 SelectMany의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1150,7 +1150,7 @@ Select는 요소 변환, SelectMany는 내부 컬렉션을 풀어서 단일 시�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>45. yield return은 어떤 역할을 하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1176,7 +1176,7 @@ yield return은 데이터를 한 번에 모두 생성하지 않고, 필요할 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>46. expression-bodied member란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1199,7 +1199,7 @@ expression-bodied member는 간단한 getter나 단일 구문을 깔끔하게 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>47. async/await는 내부적으로 어떻게 동작하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1225,7 +1225,7 @@ UI나 ASP.NET 환경에서는 기본적으로 원래 컨텍스트로 복귀하�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>48. CancellationToken은 어떻게 사용하는 게 좋나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1261,7 +1261,7 @@ CancellationToken은 호출자가 취소를 알릴 수 있도록 하는 협력�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>49. ConfigureAwait(false)는 언제, 왜 쓰나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1288,7 +1288,7 @@ UI 스레드 접근이 필요한 구간에서는 기본 await를 사용해 안�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>50. async/await에서 데드락은 왜 발생하고, 어떻게 피하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  

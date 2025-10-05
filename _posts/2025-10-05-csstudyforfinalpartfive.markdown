@@ -14,326 +14,375 @@ slug: csstudyforfinalpartfive
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>1️⃣ 빅-오(Big-O), 빅-오메가(Ω), 빅-세타(Θ)의 차이를 설명해주세요.</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
-- **Big-O:** 최악의 경우 시간복잡도  
-- **Big-Ω:** 최선의 경우 시간복잡도  
-- **Big-Θ:** 평균적인(상한과 하한이 동일한) 시간복잡도  
+<strong>🧠 핵심 요약</strong>
+
+- **Big-O:** 최악의 경우 시간복잡도
+- **Big-Ω:** 최선의 경우 시간복잡도
+- **Big-Θ:** 평균적인(상한과 하한이 동일한) 시간복잡도
 
 ---
 
-<strong>🔹 상세설명</strong>  
-- **Big-O (Upper Bound)** : 알고리즘이 수행되는 *최대 실행 시간*의 상한을 의미합니다.  
-  예: O(n²) → 입력이 커져도 n²보다 빠르다.  
-- **Big-Ω (Lower Bound)** : 알고리즘이 보장하는 *최소 실행 시간*입니다.  
-  예: Ω(n) → 최소 n번은 수행된다.  
-- **Big-Θ (Tight Bound)** : 상한과 하한이 일치하는 경우, 평균적인 수행 시간입니다.  
-  예: Θ(n log n) → 평균적으로 n log n 정도의 성능을 가진다.  
+<strong>🔹 상세설명</strong>
+
+- **Big-O (Upper Bound)** : 알고리즘이 수행되는 *최대 실행 시간*의 상한을 의미합니다.
+  예: O(n²) → 입력이 커져도 n²보다 빠르다.
+
+- **Big-Ω (Lower Bound)** : 알고리즘이 보장하는 *최소 실행 시간*입니다.
+  예: Ω(n) → 최소 n번은 수행된다.
+
+- **Big-Θ (Tight Bound)** : 상한과 하한이 일치하는 경우, 평균적인 수행 시간입니다.
+  예: Θ(n log n) → 평균적으로 n log n 정도의 성능을 가진다.
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-Big-O는 “최악의 경우”, Big-Ω는 “최선의 경우”, Big-Θ는 “평균적인 경우”를 의미합니다.  
-일반적으로 우리는 Big-O를 가장 많이 사용하며, 이는 알고리즘의 상한 복잡도를 통해  
+<strong>💬 면접식 답변</strong>
+
+Big-O는 "최악의 경우", Big-Ω는 "최선의 경우", Big-Θ는 "평균적인 경우"를 의미합니다.
+일반적으로 우리는 Big-O를 가장 많이 사용하며, 이는 알고리즘의 상한 복잡도를 통해
 성능을 보수적으로 평가하기 위함입니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>2️⃣ 재귀(Recursion)와 반복(Iteration)의 차이는 무엇인가요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
-- 재귀는 **함수 자신을 호출**하는 방식,  
+<strong>🧠 핵심 요약</strong>
+
+- 재귀는 **함수 자신을 호출**하는 방식
 - 반복은 **루프(while, for)** 를 통해 반복 수행하는 구조입니다.
 
 ---
 
-<strong>🔹 상세설명</strong>  
-- **재귀:**  
-  - 함수 호출 스택을 사용  
-  - 가독성 높지만 오버헤드가 큼  
-  - 종료 조건(Base Case) 필수  
-- **반복:**  
-  - 변수만으로 루프 제어  
-  - 메모리 효율적  
-  - 상태를 명시적으로 관리해야 함  
-- **꼬리 재귀 최적화:**  
-  - 컴파일러가 마지막 호출을 반복문처럼 처리하여 스택 사용을 줄이는 최적화 기법.  
+<strong>🔹 상세설명</strong>
+
+- **재귀:**
+  - 함수 호출 스택을 사용
+  - 가독성 높지만 오버헤드가 큼
+  - 종료 조건(Base Case) 필수
+
+- **반복:**
+  - 변수만으로 루프 제어
+  - 메모리 효율적
+  - 상태를 명시적으로 관리해야 함
+
+- **꼬리 재귀 최적화:**
+  - 컴파일러가 마지막 호출을 반복문처럼 처리하여 스택 사용을 줄이는 최적화 기법.
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-재귀는 함수가 자기 자신을 호출하면서 문제를 분할하는 방식이고,  
-반복은 명시적인 루프를 통해 상태를 갱신하며 해결합니다.  
-재귀는 코드가 간결하지만 스택 오버플로우 위험이 있고,  
+<strong>💬 면접식 답변</strong>
+
+재귀는 함수가 자기 자신을 호출하면서 문제를 분할하는 방식이고,
+반복은 명시적인 루프를 통해 상태를 갱신하며 해결합니다.
+재귀는 코드가 간결하지만 스택 오버플로우 위험이 있고,
 반복은 안정적이지만 구조가 다소 복잡할 수 있습니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>3️⃣ 분할 정복(Divide and Conquer)이란?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
-문제를 **작은 부분으로 분할(Divide)** → 각 부분을 **재귀적으로 정복(Conquer)** →  
+<strong>🧠 핵심 요약</strong>
+
+문제를 **작은 부분으로 분할(Divide)** → 각 부분을 **재귀적으로 정복(Conquer)** →
 **결합(Combine)** 하는 알고리즘 설계 기법입니다.
 
 ---
 
-<strong>🔹 상세설명</strong>  
-- **대표 알고리즘:**  
-  - Merge Sort, Quick Sort, Binary Search, FFT 등  
-- **복잡도:** 대부분 O(n log n) 형태  
-- **핵심 아이디어:**  
-  - 동일한 하위 문제로 쪼개면 효율적  
-  - 독립적인 부분 문제는 병렬화 가능  
+<strong>🔹 상세설명</strong>
+
+- **대표 알고리즘:**
+  - Merge Sort, Quick Sort, Binary Search, FFT 등
+
+- **복잡도:** 대부분 O(n log n) 형태
+
+- **핵심 아이디어:**
+  - 동일한 하위 문제로 쪼개면 효율적
+  - 독립적인 부분 문제는 병렬화 가능
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-분할 정복은 큰 문제를 여러 개의 작은 문제로 나누고,  
-각각을 해결한 뒤 결과를 합치는 방식입니다.  
+<strong>💬 면접식 답변</strong>
+
+분할 정복은 큰 문제를 여러 개의 작은 문제로 나누고,
+각각을 해결한 뒤 결과를 합치는 방식입니다.
 대표적인 예로 Merge Sort나 Quick Sort가 있습니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>4️⃣ 재귀 호출의 공간 복잡도는 왜 높을까요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
-재귀는 호출될 때마다 **스택 프레임이 새로 생성**되기 때문에,  
+<strong>🧠 핵심 요약</strong>
+
+재귀는 호출될 때마다 **스택 프레임이 새로 생성**되기 때문에,
 함수 호출 깊이만큼의 추가 메모리를 사용합니다.
 
 ---
 
-<strong>🔹 상세설명</strong>  
-- 각 호출은 독립적인 **지역 변수, 매개변수, 반환 주소**를 포함한 스택 프레임을 생성  
-- 깊은 재귀 → 스택 메모리 초과(Stack Overflow) 위험  
-- 꼬리 재귀 최적화를 통해 일부 언어(C#, Scheme 등)는 이를 반복문으로 변환 가능  
+<strong>🔹 상세설명</strong>
+
+- 각 호출은 독립적인 **지역 변수, 매개변수, 반환 주소**를 포함한 스택 프레임을 생성
+- 깊은 재귀 → 스택 메모리 초과(Stack Overflow) 위험
+- 꼬리 재귀 최적화를 통해 일부 언어(C#, Scheme 등)는 이를 반복문으로 변환 가능
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-재귀 호출은 함수마다 스택에 새로운 프레임을 할당하기 때문에  
-호출 깊이에 따라 공간 복잡도가 증가합니다.  
+<strong>💬 면접식 답변</strong>
+
+재귀 호출은 함수마다 스택에 새로운 프레임을 할당하기 때문에
+호출 깊이에 따라 공간 복잡도가 증가합니다.
 그래서 반복문으로 대체하거나 꼬리 재귀 최적화를 활용해 메모리 사용을 줄이기도 합니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>5️⃣ 슬라이딩 윈도우(Sliding Window) 알고리즘이란?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
-배열이나 문자열에서 **연속된 구간(subarray)** 을 효율적으로 탐색하기 위한  
+<strong>🧠 핵심 요약</strong>
+
+배열이나 문자열에서 **연속된 구간(subarray)** 을 효율적으로 탐색하기 위한
 O(n) 시간 복잡도의 최적화 알고리즘입니다.
 
 ---
 
-<strong>🔹 상세설명</strong>  
-- **기본 원리:**  
-  - 두 포인터를 사용해 윈도우의 시작과 끝을 관리  
-  - 한쪽 포인터만 이동시켜 중복 계산 제거  
-- **적용 사례:**  
-  - 최대/최소 구간 합, 문자열 내 중복 문자 검사, 부분합 문제 등  
-- **복잡도:**  
+<strong>🔹 상세설명</strong>
+
+- **기본 원리:**
+  - 두 포인터를 사용해 윈도우의 시작과 끝을 관리
+  - 한쪽 포인터만 이동시켜 중복 계산 제거
+
+- **적용 사례:**
+  - 최대/최소 구간 합, 문자열 내 중복 문자 검사, 부분합 문제 등
+
+- **복잡도:**
   - 시간 O(n), 공간 O(1) 또는 O(k)
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-슬라이딩 윈도우는 배열 내의 연속된 부분을 효율적으로 탐색하는 기법으로,  
-두 포인터를 이용해 이전 계산을 재활용하면서 불필요한 연산을 줄입니다.  
+<strong>💬 면접식 답변</strong>
+
+슬라이딩 윈도우는 배열 내의 연속된 부분을 효율적으로 탐색하는 기법으로,
+두 포인터를 이용해 이전 계산을 재활용하면서 불필요한 연산을 줄입니다.
 예를 들어, 최대 부분합이나 문자열 내 유효 윈도우 탐색 문제에서 자주 사용됩니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>6️⃣ 투 포인터(Two Pointers)와 이진 탐색(Binary Search)의 차이는?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
-- 투 포인터: **선형적 탐색 기반의 구간 확장 기법**  
+<strong>🧠 핵심 요약</strong>
+
+- 투 포인터: **선형적 탐색 기반의 구간 확장 기법**
 - 이진 탐색: **정렬된 배열에서 중간값 기준 절반씩 제거하는 탐색 기법**
 
 ---
 
-<strong>🔹 상세설명</strong>  
-- **Two Pointers:**  
-  - 정렬/연속 데이터 기반  
-  - 시작점과 끝점을 조절해 조건 만족  
-  - O(n)  
-- **Binary Search:**  
-  - 정렬된 데이터 전제  
-  - 중간값 기준으로 반씩 나누어 탐색  
-  - O(log n)  
+<strong>🔹 상세설명</strong>
+
+- **Two Pointers:**
+  - 정렬/연속 데이터 기반
+  - 시작점과 끝점을 조절해 조건 만족
+  - O(n)
+
+- **Binary Search:**
+  - 정렬된 데이터 전제
+  - 중간값 기준으로 반씩 나누어 탐색
+  - O(log n)
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-투 포인터는 선형 탐색 기반으로 연속된 범위를 다루는 반면,  
-이진 탐색은 정렬된 데이터에서 중간값을 기준으로 절반을 제거하는 방식입니다.  
-문제 조건이 “연속 구간”이면 투 포인터,  
-“정렬된 데이터의 특정 값 탐색”이면 이진 탐색을 씁니다.
+<strong>💬 면접식 답변</strong>
+
+투 포인터는 선형 탐색 기반으로 연속된 범위를 다루는 반면,
+이진 탐색은 정렬된 데이터에서 중간값을 기준으로 절반을 제거하는 방식입니다.
+문제 조건이 "연속 구간"이면 투 포인터,
+"정렬된 데이터의 특정 값 탐색"이면 이진 탐색을 씁니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>7️⃣ KMP 알고리즘은 어떤 방식으로 문자열 검색을 빠르게 하나요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 KMP는 불일치가 발생했을 때 **이전 비교 정보를 활용하여 불필요한 재탐색을 피하는 문자열 탐색 알고리즘**입니다.
 
 ---
 
-<strong>🔹 상세설명</strong>  
-- **핵심:** Prefix-Suffix 배열(Partial Match Table)을 이용해 점프  
-- **시간복잡도:** O(n + m)  
-- **장점:** 불일치 발생 시 이미 일치한 접두사 정보를 활용  
-- **비교:** Brute-Force는 O(nm)  
+<strong>🔹 상세설명</strong>
+
+- **핵심:** Prefix-Suffix 배열(Partial Match Table)을 이용해 점프
+- **시간복잡도:** O(n + m)
+- **장점:** 불일치 발생 시 이미 일치한 접두사 정보를 활용
+- **비교:** Brute-Force는 O(nm)
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-KMP는 문자열 검색 시 접두사/접미사 일치 정보를 미리 계산해두고,  
-불일치가 발생하더라도 중복 비교를 피하는 방식으로 동작합니다.  
+<strong>💬 면접식 답변</strong>
+
+KMP는 문자열 검색 시 접두사/접미사 일치 정보를 미리 계산해두고,
+불일치가 발생하더라도 중복 비교를 피하는 방식으로 동작합니다.
 결과적으로 모든 문자를 한 번씩만 비교하므로 O(n + m) 시간에 동작합니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>8️⃣ 단일 연결 리스트에서 중간 노드를 삭제하려면 어떻게 하나요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 중간 노드를 삭제하려면 **다음 노드의 데이터를 현재 노드에 복사하고, 다음 노드를 건너뛰는 방식**을 사용합니다.
 
 ---
 
-<strong>🔹 상세설명</strong>  
-- **이유:** 단일 리스트는 이전 노드를 알 수 없음  
-- **과정:**  
-  1. next 노드의 값 복사  
-  2. next 노드를 삭제  
-- **복잡도:** O(1)  
+<strong>🔹 상세설명</strong>
+
+- **이유:** 단일 리스트는 이전 노드를 알 수 없음
+
+- **과정:**
+  1. next 노드의 값 복사
+  2. next 노드를 삭제
+
+- **복잡도:** O(1)
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-단일 연결 리스트에서는 이전 노드를 모를 수 있기 때문에,  
-삭제하려는 노드에 다음 노드의 값을 덮어쓰고,  
+<strong>💬 면접식 답변</strong>
+
+단일 연결 리스트에서는 이전 노드를 모를 수 있기 때문에,
+삭제하려는 노드에 다음 노드의 값을 덮어쓰고,
 그 다음 노드를 삭제하는 방식으로 중간 노드를 제거할 수 있습니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>9️⃣ BFS와 DFS의 차이점은?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
-- BFS: **큐를 이용한 너비 우선 탐색**  
+<strong>🧠 핵심 요약</strong>
+
+- BFS: **큐를 이용한 너비 우선 탐색**
 - DFS: **스택(또는 재귀)을 이용한 깊이 우선 탐색**
 
 ---
 
-<strong>🔹 상세설명</strong>  
-- **BFS:**  
-  - 가까운 노드부터 방문  
-  - 최단 경로 탐색에 적합  
-  - 큐 사용  
-- **DFS:**  
-  - 한 경로를 끝까지 탐색  
-  - 경로 탐색/백트래킹에 유용  
-  - 재귀 또는 스택 사용  
+<strong>🔹 상세설명</strong>
+
+- **BFS:**
+  - 가까운 노드부터 방문
+  - 최단 경로 탐색에 적합
+  - 큐 사용
+
+- **DFS:**
+  - 한 경로를 끝까지 탐색
+  - 경로 탐색/백트래킹에 유용
+  - 재귀 또는 스택 사용
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-BFS는 가까운 노드부터 탐색하며 큐를 사용하고,  
-DFS는 한 경로를 끝까지 탐색하며 스택을 사용합니다.  
+<strong>💬 면접식 답변</strong>
+
+BFS는 가까운 노드부터 탐색하며 큐를 사용하고,
+DFS는 한 경로를 끝까지 탐색하며 스택을 사용합니다.
 그래서 BFS는 최단 경로, DFS는 경로 탐색 문제에 적합합니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>🔟 힙 정렬(Heap Sort)과 우선순위 큐의 차이는?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
-둘 다 힙을 기반으로 하지만,  
-**힙 정렬은 전체 데이터를 정렬**하고,  
+<strong>🧠 핵심 요약</strong>
+
+둘 다 힙을 기반으로 하지만,
+**힙 정렬은 전체 데이터를 정렬**하고,
 **우선순위 큐는 필요한 원소만 순차적으로 관리**합니다.
 
 ---
 
-<strong>🔹 상세설명</strong>  
-- **힙 정렬:**  
-  - 전체 정렬 수행 O(n log n)  
-  - 불안정 정렬  
-- **우선순위 큐:**  
-  - 삽입/삭제 중심 O(log n)  
-  - 전체 정렬은 아님  
-- **차이점:**  
+<strong>🔹 상세설명</strong>
+
+- **힙 정렬:**
+  - 전체 정렬 수행 O(n log n)
+  - 불안정 정렬
+
+- **우선순위 큐:**
+  - 삽입/삭제 중심 O(log n)
+  - 전체 정렬은 아님
+
+- **차이점:**
   - 목적의 차이 (전체 정렬 vs 실시간 우선순위 관리)
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-힙 정렬은 전체 데이터를 힙 구조로 정렬하는 알고리즘이고,  
-우선순위 큐는 삽입과 삭제 시 우선순위를 유지하는 자료구조입니다.  
+<strong>💬 면접식 답변</strong>
+
+힙 정렬은 전체 데이터를 힙 구조로 정렬하는 알고리즘이고,
+우선순위 큐는 삽입과 삭제 시 우선순위를 유지하는 자료구조입니다.
 즉, 정렬 전체를 목적으로 하느냐, 실시간 관리가 목적이냐의 차이입니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>11. 이진 탐색 트리(BST)와 균형 트리(AVL, Red-Black Tree)의 차이는?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
-BST는 기본적으로 정렬된 트리 구조이지만,  
-삽입 순서에 따라 편향될 수 있습니다.  
+<strong>🧠 핵심 요약</strong>
+
+BST는 기본적으로 정렬된 트리 구조이지만,
+삽입 순서에 따라 편향될 수 있습니다.
 균형 트리는 삽입/삭제 시 높이를 자동으로 조정해 항상 O(log n) 복잡도를 유지합니다.
 
 ---
 
-<strong>🔹 상세설명</strong>  
-- **BST (Binary Search Tree)**  
-  - 왼쪽 < 루트 < 오른쪽  
-  - 평균 O(log n), 최악 O(n)  
-- **AVL Tree**  
-  - 높이 균형 트리, 회전으로 항상 균형 유지  
-  - 탐색 빠름, 삽입/삭제는 다소 느림  
-- **Red-Black Tree**  
-  - 약한 균형 유지, 삽입/삭제 효율적  
-  - STL의 map, set이 내부적으로 사용  
+<strong>🔹 상세설명</strong>
+
+- **BST (Binary Search Tree)**
+  - 왼쪽 < 루트 < 오른쪽
+  - 평균 O(log n), 최악 O(n)
+
+- **AVL Tree**
+  - 높이 균형 트리, 회전으로 항상 균형 유지
+  - 탐색 빠름, 삽입/삭제는 다소 느림
+
+- **Red-Black Tree**
+  - 약한 균형 유지, 삽입/삭제 효율적
+  - STL의 map, set이 내부적으로 사용
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-BST는 정렬 탐색에 유용하지만 삽입 순서에 따라 편향될 수 있습니다.  
-AVL과 Red-Black은 자동 균형 조정을 통해 항상 O(log n)을 보장하며,  
+<strong>💬 면접식 답변</strong>
+
+BST는 정렬 탐색에 유용하지만 삽입 순서에 따라 편향될 수 있습니다.
+AVL과 Red-Black은 자동 균형 조정을 통해 항상 O(log n)을 보장하며,
 특히 Red-Black 트리는 C++ STL map과 set에서 사용됩니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>12. 세그먼트 트리와 펜윅 트리(Fenwick Tree)의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -362,7 +411,7 @@ AVL과 Red-Black은 자동 균형 조정을 통해 항상 O(log n)을 보장하�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>13. 그래프 탐색에서 BFS와 DFS는 각각 언제 유리한가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -390,7 +439,7 @@ DFS는 경로 탐색, 순열, 백트래킹 문제에 자주 활용됩니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>14. 다익스트라 알고리즘과 벨만-포드 알고리즘의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -421,7 +470,7 @@ DFS는 경로 탐색, 순열, 백트래킹 문제에 자주 활용됩니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>15. 최소 신장 트리(MST)에서 Kruskal과 Prim 알고리즘의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -449,7 +498,7 @@ Prim은 정점을 확장하며 최소 연결을 유지합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>16. 그리디 알고리즘이 항상 최적해를 보장하기 위한 조건은?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -475,7 +524,7 @@ Prim은 정점을 확장하며 최소 연결을 유지합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>17. 동적 계획법(DP)과 분할 정복(D&C)의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -504,7 +553,7 @@ DP는 중복되는 계산을 캐싱하여 효율을 높입니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>18. LIS(최장 증가 부분 수열)의 효율적인 풀이법은?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -530,7 +579,7 @@ C++의 `lower_bound`를 활용한 방식이 대표적입니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>19. STL vector, list, deque의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -558,7 +607,7 @@ deque는 양쪽 끝 삽입/삭제에 최적화되어 있습니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>20. map과 unordered_map의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -589,7 +638,7 @@ unordered_map은 해시 기반으로 평균 O(1) 속도를 가지지만,
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>21. 해시 충돌(Hash Collision)은 왜 발생하고, 어떻게 해결하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -619,7 +668,7 @@ unordered_map은 해시 기반으로 평균 O(1) 속도를 가지지만,
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>22. 체이닝(Chaining)과 오픈 어드레싱(Open Addressing)의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -648,7 +697,7 @@ C++ unordered_map은 체이닝을 사용해 삭제를 단순화합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>23. 해시 함수(Hash Function)는 어떤 특성을 가져야 하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -673,7 +722,7 @@ C++ unordered_map은 체이닝을 사용해 삭제를 단순화합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>24. 정렬 알고리즘 중 Introsort는 왜 사용되나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -700,7 +749,7 @@ C++의 std::sort가 이 방식을 사용합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>25. 삽입 정렬(Insertion Sort)은 언제 유리한가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -725,7 +774,7 @@ C++의 std::sort가 이 방식을 사용합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>26. Stable Sort(안정 정렬)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -750,7 +799,7 @@ C++의 std::sort가 이 방식을 사용합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>27. 외부 정렬(External Sorting)은 언제 필요한가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -778,7 +827,7 @@ C++의 std::sort가 이 방식을 사용합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>28. 그리디와 DP의 차이점은 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -804,7 +853,7 @@ DP는 모든 경우의 수를 저장하며 전체 최적해를 구합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>29. 백트래킹과 DFS의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -830,7 +879,7 @@ DFS는 전체 탐색을 의미하지만,
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>30. Union-Find(Disjoint Set)의 핵심 아이디어는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -856,7 +905,7 @@ Path Compression과 Rank 병합을 적용하면 거의 O(1)에 수렴합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>31. Topological Sort(위상 정렬)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -881,7 +930,7 @@ Path Compression과 Rank 병합을 적용하면 거의 O(1)에 수렴합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>32. 플로이드-워셜 알고리즘의 특징은?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -905,7 +954,7 @@ Path Compression과 Rank 병합을 적용하면 거의 O(1)에 수렴합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>33. 다중 우선순위 큐를 구현하려면?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -929,7 +978,7 @@ Path Compression과 Rank 병합을 적용하면 거의 O(1)에 수렴합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>34. 트라이(Trie) 자료구조의 장점은?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -955,7 +1004,7 @@ O(문자열 길이) 시간에 탐색을 수행할 수 있습니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>35. 세그먼트 트리에서 Lazy Propagation이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -979,7 +1028,7 @@ Lazy Propagation은 구간 업데이트를 한꺼번에 처리하지 않고,
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>36. STL에서 lower_bound와 upper_bound의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1004,7 +1053,7 @@ upper_bound는 초과하는 첫 원소의 위치를 반환합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>37. STL의 erase-remove idiom이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1030,7 +1079,7 @@ remove는 단순히 값들을 앞으로 당길 뿐 실제 삭제를 하지 않�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>38. C++ STL sort, stable_sort, partial_sort의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1058,7 +1107,7 @@ partial_sort는 상위 N개만 정렬하는 함수입니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>39. unordered_map의 평균과 최악 복잡도는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1089,7 +1138,7 @@ partial_sort는 상위 N개만 정렬하는 함수입니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>40. 불균일 분포 데이터에서 BST와 해시 중 무엇을 선택할까?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1126,7 +1175,7 @@ partial_sort는 상위 N개만 정렬하는 함수입니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>41. merge sort와 quick sort의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1159,7 +1208,7 @@ Merge Sort는 항상 O(n log n)이고 안정적이지만 메모리 사용량이 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>42. 힙(Heap) 자료구조의 특징과 사용처는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1190,7 +1239,7 @@ Merge Sort는 항상 O(n log n)이고 안정적이지만 메모리 사용량이 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>43. STL의 map과 unordered_map 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1222,7 +1271,7 @@ Merge Sort는 항상 O(n log n)이고 안정적이지만 메모리 사용량이 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>44. BFS와 DFS의 차이점은?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1251,7 +1300,7 @@ DFS는 Stack 기반으로 깊이 탐색을 하며, 백트래킹 문제나 미로
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>45. 다익스트라 알고리즘이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1277,7 +1326,7 @@ DFS는 Stack 기반으로 깊이 탐색을 하며, 백트래킹 문제나 미로
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>46. Union-Find(Disjoint Set)는 언제 쓰나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1303,7 +1352,7 @@ Union-Find는 집합의 연결 여부를 빠르게 판단하기 위한 구조입
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>47. Topological Sort(위상 정렬)는 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1329,7 +1378,7 @@ Union-Find는 집합의 연결 여부를 빠르게 판단하기 위한 구조입
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>48. Trie(트라이) 자료구조란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1354,7 +1403,7 @@ Trie는 문자열을 접두사 단위로 분기하는 트리입니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>49. Segment Tree란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1379,7 +1428,7 @@ Segment Tree는 배열의 특정 구간 합이나 최댓값을 빠르게 구할 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>50. STL sort()는 어떤 정렬 알고리즘을 쓰나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  

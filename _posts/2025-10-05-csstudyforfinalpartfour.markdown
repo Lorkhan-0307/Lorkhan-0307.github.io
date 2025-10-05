@@ -14,326 +14,406 @@ slug: csstudyforfinalpartfour
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>1️⃣ 운영체제란 무엇인가요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
-운영체제(Operating System, OS)는 사용자와 하드웨어 사이의 중재자로서,  
+<strong>🧠 핵심 요약</strong>
+
+운영체제(Operating System, OS)는 사용자와 하드웨어 사이의 중재자로서,
 시스템 자원을 효율적으로 관리하고 프로그램이 실행될 수 있도록 환경을 제공하는 시스템 소프트웨어입니다.
 
 ---
 
-<strong>🔹 특징 및 상세설명</strong>  
+<strong>🔹 특징 및 상세설명</strong>
+
 - **주요 역할**
-  1. **프로세스 관리:** 프로그램 실행, 스케줄링, 동기화, 교착상태 관리  
-  2. **메모리 관리:** 가상 메모리, 페이징, 세그멘테이션  
-  3. **파일 시스템 관리:** 파일 생성, 삭제, 접근 제어  
-  4. **입출력(I/O) 관리:** 디바이스 제어, 버퍼링, 인터럽트 처리  
+  1. **프로세스 관리:** 프로그램 실행, 스케줄링, 동기화, 교착상태 관리
+  2. **메모리 관리:** 가상 메모리, 페이징, 세그멘테이션
+  3. **파일 시스템 관리:** 파일 생성, 삭제, 접근 제어
+  4. **입출력(I/O) 관리:** 디바이스 제어, 버퍼링, 인터럽트 처리
+
 - **핵심 구성요소**
-  - **커널(Kernel):** 하드웨어 자원 제어 및 시스템 핵심 기능 담당  
-  - **시스템 콜(System Call):** 사용자 프로그램이 커널 기능을 요청하는 인터페이스  
+  - **커널(Kernel):** 하드웨어 자원 제어 및 시스템 핵심 기능 담당
+  - **시스템 콜(System Call):** 사용자 프로그램이 커널 기능을 요청하는 인터페이스
   - **쉘(Shell):** 사용자와 운영체제 간의 명령 인터페이스 (CLI 또는 GUI)
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-운영체제는 하드웨어와 사용자 사이의 다리 역할을 하는 시스템 소프트웨어입니다.  
-CPU, 메모리, 파일 시스템 등의 자원을 효율적으로 관리하면서,  
-프로그램이 안정적으로 실행될 수 있도록 지원합니다.  
-즉, 컴퓨터의 자원을 ‘관리’하고, 사용자가 프로그램을 ‘실행’할 수 있게 하는 기반 시스템입니다.
+<strong>💬 면접식 답변</strong>
+
+운영체제는 하드웨어와 사용자 사이의 다리 역할을 하는 시스템 소프트웨어입니다.
+CPU, 메모리, 파일 시스템 등의 자원을 효율적으로 관리하면서,
+프로그램이 안정적으로 실행될 수 있도록 지원합니다.
+즉, 컴퓨터의 자원을 '관리'하고, 사용자가 프로그램을 '실행'할 수 있게 하는 기반 시스템입니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>2️⃣ 커널(Kernel)이란 무엇인가요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 커널은 운영체제의 핵심으로, CPU, 메모리, 입출력 장치 등의 하드웨어 자원을 직접 제어하고 관리하는 소프트웨어 계층입니다.
 
 ---
 
-<strong>🔹 특징 및 상세설명</strong>  
+<strong>🔹 특징 및 상세설명</strong>
+
 - **커널의 역할**
-  - **프로세스 관리:** 생성, 스케줄링, 종료  
-  - **메모리 관리:** 페이지 테이블, 주소 변환, 가상 메모리  
-  - **파일 시스템 관리:** 파일 접근 및 권한 관리  
-  - **I/O 제어:** 디바이스 드라이버를 통해 하드웨어를 제어  
+  - **프로세스 관리:** 생성, 스케줄링, 종료
+  - **메모리 관리:** 페이지 테이블, 주소 변환, 가상 메모리
+  - **파일 시스템 관리:** 파일 접근 및 권한 관리
+  - **I/O 제어:** 디바이스 드라이버를 통해 하드웨어를 제어
+
 - **커널의 유형**
-  - **모놀리식 커널:** 모든 기능이 하나의 큰 커널에 통합 (예: Linux)  
+  - **모놀리식 커널:** 모든 기능이 하나의 큰 커널에 통합 (예: Linux)
   - **마이크로커널:** 최소 기능만 커널에 두고 나머지는 사용자 모드에서 실행 (예: macOS, QNX)
-- **실행 권한:** Ring 0 (가장 높은 권한 레벨)에서 실행됨
+
+- **실행 권한**
+  - Ring 0 (가장 높은 권한 레벨)에서 실행됨
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-커널은 운영체제의 핵심 부분으로, CPU, 메모리, 디스크와 같은 하드웨어를 직접 관리하는 역할을 합니다.  
-프로세스와 메모리를 스케줄링하고, I/O 요청을 처리하며, 시스템 자원을 효율적으로 분배하죠.  
-즉, 커널은 운영체제의 ‘심장’이라고 할 수 있습니다.
+<strong>💬 면접식 답변</strong>
+
+커널은 운영체제의 핵심 부분으로, CPU, 메모리, 디스크와 같은 하드웨어를 직접 관리하는 역할을 합니다.
+프로세스와 메모리를 스케줄링하고, I/O 요청을 처리하며, 시스템 자원을 효율적으로 분배하죠.
+즉, 커널은 운영체제의 '심장'이라고 할 수 있습니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>3️⃣ 커널 스케줄링(Kernel Scheduling)이란 무엇인가요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 커널 스케줄링은 CPU를 여러 프로세스나 스레드에 효율적으로 분배하기 위한 정책과 메커니즘을 의미합니다.
 
 ---
 
-<strong>🔹 특징 및 상세설명</strong>  
-- **목적:**  
-  - CPU 효율 극대화  
-  - 응답시간 최소화  
-  - 공정한 자원 분배  
-- **스케줄링 단위:**  
-  - **프로세스 단위** (커널 스레드 포함)  
-  - **스레드 단위** (멀티스레드 환경)  
-- **대표적인 스케줄링 방식:**  
-  - Round Robin, Priority Scheduling, MLFQ  
-- **커널 스케줄러 종류:**  
-  - Windows: Dispatcher  
+<strong>🔹 특징 및 상세설명</strong>
+
+- **목적**
+  - CPU 효율 극대화
+  - 응답시간 최소화
+  - 공정한 자원 분배
+
+- **스케줄링 단위**
+  - **프로세스 단위** (커널 스레드 포함)
+  - **스레드 단위** (멀티스레드 환경)
+
+- **대표적인 스케줄링 방식**
+  - Round Robin, Priority Scheduling, MLFQ
+
+- **커널 스케줄러 종류**
+  - Windows: Dispatcher
   - Linux: Completely Fair Scheduler (CFS)
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-커널 스케줄링은 CPU를 어떤 프로세스나 스레드에 언제, 얼마나 할당할지를 결정하는 메커니즘입니다.  
-운영체제는 스케줄러를 통해 프로세스를 관리하며, 공정성과 효율성을 동시에 달성하려 합니다.  
+<strong>💬 면접식 답변</strong>
+
+커널 스케줄링은 CPU를 어떤 프로세스나 스레드에 언제, 얼마나 할당할지를 결정하는 메커니즘입니다.
+운영체제는 스케줄러를 통해 프로세스를 관리하며, 공정성과 효율성을 동시에 달성하려 합니다.
 예를 들어, Linux는 CFS 스케줄러를 통해 CPU 사용량을 균등하게 분배합니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>4️⃣ 커널은 네트워크 계층 중 어디를 담당하나요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 커널은 OSI 7계층 중 **하위 4계층(1~4계층)**, 즉 물리계층부터 전송계층까지를 주로 담당합니다.
 
 ---
 
-<strong>🔹 특징 및 상세설명</strong>  
-- **물리계층 (1계층):** 디바이스 드라이버를 통해 하드웨어 제어  
-- **데이터링크계층 (2계층):** 네트워크 인터페이스 카드(NIC) 제어  
-- **네트워크계층 (3계층):** IP 라우팅, 패킷 처리 (커널의 네트워크 스택)  
-- **전송계층 (4계층):** TCP/UDP 소켓 통신 처리  
-- **응용계층 (5~7계층)** 은 사용자 모드에서 실행되는 애플리케이션이 담당 (예: HTTP, FTP 등)
+<strong>🔹 특징 및 상세설명</strong>
+
+- **물리계층 (1계층)**
+  - 디바이스 드라이버를 통해 하드웨어 제어
+
+- **데이터링크계층 (2계층)**
+  - 네트워크 인터페이스 카드(NIC) 제어
+
+- **네트워크계층 (3계층)**
+  - IP 라우팅, 패킷 처리 (커널의 네트워크 스택)
+
+- **전송계층 (4계층)**
+  - TCP/UDP 소켓 통신 처리
+
+- **응용계층 (5~7계층)**
+  - 사용자 모드에서 실행되는 애플리케이션이 담당 (예: HTTP, FTP 등)
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-커널은 네트워크 계층 중 하위 4계층, 즉 물리 ~ 전송 계층을 담당합니다.  
-하드웨어 드라이버를 제어하고, IP 라우팅과 TCP/UDP 소켓 통신을 처리하죠.  
+<strong>💬 면접식 답변</strong>
+
+커널은 네트워크 계층 중 하위 4계층, 즉 물리 ~ 전송 계층을 담당합니다.
+하드웨어 드라이버를 제어하고, IP 라우팅과 TCP/UDP 소켓 통신을 처리하죠.
 반면, HTTP 같은 상위 계층은 응용 프로그램에서 구현됩니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>5️⃣ CPU 스케줄링 알고리즘에 대해 설명해주세요.</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 CPU 스케줄링 알고리즘은 여러 프로세스가 CPU를 효율적으로 공유하도록 우선순위와 실행 순서를 결정하는 정책입니다.
 
 ---
 
-<strong>🔹 특징 및 상세설명</strong>  
-- **비선점형(Non-Preemptive):**
+<strong>🔹 특징 및 상세설명</strong>
+
+- **비선점형(Non-Preemptive)**
   - FCFS (First Come First Served)
   - SJF (Shortest Job First)
-- **선점형(Preemptive):**
+
+- **선점형(Preemptive)**
   - RR (Round Robin)
   - SRTF (Shortest Remaining Time First)
   - Priority Scheduling
   - MLFQ (Multi-Level Feedback Queue)
-- **평가 기준:**  
-  평균 대기 시간, 응답 시간, CPU 활용률, 처리율 등.
+
+- **평가 기준**
+  - 평균 대기 시간, 응답 시간, CPU 활용률, 처리율 등
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-CPU 스케줄링은 여러 프로세스가 CPU를 효율적으로 사용할 수 있도록 실행 순서를 결정하는 과정입니다.  
-예를 들어, 짧은 작업을 우선 실행하는 SJF나, 순환 시간을 나누는 Round Robin 방식이 대표적입니다.  
+<strong>💬 면접식 답변</strong>
+
+CPU 스케줄링은 여러 프로세스가 CPU를 효율적으로 사용할 수 있도록 실행 순서를 결정하는 과정입니다.
+예를 들어, 짧은 작업을 우선 실행하는 SJF나, 순환 시간을 나누는 Round Robin 방식이 대표적입니다.
 최근 OS에서는 MLFQ처럼 동적 우선순위를 사용하는 방식이 주로 활용됩니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>6️⃣ 우선순위 기반 Preemptive Scheduling이란?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 우선순위 기반 선점 스케줄링은 **우선순위가 높은 프로세스가 낮은 프로세스보다 먼저 CPU를 차지하는 방식**입니다.
 
 ---
 
-<strong>🔹 특징 및 상세설명</strong>  
-- **기본 원리:**  
-  새로 도착한 프로세스가 기존 실행 중인 프로세스보다 우선순위가 높다면,  
-  CPU를 즉시 선점(Preempt)합니다.  
-- **장점:** 빠른 응답성과 높은 중요도 프로세스 처리 가능  
-- **단점:** 낮은 우선순위 프로세스가 무한정 대기하는 **Starvation(기아 현상)** 발생 가능  
-- **해결법:** Aging (대기 시간이 길수록 우선순위를 점진적으로 상승시킴)
+<strong>🔹 특징 및 상세설명</strong>
+
+- **기본 원리**
+  - 새로 도착한 프로세스가 기존 실행 중인 프로세스보다 우선순위가 높다면, CPU를 즉시 선점(Preempt)합니다
+
+- **장점**
+  - 빠른 응답성과 높은 중요도 프로세스 처리 가능
+
+- **단점**
+  - 낮은 우선순위 프로세스가 무한정 대기하는 **Starvation(기아 현상)** 발생 가능
+
+- **해결법**
+  - Aging (대기 시간이 길수록 우선순위를 점진적으로 상승시킴)
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-우선순위 기반 선점 스케줄링은 높은 우선순위의 프로세스가 CPU를 먼저 사용하는 방식입니다.  
-중요 작업을 빠르게 처리할 수 있지만, 낮은 우선순위 작업이 영원히 실행되지 않는 기아 현상이 발생할 수 있습니다.  
+<strong>💬 면접식 답변</strong>
+
+우선순위 기반 선점 스케줄링은 높은 우선순위의 프로세스가 CPU를 먼저 사용하는 방식입니다.
+중요 작업을 빠르게 처리할 수 있지만, 낮은 우선순위 작업이 영원히 실행되지 않는 기아 현상이 발생할 수 있습니다.
 이를 방지하기 위해 Aging 기법을 적용해 우선순위를 점진적으로 조정합니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>7️⃣ MLFQ(Multi-Level Feedback Queue)란 무엇인가요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 MLFQ는 여러 개의 우선순위 큐를 두고, 프로세스의 행동에 따라 동적으로 우선순위를 조정하는 스케줄링 알고리즘입니다.
 
 ---
 
-<strong>🔹 특징 및 상세설명</strong>  
-- **다단계 큐 구조:** 각 큐는 서로 다른 우선순위와 타임슬라이스(Time Quantum)를 가짐  
-- **피드백 메커니즘:** CPU를 오래 사용하면 하위 큐로 이동, 입출력 위주면 상위 큐로 승격  
-- **장점:** CPU-bound, I/O-bound 프로세스를 모두 공정하게 처리  
-- **단점:** 구현이 복잡하며, 매개변수 조정이 중요함
+<strong>🔹 특징 및 상세설명</strong>
+
+- **다단계 큐 구조**
+  - 각 큐는 서로 다른 우선순위와 타임슬라이스(Time Quantum)를 가짐
+
+- **피드백 메커니즘**
+  - CPU를 오래 사용하면 하위 큐로 이동, 입출력 위주면 상위 큐로 승격
+
+- **장점**
+  - CPU-bound, I/O-bound 프로세스를 모두 공정하게 처리
+
+- **단점**
+  - 구현이 복잡하며, 매개변수 조정이 중요함
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-MLFQ는 여러 개의 큐를 두고 프로세스의 실행 패턴에 따라 우선순위를 동적으로 변경하는 방식입니다.  
-CPU를 오래 사용하는 작업은 하위 큐로, 입출력 중심의 작업은 상위 큐로 이동합니다.  
+<strong>💬 면접식 답변</strong>
+
+MLFQ는 여러 개의 큐를 두고 프로세스의 실행 패턴에 따라 우선순위를 동적으로 변경하는 방식입니다.
+CPU를 오래 사용하는 작업은 하위 큐로, 입출력 중심의 작업은 상위 큐로 이동합니다.
 즉, 시스템의 효율성과 응답성을 모두 확보할 수 있는 스케줄링 방식입니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>8️⃣ User Mode란 무엇인가요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 User Mode는 애플리케이션이 실행되는 권한이 제한된 CPU 모드로, 직접 하드웨어에 접근할 수 없습니다.
 
 ---
 
-<strong>🔹 특징 및 상세설명</strong>  
-- **접근 제한:** 시스템 자원(CPU, 메모리 등)에 직접 접근 불가  
-- **커널 호출:** 시스템 콜을 통해 커널 모드에서만 자원 접근 가능  
-- **예시:** 브라우저, 게임 클라이언트, IDE 등은 User Mode에서 실행됨  
-- **보호 메커니즘:** 잘못된 접근으로부터 시스템 안정성을 보장
+<strong>🔹 특징 및 상세설명</strong>
+
+- **접근 제한**
+  - 시스템 자원(CPU, 메모리 등)에 직접 접근 불가
+
+- **커널 호출**
+  - 시스템 콜을 통해 커널 모드에서만 자원 접근 가능
+
+- **예시**
+  - 브라우저, 게임 클라이언트, IDE 등은 User Mode에서 실행됨
+
+- **보호 메커니즘**
+  - 잘못된 접근으로부터 시스템 안정성을 보장
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-User Mode는 일반 애플리케이션이 실행되는 제한된 권한 모드입니다.  
-프로그램이 직접 하드웨어를 제어하지 못하고, 필요한 경우 커널 모드로 전환하여 자원을 요청합니다.  
+<strong>💬 면접식 답변</strong>
+
+User Mode는 일반 애플리케이션이 실행되는 제한된 권한 모드입니다.
+프로그램이 직접 하드웨어를 제어하지 못하고, 필요한 경우 커널 모드로 전환하여 자원을 요청합니다.
 이 방식 덕분에 시스템 안정성과 보안이 유지됩니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>9️⃣ 32bit와 64bit의 차이는 무엇인가요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 32bit와 64bit는 CPU가 한 번에 처리할 수 있는 데이터 크기(레지스터 폭)와 주소 공간의 크기를 의미합니다.
 
 ---
 
-<strong>🔹 특징 및 상세설명</strong>  
-- **데이터 버스/레지스터 폭 차이:**  
-  - 32bit CPU: 4바이트(=32비트) 단위 연산  
-  - 64bit CPU: 8바이트(=64비트) 단위 연산  
-- **주소 공간 차이:**  
-  - 32bit: 최대 4GB (2³²)  
-  - 64bit: 이론상 16EB (2⁶⁴)  
-- **특징:**  
-  - 64bit는 더 큰 메모리 공간 접근 가능  
+<strong>🔹 특징 및 상세설명</strong>
+
+- **데이터 버스/레지스터 폭 차이**
+  - 32bit CPU: 4바이트(=32비트) 단위 연산
+  - 64bit CPU: 8바이트(=64비트) 단위 연산
+
+- **주소 공간 차이**
+  - 32bit: 최대 4GB (2³²)
+  - 64bit: 이론상 16EB (2⁶⁴)
+
+- **특징**
+  - 64bit는 더 큰 메모리 공간 접근 가능
   - 64bit OS에서는 32bit 프로그램을 호환 모드에서 실행 가능
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-32bit와 64bit의 차이는 CPU가 한 번에 처리할 수 있는 데이터의 폭과 메모리 주소 공간의 차이입니다.  
-32bit 시스템은 최대 4GB 메모리만 인식하지만, 64bit는 훨씬 큰 주소 공간을 다룰 수 있습니다.  
+<strong>💬 면접식 답변</strong>
+
+32bit와 64bit의 차이는 CPU가 한 번에 처리할 수 있는 데이터의 폭과 메모리 주소 공간의 차이입니다.
+32bit 시스템은 최대 4GB 메모리만 인식하지만, 64bit는 훨씬 큰 주소 공간을 다룰 수 있습니다.
 최근 대부분의 OS와 애플리케이션은 64bit 환경을 기본으로 지원합니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>🔟 주소 버스(Address Bus)란 무엇인가요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 주소 버스는 CPU가 접근하려는 메모리나 I/O 장치의 주소를 전달하는 통로입니다.
 
 ---
 
-<strong>🔹 특징 및 상세설명</strong>  
-- **역할:** CPU → 메모리/디바이스로 주소 신호를 전달  
-- **폭(bit 수):** CPU의 주소 버스 폭이 접근 가능한 메모리 크기를 결정  
-  - 예: 32bit 주소 버스 → 4GB 메모리 접근 가능  
-- **데이터 버스(Data Bus):** 실제 데이터를 전달  
-- **제어 버스(Control Bus):** 읽기/쓰기 제어 신호를 전달  
+<strong>🔹 특징 및 상세설명</strong>
+
+- **역할**
+  - CPU → 메모리/디바이스로 주소 신호를 전달
+
+- **폭(bit 수)**
+  - CPU의 주소 버스 폭이 접근 가능한 메모리 크기를 결정
+  - 예: 32bit 주소 버스 → 4GB 메모리 접근 가능
+
+- **데이터 버스(Data Bus)**
+  - 실제 데이터를 전달
+
+- **제어 버스(Control Bus)**
+  - 읽기/쓰기 제어 신호를 전달
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-주소 버스는 CPU가 메모리나 I/O 장치에 접근하기 위해 주소를 전달하는 통로입니다.  
-예를 들어 32비트 CPU는 32개의 주소선을 통해 2³², 즉 4GB의 메모리 공간에 접근할 수 있습니다.  
+<strong>💬 면접식 답변</strong>
+
+주소 버스는 CPU가 메모리나 I/O 장치에 접근하기 위해 주소를 전달하는 통로입니다.
+예를 들어 32비트 CPU는 32개의 주소선을 통해 2³², 즉 4GB의 메모리 공간에 접근할 수 있습니다.
 이 버스 구조는 CPU, 메모리, 주변장치 간 통신의 핵심 요소입니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>11️⃣ System Call이란 무엇인가요?</strong></summary>
 
-<strong>🧠 핵심 요약</strong>  
+<strong>🧠 핵심 요약</strong>
+
 System Call은 사용자 프로그램이 운영체제 커널의 기능(CPU, 메모리, 파일 등)에 접근하기 위해 호출하는 인터페이스입니다.
 
 ---
 
-<strong>🔹 특징 및 상세설명</strong>  
-- **역할:**  
-  사용자 모드 프로그램이 직접 하드웨어를 제어할 수 없기 때문에,  
-  커널 기능을 요청할 때 System Call을 통해 간접적으로 접근합니다.  
-- **예시:**  
-  - 파일: `open()`, `read()`, `write()`  
-  - 프로세스: `fork()`, `exec()`, `exit()`  
-  - 메모리: `mmap()`, `brk()`  
-  - 네트워크: `socket()`, `connect()`  
-- **동작 과정:**  
-  1. 애플리케이션이 System Call 호출  
-  2. CPU가 **Trap 명령어**를 통해 커널 모드로 전환  
-  3. 커널이 요청된 작업 수행 후 결과 반환  
+<strong>🔹 특징 및 상세설명</strong>
+
+- **역할**
+  - 사용자 모드 프로그램이 직접 하드웨어를 제어할 수 없기 때문에, 커널 기능을 요청할 때 System Call을 통해 간접적으로 접근합니다
+
+- **예시**
+  - 파일: `open()`, `read()`, `write()`
+  - 프로세스: `fork()`, `exec()`, `exit()`
+  - 메모리: `mmap()`, `brk()`
+  - 네트워크: `socket()`, `connect()`
+
+- **동작 과정**
+  1. 애플리케이션이 System Call 호출
+  2. CPU가 **Trap 명령어**를 통해 커널 모드로 전환
+  3. 커널이 요청된 작업 수행 후 결과 반환
   4. 사용자 모드로 복귀
 
 ---
 
-<strong>💬 면접식 답변</strong>  
-System Call은 사용자 프로그램이 커널 기능을 요청하는 인터페이스입니다.  
-예를 들어, 파일을 열거나 프로세스를 생성할 때 직접 하드웨어에 접근하지 않고 System Call을 통해 커널이 대신 수행합니다.  
+<strong>💬 면접식 답변</strong>
+
+System Call은 사용자 프로그램이 커널 기능을 요청하는 인터페이스입니다.
+예를 들어, 파일을 열거나 프로세스를 생성할 때 직접 하드웨어에 접근하지 않고 System Call을 통해 커널이 대신 수행합니다.
 즉, 커널과 사용자 프로그램 간의 통신 창구 역할을 하는 중요한 메커니즘입니다.
 
 </details>
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>12️⃣ Interrupt(인터럽트)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -364,7 +444,7 @@ System Call은 사용자 프로그램이 커널 기능을 요청하는 인터페
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>13️⃣ Interrupt Vector Table(IVT)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -393,7 +473,7 @@ CPU는 인터럽트가 발생하면 IVT에서 해당 ISR의 주소를 찾아 즉
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>14️⃣ ISR(Interrupt Service Routine)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -425,7 +505,7 @@ CPU는 ISR 수행 후 원래 실행 중이던 프로세스로 복귀합니다.
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>15️⃣ IRET 명령어란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -455,7 +535,7 @@ ISR이 완료되면 IRET이 스택에 저장된 프로그램 카운터와 플래
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>16️⃣ Synchronous(동기)와 Asynchronous(비동기)의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -483,7 +563,7 @@ ISR이 완료되면 IRET이 스택에 저장된 프로그램 카운터와 플래
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>17️⃣ Coroutine과 비동기의 차이는 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -514,7 +594,7 @@ Coroutine은 하나의 스레드에서 실행 흐름을 잠시 멈추고 나중�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>18️⃣ Critical Section(임계구역)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -543,7 +623,7 @@ Critical Section은 여러 스레드가 동시에 접근하면 문제가 발생�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>19️⃣ Semaphore란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -572,7 +652,7 @@ S값이 0이면 다른 스레드는 대기하고, 자원이 반환되면 다시 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>20️⃣ Mutex란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -602,7 +682,7 @@ Mutex는 한 번에 하나의 스레드만 공유 자원에 접근하도록 하�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>21️⃣ 프로세스(Process)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -634,7 +714,7 @@ Mutex는 한 번에 하나의 스레드만 공유 자원에 접근하도록 하�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>22️⃣ 스레드(Thread)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -663,7 +743,7 @@ Mutex는 한 번에 하나의 스레드만 공유 자원에 접근하도록 하�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>23️⃣ PCB(Process Control Block)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -694,7 +774,7 @@ CPU 스위칭 시 PCB를 이용해 이전 상태를 저장하고, 다음 프로�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>24️⃣ 프로세스의 상태(State)는 어떻게 나뉘나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -725,7 +805,7 @@ CPU 스위칭 시 PCB를 이용해 이전 상태를 저장하고, 다음 프로�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>25️⃣ 프로세스 메모리 구조는 어떻게 되어있나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -756,7 +836,7 @@ CPU 스위칭 시 PCB를 이용해 이전 상태를 저장하고, 다음 프로�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>26️⃣ Stack 메모리가 높은 주소에서 낮은 주소로 확장되는 이유는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -784,7 +864,7 @@ CPU 스위칭 시 PCB를 이용해 이전 상태를 저장하고, 다음 프로�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>27️⃣ Heap 메모리 관리에서 주의해야 할 점은 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -815,7 +895,7 @@ Heap은 동적으로 메모리를 관리하기 때문에 누수나 단편화가 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>28️⃣ 내부 단편화(Internal Fragmentation)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -844,7 +924,7 @@ Heap은 동적으로 메모리를 관리하기 때문에 누수나 단편화가 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>29️⃣ 외부 단편화(External Fragmentation)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -872,7 +952,7 @@ Heap은 동적으로 메모리를 관리하기 때문에 누수나 단편화가 
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>30️⃣ Memory Pool(메모리 풀)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -903,7 +983,7 @@ Memory Pool은 작은 객체를 반복적으로 할당할 때,
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>31️⃣ Virtual Memory(가상 메모리)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -935,7 +1015,7 @@ MMU가 주소 변환을 담당하고, 필요할 때만 페이지를 로드합니
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>32️⃣ Paging(페이징)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -961,7 +1041,7 @@ MMU가 주소 변환을 담당하고, 필요할 때만 페이지를 로드합니
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>33️⃣ Page Table이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -992,7 +1072,7 @@ MMU가 주소 변환을 담당하고, 필요할 때만 페이지를 로드합니
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>34️⃣ Page Fault란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1022,7 +1102,7 @@ MMU가 주소 변환을 담당하고, 필요할 때만 페이지를 로드합니
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>35️⃣ Page Replacement Algorithm이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1050,7 +1130,7 @@ MMU가 주소 변환을 담당하고, 필요할 때만 페이지를 로드합니
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>36️⃣ TLB(Translation Lookaside Buffer)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1077,7 +1157,7 @@ TLB는 페이지 테이블의 일부를 캐싱하여 주소 변환 속도를 높
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>37️⃣ Swapping이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1105,7 +1185,7 @@ Swapping은 실행 중인 프로세스를 디스크로 내보내거나 다시 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>38️⃣ Thrashing(스래싱)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1137,7 +1217,7 @@ Thrashing은 페이지 교체가 너무 자주 발생해 CPU가 실제 작업보
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>39️⃣ MMU(Memory Management Unit)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1167,7 +1247,7 @@ MMU는 CPU가 사용하는 가상 주소를 실제 물리 주소로 변환하는
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>40️⃣ Working Set이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1197,7 +1277,7 @@ Working Set은 프로세스가 일정 시간 동안 실제로 사용하는 페�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>41️⃣ I/O System(입출력 시스템)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1227,7 +1307,7 @@ Working Set은 프로세스가 일정 시간 동안 실제로 사용하는 페�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>42️⃣ Interrupt(인터럽트)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1257,7 +1337,7 @@ Working Set은 프로세스가 일정 시간 동안 실제로 사용하는 페�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>43️⃣ DMA(Direct Memory Access)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1285,7 +1365,7 @@ CPU는 전송 명령만 내리고, 나머지는 DMA 컨트롤러가 처리하여
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>44️⃣ Buffering(버퍼링)과 Spooling(스풀링)의 차이는 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1314,7 +1394,7 @@ Spooling은 여러 작업의 출력을 디스크에 임시 저장해 순차적�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>45️⃣ Synchronous(동기)와 Asynchronous(비동기)의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1345,7 +1425,7 @@ Unity의 Coroutine이나 C#의 async/await는 비동기 처리를 대표하는 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>46️⃣ Deadlock(교착 상태)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1375,7 +1455,7 @@ Unity의 Coroutine이나 C#의 async/await는 비동기 처리를 대표하는 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>47️⃣ Concurrency(동시성)과 Parallelism(병렬성)의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1406,7 +1486,7 @@ Unity의 Coroutine이나 C#의 async/await는 비동기 처리를 대표하는 �
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>48️⃣ CPU-bound와 I/O-bound 작업의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1436,7 +1516,7 @@ I/O-bound는 입출력 대기 시간이 많아 디스크나 네트워크 성능�
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>49️⃣ Disk Scheduling Algorithm에는 어떤 것들이 있나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
@@ -1462,7 +1542,7 @@ SSTF와 SCAN이 가장 자주 사용되며, C-LOOK은 고성능 디스크 환경
 
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>50️⃣ RAID 구조란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
