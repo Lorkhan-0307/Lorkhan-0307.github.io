@@ -1,535 +1,1488 @@
 ---
 layout: post
-title: "기술면접 대비 CS 공부 - 02"
-date: 2025-10-04 16:00:00 +0900
+title: "기술면접 대비 CS 공부 - 03"
+date: 2025-10-05 16:00:00 +0900
 categories: [Tech Interview, Study Plan]
 tags: [c++, c-sharp, computer-science, algorithm, data-structure, operating-system, network, database, design-pattern, unity, unreal]
-slug: csstudyforfinalparttwo
+slug: csstudyforfinalpartfour
 ---
 
-# 면접 대비 사전 QnA 정리 - CPP
+# 면접 대비 사전 QnA 정리 - OS
 
 
-# 🔷 C++ 면접 예상 질문 50선 – 모범답변 (확장본 1/3: 1–20)
+# 🔷 OS 면접 예상 질문 50선 – 모범답변
 
 ---
 
-## 언어 기초 & 메모리
-
 <details>
-<summary><strong>1) 스택과 힙 메모리의 차이를 설명해주세요. (꼬리: 스택 오버플로우/힙 단편화)</strong></summary>
-<strong>A.</strong> <strong>스택</strong>은 함수 호출 시 콜 프레임이 LIFO로 쌓였다가 함수가 끝나는 순간 자동으로 회수되는 메모리 영역입니다. 지역 변수와 반환 주소, 일부 레지스터 보관 등 아주 짧은 수명의 데이터에 최적화되어 있고, 증감이 단순한 포인터 이동만으로 끝나므로 <strong>매우 빠릅니다</strong>. 다만 OS가 할당한 <strong>스택 크기 한계</strong>(수 MB 수준)를 넘으면 <strong>스택 오버플로우</strong>가 발생합니다. 재귀 깊이가 비정상적으로 깊거나, 큰 배열을 지역에 잡을 때 자주 문제가 됩니다.  
-<strong>힙</strong>은 <strong>동적 할당</strong>에 쓰이며, 런타임에 필요 용량만큼 자유롭게 요청/반납할 수 있습니다. 유연하지만, 내부적으로는 <strong>프리 리스트 관리/병합/분할</strong> 같은 부가 작업이 필요해서 오버헤드가 있고, 다양한 크기의 블록이 들락날락하면 <strong>외부 단편화</strong>가 생겨 큰 연속 블록이 부족한 상황이 발생할 수 있습니다. 이를 완화하기 위해 <strong>풀 알로케이터/슬랩</strong> 같은 도메인 맞춤 할당기를 사용하거나, 큰 객체를 묶어 배치하고 재사용(Object Pool)하는 전략을 병행합니다. 결과적으로 <strong>짧고 예측 가능한 수명</strong>은 스택, <strong>가변 용량·가변 수명</strong>은 힙이 담당한다고 정리합니다.
-</details>
+<summary><strong>1️⃣ 운영체제란 무엇인가요?</strong></summary>
 
+<strong>🧠 핵심 요약</strong>  
+운영체제(Operating System, OS)는 사용자와 하드웨어 사이의 중재자로서,  
+시스템 자원을 효율적으로 관리하고 프로그램이 실행될 수 있도록 환경을 제공하는 시스템 소프트웨어입니다.
+
 ---
 
-<details>
-<summary><strong>2) RAII란 무엇인가요? (꼬리: 스마트 포인터와의 관계)</strong></summary>
-<strong>A.</strong> <strong>RAII(Resource Acquisition Is Initialization)</strong>는 “자원 획득 = 객체 초기화”라는 철학으로, <strong>생성자에서 자원을 획득</strong>하고 <strong>소멸자에서 반드시 반납</strong>하도록 해 예외·조기 반환이 있어도 누수가 없게 만드는 C++의 핵심 관용구입니다. 파일 핸들, 소켓, 뮤텍스 락, 그래픽스 핸들, 메모리 등 모든 <strong>유한 자원</strong>에 적용할 수 있고, 스코프를 벗어나는 순간 자동 정리가 보장됩니다.  
-스마트 포인터는 RAII의 대표 사례입니다. <strong>unique_ptr</strong>는 소유권을 단독 보유하며 스코프 종료 시 <strong>delete</strong>를 자동 호출해 누수를 차단하고, <strong>shared_ptr</strong>는 참조 카운트로 여러 개가 소유를 공유하되 마지막 포인터가 파괴될 때 자원을 해제합니다. <strong>weak_ptr</strong>는 순환 참조를 끊는 비소유 링크로, RAII가 자원 수명과 소유권을 <strong>타입 시스템</strong>으로 안전하게 모델링하게 해줍니다. 락도 <strong>lock_guard/scoped_lock</strong>로 감싸면 예외가 나도 자동 해제가 보장됩니다.
-</details>
+<strong>🔹 특징 및 상세설명</strong>  
+- **주요 역할**
+  1. **프로세스 관리:** 프로그램 실행, 스케줄링, 동기화, 교착상태 관리  
+  2. **메모리 관리:** 가상 메모리, 페이징, 세그멘테이션  
+  3. **파일 시스템 관리:** 파일 생성, 삭제, 접근 제어  
+  4. **입출력(I/O) 관리:** 디바이스 제어, 버퍼링, 인터럽트 처리  
+- **핵심 구성요소**
+  - **커널(Kernel):** 하드웨어 자원 제어 및 시스템 핵심 기능 담당  
+  - **시스템 콜(System Call):** 사용자 프로그램이 커널 기능을 요청하는 인터페이스  
+  - **쉘(Shell):** 사용자와 운영체제 간의 명령 인터페이스 (CLI 또는 GUI)
 
 ---
 
-<details>
-<summary><strong>3) 포인터와 참조의 차이는? (꼬리: nullptr vs NULL)</strong></summary>
-<strong>A.</strong> <strong>포인터</strong>는 메모리 주소를 담는 <strong>값 객체</strong>로 재지정이 가능하고 <strong>null</strong>이 될 수 있습니다. 산술 연산과 배열 인덱싱도 허용되어 강력하지만, 잘못 쓰면 댕글링/더블 딜리트 같은 치명적 버그를 초래할 수 있습니다. <strong>참조</strong>는 “다른 객체의 또 다른 이름(alias)”로 <strong>반드시 유효한 객체에 바인딩</strong>되어야 하고 일단 바인딩되면 다른 대상을 가리키도록 바꿀 수 없습니다(재바인딩 불가). 문법적으로 편하고 최적화에도 유리해, <strong>API 매개변수</strong>에서 “반드시 있어야 하는 인자” 표현에 적합합니다.  
-<code>nullptr</code>는 C++11에 도입된 <strong>타입 안전한 널 리터럴</strong>입니다. 오버로드 해석에서 <code>0</code> 또는 <code>NULL</code>(대개 <code>0</code> 매크로)보다 모호성이 적고, <code>void*</code>로의 암시적 변환도 의도적으로 제한됩니다. 면접에선 “포인터는 선택/재지정/널 가능, 참조는 필수/재지정 불가/널 불가”로 간결히 대비하면 좋습니다.
+<strong>💬 면접식 답변</strong>  
+운영체제는 하드웨어와 사용자 사이의 다리 역할을 하는 시스템 소프트웨어입니다.  
+CPU, 메모리, 파일 시스템 등의 자원을 효율적으로 관리하면서,  
+프로그램이 안정적으로 실행될 수 있도록 지원합니다.  
+즉, 컴퓨터의 자원을 ‘관리’하고, 사용자가 프로그램을 ‘실행’할 수 있게 하는 기반 시스템입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>4) 얕은 복사 vs 깊은 복사 (꼬리: 복사/대입 구현 주의점)</strong></summary>
-<strong>A.</strong> <strong>얕은 복사</strong>는 포인터 값만 복제해 <strong>리소스를 공유</strong>하는 형태(두 객체가 같은 버퍼를 가리킴)이고, <strong>깊은 복사</strong>는 버퍼 자체를 새로 할당하고 내용을 복제해 <strong>독립 소유</strong>를 보장합니다. 사용자 정의 리소스를 가진 타입은 <strong>Rule of 5</strong>(복사/이동 생성자, 복사/이동 대입, 소멸자)를 염두에 두고 일관되게 소유권 의미를 구현해야 합니다. 예외 안전성은 <strong>복사 후 스왑</strong> 관용구로 강화할 수 있고, 대입 연산에서는 <strong>자기 대입 방지</strong>, <strong>리소스 릭 없이 강한 보장</strong>(실패 시 원자성 유지)을 신경 써야 합니다. 큰 버퍼는 카피-온-라이트 또는 <strong>참조 카운팅</strong>으로 비용을 완화할 수 있지만 멀티스레딩과의 상호작용을 면밀히 설계해야 합니다.
-</details>
+<summary><strong>2️⃣ 커널(Kernel)이란 무엇인가요?</strong></summary>
 
+<strong>🧠 핵심 요약</strong>  
+커널은 운영체제의 핵심으로, CPU, 메모리, 입출력 장치 등의 하드웨어 자원을 직접 제어하고 관리하는 소프트웨어 계층입니다.
+
 ---
 
-<details>
-<summary><strong>5) const의 쓰임새 (꼬리: const 멤버함수 + mutable)</strong></summary>
-<strong>A.</strong> <strong>const</strong>는 “불변 계약”을 타입에 새기기 위한 키워드입니다. <strong>객체 자체</strong>를 const로 만들면 모든 <strong>비-<code>mutable</code></strong> 멤버를 바꿀 수 없고, <strong>포인터</strong>에는 “포인터가 가리키는 대상이 불변인지, 포인터 자체가 불변인지”를 각각 표시할 수 있습니다. <strong>const 멤버 함수</strong>는 “논리적으로 상태를 바꾸지 않는다”라는 API 계약을 표현하고, 호출자는 해당 함수가 외부 관찰 가능한 상태를 변형하지 않음을 신뢰할 수 있습니다. <strong>mutable</strong>은 캐시/통계 카운터처럼 <strong>관찰 가능한 불변성</strong>을 깨지 않는 내부 상태를 예외적으로 변경 가능케 합니다. const는 최적화 관점에서도 유리해, 컴파일러가 <strong>알리아싱 가정</strong>을 안전히 할 수 있도록 돕습니다.
-</details>
+<strong>🔹 특징 및 상세설명</strong>  
+- **커널의 역할**
+  - **프로세스 관리:** 생성, 스케줄링, 종료  
+  - **메모리 관리:** 페이지 테이블, 주소 변환, 가상 메모리  
+  - **파일 시스템 관리:** 파일 접근 및 권한 관리  
+  - **I/O 제어:** 디바이스 드라이버를 통해 하드웨어를 제어  
+- **커널의 유형**
+  - **모놀리식 커널:** 모든 기능이 하나의 큰 커널에 통합 (예: Linux)  
+  - **마이크로커널:** 최소 기능만 커널에 두고 나머지는 사용자 모드에서 실행 (예: macOS, QNX)
+- **실행 권한:** Ring 0 (가장 높은 권한 레벨)에서 실행됨
 
 ---
 
-<details>
-<summary><strong>6) static 의미 (꼬리: 초기화 시점)</strong></summary>
-<strong>A.</strong> <strong>static 지역 변수</strong>는 함수 호출 간 값을 유지하는 정적 수명이고, <strong>네임스페이스/전역의 static</strong>은 내부 연결(linkage)을 만들어 <strong>번역 단위</strong>에 심볼을 숨깁니다. <strong>클래스 정적 멤버</strong>는 모든 인스턴스가 공유하는 <strong>한 벌의 저장소</strong>를 의미합니다. 초기화는 <strong>정적 초기화</strong>(제로/상수) → <strong>동적 초기화</strong>(런타임 코드 필요)로 나뉘며, C++11 이후 <strong>함수 지역 정적</strong>은 <strong>스레드 안전한 지연 초기화</strong>가 보장됩니다(“마이어스 싱글톤” 구현 근거). 초기화 순서 의존성 문제를 피하려면 전역 정적 대신 함수 지역 정적·모듈 초기화 패턴을 권장합니다.
+<strong>💬 면접식 답변</strong>  
+커널은 운영체제의 핵심 부분으로, CPU, 메모리, 디스크와 같은 하드웨어를 직접 관리하는 역할을 합니다.  
+프로세스와 메모리를 스케줄링하고, I/O 요청을 처리하며, 시스템 자원을 효율적으로 분배하죠.  
+즉, 커널은 운영체제의 ‘심장’이라고 할 수 있습니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>7) inline 함수 (꼬리: 컴파일러 최적화와의 관계)</strong></summary>
-<strong>A.</strong> <strong>inline</strong>의 역사적 의미는 “중복 정의 허용(ODR 해결)” + “치환 힌트”입니다. 오늘날 치환 여부는 <strong>컴파일러/링커의 결정</strong>이며, PGO/LTO 같은 최적화가 더 큰 영향력을 가집니다. 인라인은 <strong>호출 오버헤드 제거</strong>·<strong>레지스터 할당 최적화</strong> 같은 이점이 있지만, <strong>코드 부피 증가</strong>로 아이캐시 압박이 생길 수 있습니다. 일반적으로 아주 작은 단순 접근자/래퍼, 빈번 호출 경로에만 신중히 적용하고, 헤더 정의가 필요한 템플릿/헤더 온리 유틸리티에서는 자연스럽게 inline 취급됩니다.
-</details>
+<summary><strong>3️⃣ 커널 스케줄링(Kernel Scheduling)이란 무엇인가요?</strong></summary>
 
+<strong>🧠 핵심 요약</strong>  
+커널 스케줄링은 CPU를 여러 프로세스나 스레드에 효율적으로 분배하기 위한 정책과 메커니즘을 의미합니다.
+
 ---
 
-<details>
-<summary><strong>8) 메모리 alignment/padding (꼬리: struct 낭비 줄이기)</strong></summary>
-<strong>A.</strong> CPU는 특정 경계 정렬에서 데이터를 읽을 때 가장 효율적입니다. 구조체는 필드의 정렬 요건을 만족하기 위해 <strong>패딩</strong>을 삽입하고, 마지막에도 구조체 전체 정렬에 맞게 패딩이 붙습니다. 메모리 낭비를 줄이려면 <strong>큰 타입부터 배치</strong>하고, 동일한 크기의 필드를 묶으며, 필요 시 <strong>패킹 지시자</strong>를 쓰되(예: <code>#pragma pack</code>) <strong>잘못 정렬된 접근</strong>이 성능 저하나 하드웨어 예외를 유발할 수 있음을 이해해야 합니다. 멀티스레딩에서는 <strong>캐시라인 정렬</strong>로 false sharing을 피하는 것도 중요합니다.
-</details>
+<strong>🔹 특징 및 상세설명</strong>  
+- **목적:**  
+  - CPU 효율 극대화  
+  - 응답시간 최소화  
+  - 공정한 자원 분배  
+- **스케줄링 단위:**  
+  - **프로세스 단위** (커널 스레드 포함)  
+  - **스레드 단위** (멀티스레드 환경)  
+- **대표적인 스케줄링 방식:**  
+  - Round Robin, Priority Scheduling, MLFQ  
+- **커널 스케줄러 종류:**  
+  - Windows: Dispatcher  
+  - Linux: Completely Fair Scheduler (CFS)
 
 ---
 
-<details>
-<summary><strong>9) volatile 역할 (꼬리: 멀티스레드 동기화 가능?)</strong></summary>
-<strong>A.</strong> <strong>volatile</strong>은 컴파일러 최적화에 “이 위치의 값은 외부 요인으로 바뀔 수 있으니 매번 메모리에서 읽어라”를 지시합니다(메모리 매핑 I/O 등). 하지만 <strong>재정렬 방지/가시성/원자성</strong>을 보장하지 않으므로 <strong>멀티스레드 동기화</strong>에는 적합하지 않습니다. 스레드 간 통신에는 <strong>std::atomic</strong>(필요 시 메모리 오더 지정)과 <strong>뮤텍스/조건변수</strong>를 사용해야 합니다. 가끔 임베디드에서 하드웨어 레지스터 접근에 한정해 의미가 있습니다.
+<strong>💬 면접식 답변</strong>  
+커널 스케줄링은 CPU를 어떤 프로세스나 스레드에 언제, 얼마나 할당할지를 결정하는 메커니즘입니다.  
+운영체제는 스케줄러를 통해 프로세스를 관리하며, 공정성과 효율성을 동시에 달성하려 합니다.  
+예를 들어, Linux는 CFS 스케줄러를 통해 CPU 사용량을 균등하게 분배합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>10) new/delete vs malloc/free (꼬리: new가 malloc을 호출?)</strong></summary>
-<strong>A.</strong> <strong>new</strong>는 <strong>operator new</strong>를 통해 메모리를 확보하고 <strong>생성자</strong>를 호출합니다. 실패 시 기본적으로 <strong>예외</strong>(<code>std::bad_alloc</code>)를 던집니다. <strong>malloc</strong>은 <strong>바이트 버퍼만</strong> 반환하며 생성자 호출이 없고, 실패 시 <strong>nullptr</strong>을 반환합니다. 구현에 따라 <strong>operator new</strong>가 내부적으로 <strong>malloc</strong>을 사용할 수 있지만, 의미론은 분명히 다릅니다. 커스텀 <strong>operator new/delete</strong>로 풀/아레나 할당기를 주입하는 패턴은 고성능 시스템에서 흔합니다.
-</details>
+<summary><strong>4️⃣ 커널은 네트워크 계층 중 어디를 담당하나요?</strong></summary>
 
+<strong>🧠 핵심 요약</strong>  
+커널은 OSI 7계층 중 **하위 4계층(1~4계층)**, 즉 물리계층부터 전송계층까지를 주로 담당합니다.
+
 ---
 
-## 객체지향 & 다형성
+<strong>🔹 특징 및 상세설명</strong>  
+- **물리계층 (1계층):** 디바이스 드라이버를 통해 하드웨어 제어  
+- **데이터링크계층 (2계층):** 네트워크 인터페이스 카드(NIC) 제어  
+- **네트워크계층 (3계층):** IP 라우팅, 패킷 처리 (커널의 네트워크 스택)  
+- **전송계층 (4계층):** TCP/UDP 소켓 통신 처리  
+- **응용계층 (5~7계층)** 은 사용자 모드에서 실행되는 애플리케이션이 담당 (예: HTTP, FTP 등)
 
-<details>
-<summary><strong>11) OOP 핵심 개념 (꼬리: 캡슐화 vs 추상화)</strong></summary>
-<strong>A.</strong> OOP의 핵심은 <strong>캡슐화</strong>(데이터 은닉과 경계 설정), <strong>상속</strong>(행동 재사용), <strong>다형성</strong>(공통 인터페이스로 다른 구현 호출), <strong>추상화</strong>(본질만 노출)입니다. <strong>캡슐화</strong>는 “변경의 파급을 경계 내부로 가두는 일”이고, <strong>추상화</strong>는 “불필요한 세부를 가려 사용자를 단순화”합니다. 예를 들어 렌더링 파이프라인에서 상위 계층은 <strong>IRenderer</strong> 인터페이스만 의존하고, DirectX/Metal/Vulkan 구현은 <strong>교체 가능</strong>하도록 숨겨집니다. 이는 테스트가 쉬워지고, 교체/확장에 강한 구조를 만듭니다.
+---
+
+<strong>💬 면접식 답변</strong>  
+커널은 네트워크 계층 중 하위 4계층, 즉 물리 ~ 전송 계층을 담당합니다.  
+하드웨어 드라이버를 제어하고, IP 라우팅과 TCP/UDP 소켓 통신을 처리하죠.  
+반면, HTTP 같은 상위 계층은 응용 프로그램에서 구현됩니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>12) 가상 함수 동작 (꼬리: vtable은 객체/클래스 어디?)</strong></summary>
-<strong>A.</strong> 가상 함수가 하나라도 있는 클래스의 각 객체는 <strong>vptr</strong>을 가집니다. vptr은 <strong>클래스 단위</strong>로 존재하는 <strong>vtable</strong>을 가리키고, vtable 안에는 가상 함수들의 <strong>실제 구현 주소</strong>가 순서대로 들어 있습니다. 호출 시 “객체 → vptr → vtable → 함수 포인터” 순으로 <strong>런타임 디스패치</strong>가 일어나 다형성이 실현됩니다. vtable은 클래스별로 1개(템플릿/가상 상속 등으로 변형 가능)이고, 객체마다 생기는 추가 부담은 <strong>포인터 하나</strong> 수준입니다. 이 오버헤드 대비 얻는 설계 유연성은 대개 매우 큽니다.
-</details>
+<summary><strong>5️⃣ CPU 스케줄링 알고리즘에 대해 설명해주세요.</strong></summary>
 
+<strong>🧠 핵심 요약</strong>  
+CPU 스케줄링 알고리즘은 여러 프로세스가 CPU를 효율적으로 공유하도록 우선순위와 실행 순서를 결정하는 정책입니다.
+
 ---
 
-<details>
-<summary><strong>13) 순수 가상함수/추상 클래스 (꼬리: C++ 인터페이스 구현)</strong></summary>
-<strong>A.</strong> <strong>순수 가상 함수</strong>(<code>=0</code>)는 구현이 없는 계약 메서드입니다. 이를 하나라도 가진 클래스는 <strong>추상 클래스</strong>가 되어 인스턴스화할 수 없고, 파생 클래스가 반드시 구현해야 합니다. C++에는 <strong>interface</strong> 키워드는 없지만, “<strong>모든 멤버가 순수 가상</strong>이고 <strong>가상 소멸자</strong>만 가진 베이스”를 관례적으로 인터페이스로 사용합니다. 이렇게 하면 상위는 <strong>무엇을</strong>만 의존하고, 하위는 <strong>어떻게</strong>를 자유롭게 바꿀 수 있어 개방-폐쇄 원칙을 실천하기 쉽습니다.
-</details>
+<strong>🔹 특징 및 상세설명</strong>  
+- **비선점형(Non-Preemptive):**
+  - FCFS (First Come First Served)
+  - SJF (Shortest Job First)
+- **선점형(Preemptive):**
+  - RR (Round Robin)
+  - SRTF (Shortest Remaining Time First)
+  - Priority Scheduling
+  - MLFQ (Multi-Level Feedback Queue)
+- **평가 기준:**  
+  평균 대기 시간, 응답 시간, CPU 활용률, 처리율 등.
 
 ---
 
-<details>
-<summary><strong>14) 다형성 (꼬리: 오버로딩 vs 오버라이딩)</strong></summary>
-<strong>A.</strong> 다형성은 <strong>같은 호출</strong>이 <strong>다른 동작</strong>을 수행하게 하는 능력입니다. C++에서 정적 다형성은 템플릿/오버로딩으로, 동적 다형성은 가상 함수 <strong>오버라이딩</strong>으로 구현합니다. <strong>오버로딩</strong>은 같은 이름의 함수를 <strong>서명</strong>으로 구분하며 <strong>컴파일 타임</strong>에 결정됩니다. <strong>오버라이딩</strong>은 베이스의 가상 함수를 파생이 재정의하고 <strong>런타임</strong>에 vtable을 통해 디스패치됩니다. 유지보수와 테스트 관점에서는 동적 다형성이 <strong>확장성</strong>을 크게 높여주며, 정적 다형성은 <strong>제로 오버헤드</strong>로 고성능 제네릭을 가능케 합니다.
+<strong>💬 면접식 답변</strong>  
+CPU 스케줄링은 여러 프로세스가 CPU를 효율적으로 사용할 수 있도록 실행 순서를 결정하는 과정입니다.  
+예를 들어, 짧은 작업을 우선 실행하는 SJF나, 순환 시간을 나누는 Round Robin 방식이 대표적입니다.  
+최근 OS에서는 MLFQ처럼 동적 우선순위를 사용하는 방식이 주로 활용됩니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>15) 템플릿 목적 (꼬리: 인스턴스화 시점)</strong></summary>
-<strong>A.</strong> 템플릿은 <strong>타입/값을 매개변수화</strong>해 코드 중복 없이 범용 알고리즘/컨테이너를 제공합니다. 구체 타입이 실제로 사용되는 시점에 <strong>인스턴스화</strong>가 일어나며, 컴파일러는 각 조합에 대해 코드를 생성합니다. 과도한 조합은 <strong>코드 부풀림</strong>과 빌드 시간 증가를 유발하므로, 인터페이스를 간결히 하고 필요시 <strong>개념(Concepts)</strong>과 <strong>if constexpr</strong>로 제약을 명확히 하는 것이 좋습니다.
-</details>
+<summary><strong>6️⃣ 우선순위 기반 Preemptive Scheduling이란?</strong></summary>
 
+<strong>🧠 핵심 요약</strong>  
+우선순위 기반 선점 스케줄링은 **우선순위가 높은 프로세스가 낮은 프로세스보다 먼저 CPU를 차지하는 방식**입니다.
+
 ---
 
-<details>
-<summary><strong>16) 다중 상속 장단 (꼬리: 다이아몬드 문제 해결)</strong></summary>
-<strong>A.</strong> 다중 상속은 여러 인터페이스를 동시에 구현할 수 있어 표현력이 높지만, <strong>모호성</strong>(동일 이름 충돌), <strong>다이아몬드 상속</strong>(중복 베이스) 같은 복잡성을 동반합니다. 다이아몬드 문제는 베이스를 <strong>virtual 상속</strong>으로 공유해 단 한 번만 존재하게 함으로써 해결합니다. 그래도 설계 복잡도와 디버깅 비용이 커지므로, 대부분의 경우 <strong>합성</strong>(has-a)과 인터페이스 상속의 조합이 더 단순하고 안전합니다.
-</details>
+<strong>🔹 특징 및 상세설명</strong>  
+- **기본 원리:**  
+  새로 도착한 프로세스가 기존 실행 중인 프로세스보다 우선순위가 높다면,  
+  CPU를 즉시 선점(Preempt)합니다.  
+- **장점:** 빠른 응답성과 높은 중요도 프로세스 처리 가능  
+- **단점:** 낮은 우선순위 프로세스가 무한정 대기하는 **Starvation(기아 현상)** 발생 가능  
+- **해결법:** Aging (대기 시간이 길수록 우선순위를 점진적으로 상승시킴)
 
 ---
 
-<details>
-<summary><strong>17) virtual 소멸자 필요성 (꼬리: 없으면?)</strong></summary>
-<strong>A.</strong> 베이스 포인터/참조로 파생 객체를 <code>delete</code>할 때, 소멸자가 가상이 아니면 <strong>베이스 소멸자만 호출</strong>되어 파생 클래스가 소유한 자원(버퍼, 핸들)이 <strong>누수</strong>됩니다. 따라서 <strong>다형적 사용</strong>이 의도된 베이스에는 <strong>항상 가상 소멸자</strong>를 둡니다. 반대로 값-타입 베이스(다형성 미사용)에서는 불필요할 수 있습니다. 규칙: “<strong>가상 함수가 1개라도 있으면 소멸자도 virtual</strong>”.
+<strong>💬 면접식 답변</strong>  
+우선순위 기반 선점 스케줄링은 높은 우선순위의 프로세스가 CPU를 먼저 사용하는 방식입니다.  
+중요 작업을 빠르게 처리할 수 있지만, 낮은 우선순위 작업이 영원히 실행되지 않는 기아 현상이 발생할 수 있습니다.  
+이를 방지하기 위해 Aging 기법을 적용해 우선순위를 점진적으로 조정합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>18) friend 역할 (꼬리: 남용 단점)</strong></summary>
-<strong>A.</strong> <strong>friend</strong>는 특정 함수/클래스에 <strong>캡슐화 경계</strong>를 넘는 접근 권한을 부여합니다. 연산자 오버로딩(특히 대칭 연산), 테스트 도우미, 팩토리에서 내부 생성 경로 노출 없이 객체를 만들 때 유용합니다. 그러나 남용하면 <strong>결합도</strong>가 증가하고 캡슐화가 무너져 변경 파급이 커집니다. 경험적으로 <strong>지역적·한정된 범위</strong>에서만 사용하고, 필요하면 <strong>공개 API/친구 클래스 최소화</strong>로 대체합니다.
-</details>
+<summary><strong>7️⃣ MLFQ(Multi-Level Feedback Queue)란 무엇인가요?</strong></summary>
 
+<strong>🧠 핵심 요약</strong>  
+MLFQ는 여러 개의 우선순위 큐를 두고, 프로세스의 행동에 따라 동적으로 우선순위를 조정하는 스케줄링 알고리즘입니다.
+
 ---
 
-<details>
-<summary><strong>19) 연산자 오버로딩 (꼬리: 멤버 vs 비멤버)</strong></summary>
-<strong>A.</strong> 오버로딩은 “그 타입이 수학/컨테이너적으로 그렇게 동작하는 것이 자연스러울 때”만 도입해야 합니다. <strong>멤버</strong>로 구현하는 것이 적절한 경우는 <strong>할당(<code>=</code>)</strong>, 인덱싱(<code>operator[]</code>), 호출(<code>()</code>)처럼 <strong>좌변 객체</strong>에 본질적으로 결합된 연산입니다. 반대로 <strong>대칭성</strong>이 중요한 이항 연산(<code>+</code>, <code>==</code>)은 <strong>비멤버</strong>가 적합합니다(암시적 변환 여지도 넓음). <strong>I/O 연산자</strong>(<code>&lt;&lt;, &gt;&gt;</code>)도 보통 비멤버로 작성합니다. 의미 보존·부수효과 최소화·예외 안전을 지키는 것이 핵심입니다.
-</details>
+<strong>🔹 특징 및 상세설명</strong>  
+- **다단계 큐 구조:** 각 큐는 서로 다른 우선순위와 타임슬라이스(Time Quantum)를 가짐  
+- **피드백 메커니즘:** CPU를 오래 사용하면 하위 큐로 이동, 입출력 위주면 상위 큐로 승격  
+- **장점:** CPU-bound, I/O-bound 프로세스를 모두 공정하게 처리  
+- **단점:** 구현이 복잡하며, 매개변수 조정이 중요함
 
 ---
 
-<details>
-<summary><strong>20) 복사/이동 생성자 차이 (꼬리: 왜 move?)</strong></summary>
-<strong>A.</strong> <strong>복사</strong>는 새로운 리소스를 할당해 내용을 <strong>복제</strong>하고, <strong>이동</strong>은 소유권을 <strong>“옮기고 비우는”</strong> 연산으로 원본을 안전한 비활성 상태로 둡니다(예: 포인터 null). 이동은 큰 버퍼/핸들을 다룰 때 할당·복사 비용을 획기적으로 줄여 <strong>컨테이너 재할당</strong>, <strong>함수 반환</strong>, <strong>임시 객체 연산</strong>에서 큰 성능 차이를 만듭니다. 이동 가능 타입에 <strong>noexcept 이동</strong>을 제공하면 <code>std::vector</code>가 재할당 시 복사 대신 이동을 선택해 <strong>더 적은 강제 복사/예외 안전</strong>을 확보합니다. 따라서 “이 타입은 옮길 수 있다”를 타입에 명시하는 것이 현대 C++ 성능 최적화의 기본입니다.
+<strong>💬 면접식 답변</strong>  
+MLFQ는 여러 개의 큐를 두고 프로세스의 실행 패턴에 따라 우선순위를 동적으로 변경하는 방식입니다.  
+CPU를 오래 사용하는 작업은 하위 큐로, 입출력 중심의 작업은 상위 큐로 이동합니다.  
+즉, 시스템의 효율성과 응답성을 모두 확보할 수 있는 스케줄링 방식입니다.
+
 </details>
 
 ---
 
----
-layout: post
-title: "기술면접 대비 CS 공부 - C++ 50문항 모범답변"
-date: 2025-10-02 15:00:00 +0900
-categories: [Tech Interview, C++]
-tags: [c++, interview, data-structure, algorithm, memory, oop, concurrency]
-slug: cs-study-cpp-50-answers
+<details>
+<summary><strong>8️⃣ User Mode란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+User Mode는 애플리케이션이 실행되는 권한이 제한된 CPU 모드로, 직접 하드웨어에 접근할 수 없습니다.
+
 ---
 
-# 🔷 C++ 면접 예상 질문 50선 – 모범답변
+<strong>🔹 특징 및 상세설명</strong>  
+- **접근 제한:** 시스템 자원(CPU, 메모리 등)에 직접 접근 불가  
+- **커널 호출:** 시스템 콜을 통해 커널 모드에서만 자원 접근 가능  
+- **예시:** 브라우저, 게임 클라이언트, IDE 등은 User Mode에서 실행됨  
+- **보호 메커니즘:** 잘못된 접근으로부터 시스템 안정성을 보장
 
 ---
 
-## 언어 기초 & 메모리
+<strong>💬 면접식 답변</strong>  
+User Mode는 일반 애플리케이션이 실행되는 제한된 권한 모드입니다.  
+프로그램이 직접 하드웨어를 제어하지 못하고, 필요한 경우 커널 모드로 전환하여 자원을 요청합니다.  
+이 방식 덕분에 시스템 안정성과 보안이 유지됩니다.
 
-<details>
-<summary><strong>1) 스택과 힙 메모리의 차이를 설명해주세요. (꼬리: 스택 오버플로우/힙 단편화)</strong></summary>
-<strong>A.</strong> 스택은 함수 호출 시 자동으로 프레임이 생성·제거되는 LIFO 영역이며, 할당/해제가 매우 빠르고 크기가 한정적입니다. 힙은 런타임에 동적 크기로 할당되는 영역으로 유연하지만, 관리 비용과 단편화 가능성이 있습니다. 스택 오버플로우는 재귀 과다·큰 지역 배열 등으로 스택 한도를 초과할 때 발생하고, 힙의 외부 단편화는 가변 크기 블록의 잦은 할당/해제로 연속 큰 블록이 부족해지는 상황에서 나타납니다.
 </details>
 
 ---
 
 <details>
-<summary><strong>2) RAII란 무엇인가요? (꼬리: 스마트 포인터와의 관계)</strong></summary>
-<strong>A.</strong> RAII는 객체의 수명에 자원(메모리, 파일, 락 등)의 소유권을 귀속시켜 생성자에서 획득하고 소멸자에서 해제하는 기법입니다. 예외가 발생해도 소멸자가 보장되어 누수를 원천 차단합니다. <code>unique_ptr</code>, <code>shared_ptr</code>, <code>lock_guard</code> 같은 스마트 포인터/락이 RAII의 대표적인 적용 예입니다.
-</details>
+<summary><strong>9️⃣ 32bit와 64bit의 차이는 무엇인가요?</strong></summary>
 
+<strong>🧠 핵심 요약</strong>  
+32bit와 64bit는 CPU가 한 번에 처리할 수 있는 데이터 크기(레지스터 폭)와 주소 공간의 크기를 의미합니다.
+
 ---
 
-<details>
-<summary><strong>3) 포인터와 참조의 차이는? (꼬리: nullptr vs NULL)</strong></summary>
-<strong>A.</strong> 포인터는 재지정이 가능하고 null일 수 있으며 주소 연산이 가능합니다. 참조는 생성 시 반드시 바인딩되고 null이 될 수 없으며 재바인딩이 불가합니다. <code>nullptr</code>는 타입이 있는 빈 포인터 리터럴(C++11)로 오버로드 해석이 안전하고, <code>NULL</code>은 보통 0 매크로라 모호성을 유발할 수 있습니다.
-</details>
+<strong>🔹 특징 및 상세설명</strong>  
+- **데이터 버스/레지스터 폭 차이:**  
+  - 32bit CPU: 4바이트(=32비트) 단위 연산  
+  - 64bit CPU: 8바이트(=64비트) 단위 연산  
+- **주소 공간 차이:**  
+  - 32bit: 최대 4GB (2³²)  
+  - 64bit: 이론상 16EB (2⁶⁴)  
+- **특징:**  
+  - 64bit는 더 큰 메모리 공간 접근 가능  
+  - 64bit OS에서는 32bit 프로그램을 호환 모드에서 실행 가능
 
 ---
 
-<details>
-<summary><strong>4) 얕은 복사 vs 깊은 복사 (꼬리: 복사/대입 구현 주의점)</strong></summary>
-<strong>A.</strong> 얕은 복사는 포인터 값만 복제해 자원을 공유하고, 깊은 복사는 자원을 새로 할당해 독립 복제합니다. 사용자 정의 자원을 가진 타입은 “복사 생성자, 복사 대입, 소멸자”를 함께 설계해야 합니다. 예외 안전성을 위해 복사-후-스왑(idiom)과 강한 예외 보장을 고려합니다.
+<strong>💬 면접식 답변</strong>  
+32bit와 64bit의 차이는 CPU가 한 번에 처리할 수 있는 데이터의 폭과 메모리 주소 공간의 차이입니다.  
+32bit 시스템은 최대 4GB 메모리만 인식하지만, 64bit는 훨씬 큰 주소 공간을 다룰 수 있습니다.  
+최근 대부분의 OS와 애플리케이션은 64bit 환경을 기본으로 지원합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>5) const의 쓰임새 (꼬리: const 멤버함수 + mutable)</strong></summary>
-<strong>A.</strong> <code>const</code>는 변수 불변, 포인터의 대상/자체 불변, 멤버 함수의 논리적 불변(객체 상태 변경 금지)을 표현합니다. <code>mutable</code> 멤버는 <code>const</code> 함수에서도 수정 가능하여 캐시/통계 같은 비본질 상태에 유용합니다. API 계약을 명확히 하고 최적화 기회를 제공합니다.
-</details>
+<summary><strong>🔟 주소 버스(Address Bus)란 무엇인가요?</strong></summary>
 
+<strong>🧠 핵심 요약</strong>  
+주소 버스는 CPU가 접근하려는 메모리나 I/O 장치의 주소를 전달하는 통로입니다.
+
 ---
 
-<details>
-<summary><strong>6) static 의미 (꼬리: 초기화 시점)</strong></summary>
-<strong>A.</strong> <code>static</code> 지역은 함수 호출 간 상태 유지(정적 수명), 전역/네임스페이스 영역에서는 내부 연결(linkage) 제어, 클래스 정적 멤버는 모든 인스턴스가 공유합니다. 정적 저장 수명 객체는 프로그램 시작 전/첫 사용 시 초기화가 보장되며(C++11 이후 정적 초기화 순서 안전성을 위해 함수 지역 정적 권장) 파괴는 종료 시점입니다.
+<strong>🔹 특징 및 상세설명</strong>  
+- **역할:** CPU → 메모리/디바이스로 주소 신호를 전달  
+- **폭(bit 수):** CPU의 주소 버스 폭이 접근 가능한 메모리 크기를 결정  
+  - 예: 32bit 주소 버스 → 4GB 메모리 접근 가능  
+- **데이터 버스(Data Bus):** 실제 데이터를 전달  
+- **제어 버스(Control Bus):** 읽기/쓰기 제어 신호를 전달  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+주소 버스는 CPU가 메모리나 I/O 장치에 접근하기 위해 주소를 전달하는 통로입니다.  
+예를 들어 32비트 CPU는 32개의 주소선을 통해 2³², 즉 4GB의 메모리 공간에 접근할 수 있습니다.  
+이 버스 구조는 CPU, 메모리, 주변장치 간 통신의 핵심 요소입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>7) inline 함수 (꼬리: 컴파일러 최적화와의 관계)</strong></summary>
-<strong>A.</strong> <code>inline</code>은 본래 ODR(중복 정의) 해결과 치환 최적화를 암시하나, 실제 치환 여부는 컴파일러가 판단합니다. 작은 함수·템플릿·접근자에 유리하지만 과도하면 코드 부풀림으로 아이캐시 압박을 유발합니다. 현대 컴파일러는 프로파일 기반으로 더 똑똑하게 결정하므로 무분별한 수동 지정은 지양합니다.
+<summary><strong>11️⃣ System Call이란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+System Call은 사용자 프로그램이 운영체제 커널의 기능(CPU, 메모리, 파일 등)에 접근하기 위해 호출하는 인터페이스입니다.
+
+---
+
+<strong>🔹 특징 및 상세설명</strong>  
+- **역할:**  
+  사용자 모드 프로그램이 직접 하드웨어를 제어할 수 없기 때문에,  
+  커널 기능을 요청할 때 System Call을 통해 간접적으로 접근합니다.  
+- **예시:**  
+  - 파일: `open()`, `read()`, `write()`  
+  - 프로세스: `fork()`, `exec()`, `exit()`  
+  - 메모리: `mmap()`, `brk()`  
+  - 네트워크: `socket()`, `connect()`  
+- **동작 과정:**  
+  1. 애플리케이션이 System Call 호출  
+  2. CPU가 **Trap 명령어**를 통해 커널 모드로 전환  
+  3. 커널이 요청된 작업 수행 후 결과 반환  
+  4. 사용자 모드로 복귀
+
+---
+
+<strong>💬 면접식 답변</strong>  
+System Call은 사용자 프로그램이 커널 기능을 요청하는 인터페이스입니다.  
+예를 들어, 파일을 열거나 프로세스를 생성할 때 직접 하드웨어에 접근하지 않고 System Call을 통해 커널이 대신 수행합니다.  
+즉, 커널과 사용자 프로그램 간의 통신 창구 역할을 하는 중요한 메커니즘입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>8) 메모리 alignment/padding (꼬리: struct 낭비 줄이기)</strong></summary>
-<strong>A.</strong> 하드웨어 정렬 제약을 맞추기 위해 필드 사이에 패딩이 들어가며 잘못 배치하면 메모리 낭비가 큽니다. 큰 타입부터 배치·동종 타입 묶기·패킹 지시자 사용(부작용 주의)로 낭비를 줄일 수 있습니다. 캐시라인 정렬은 false sharing을 줄이는 데도 중요합니다.
+<summary><strong>12️⃣ Interrupt(인터럽트)란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+인터럽트는 CPU가 실행 중인 작업을 잠시 중단하고,  
+우선적으로 처리해야 하는 외부 또는 내부 이벤트를 처리하도록 알려주는 신호입니다.
+
+---
+
+<strong>🔹 특징 및 상세설명</strong>  
+- **종류:**
+  - **하드웨어 인터럽트:** 키보드 입력, I/O 완료 등 외부 장치 신호  
+  - **소프트웨어 인터럽트:** 예외(Exception), System Call 등 내부 이벤트  
+- **동작 과정:**  
+  1. 인터럽트 발생  
+  2. CPU가 현재 명령어 완료 후 상태를 저장  
+  3. 인터럽트 벡터 테이블(IVT)에서 해당 ISR 주소 탐색  
+  4. ISR(Interrupt Service Routine) 실행  
+  5. `IRET` 명령으로 원래 실행하던 코드 복귀  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+인터럽트는 CPU가 현재 작업을 잠시 멈추고,  
+입출력 완료나 예외 상황 같은 더 중요한 이벤트를 우선 처리하도록 하는 신호입니다.  
+예를 들어 키보드 입력이 들어오면 CPU가 즉시 ISR을 실행하고, 처리가 끝나면 원래 작업으로 돌아옵니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>9) volatile 역할 (꼬리: 멀티스레드 동기화 가능?)</strong></summary>
-<strong>A.</strong> <code>volatile</code>은 메모리 매핑 IO 등 “컴파일러 최적화 금지” 신호이지 동기화 보장을 하지 않습니다. 멀티스레딩에는 <code>std::atomic</code>과 적절한 메모리 오더/뮤텍스를 사용해야 합니다. <code>volatile</code>만으로 재정렬/가시성 문제를 해결할 수 없습니다.
+<summary><strong>13️⃣ Interrupt Vector Table(IVT)이란?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+IVT는 각 인터럽트 번호에 대응하는 ISR(Interrupt Service Routine)의 주소를 저장하는 테이블입니다.
+
+---
+
+<strong>🔹 특징 및 상세설명</strong>  
+- **역할:**  
+  인터럽트가 발생했을 때 CPU가 어떤 함수를 실행해야 할지를 결정하는 매핑 테이블 역할  
+- **구조:**  
+  각 엔트리(Entry)는 인터럽트 번호(Index)와 ISR 주소를 매핑  
+- **예시:**  
+  - 0번: Divide by Zero  
+  - 14번: Page Fault  
+  - 32번 이상: 하드웨어 인터럽트  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+인터럽트 벡터 테이블은 각 인터럽트 요청 번호에 대응하는 ISR 주소를 저장한 테이블입니다.  
+CPU는 인터럽트가 발생하면 IVT에서 해당 ISR의 주소를 찾아 즉시 실행하게 됩니다.  
+즉, 인터럽트 처리의 ‘주소록’ 역할을 하는 데이터 구조입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>10) new/delete vs malloc/free (꼬리: new가 malloc을 호출?)</strong></summary>
-<strong>A.</strong> <code>new</code>는 타입 크기만큼 메모리를 할당하고 생성자를 호출하며, 실패 시 예외를 던집니다. <code>malloc</code>은 바이트 단위 할당만 하고 초기화/생성자를 호출하지 않으며 실패 시 <code>nullptr</code>을 반환합니다. 구현에 따라 <code>operator new</code>가 내부적으로 malloc 계열을 쓸 수 있으나 의미적 차이는 명확합니다.
-</details>
+<summary><strong>14️⃣ ISR(Interrupt Service Routine)이란?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+ISR은 인터럽트가 발생했을 때 실행되는 함수(핸들러)로,  
+해당 이벤트를 처리하고 시스템을 정상 상태로 복귀시키는 역할을 합니다.
 
 ---
 
-## 객체지향 & 다형성
+<strong>🔹 특징 및 상세설명</strong>  
+- **역할:**  
+  - 인터럽트 원인 분석 및 관련 작업 처리  
+  - 예: 키보드 입력 처리, 네트워크 패킷 수신, 타이머 인터럽트  
+- **실행 과정:**  
+  1. 인터럽트 발생 → CPU 상태 저장  
+  2. ISR 진입 → 해당 작업 수행  
+  3. 완료 후 `IRET` 명령으로 복귀  
+- **제약:**  
+  - 실행 중 다른 인터럽트 발생 시 마스킹 필요  
+  - 커널 모드에서 동작 (고권한 코드)
 
-<details>
-<summary><strong>11) OOP 핵심 개념 (꼬리: 캡슐화 vs 추상화)</strong></summary>
-<strong>A.</strong> 캡슐화(데이터 은닉), 상속(재사용), 다형성(동적 디스패치), 추상화(본질만 노출)가 핵심입니다. 캡슐화는 내부 변경 영향 차단, 추상화는 복잡도 축소라는 점에서 목적이 다릅니다. 인터페이스로 “무엇”을 고정하고 구현으로 “어떻게”를 교체합니다.
+---
+
+<strong>💬 면접식 답변</strong>  
+ISR은 인터럽트가 발생했을 때 실행되는 처리 루틴입니다.  
+예를 들어 키보드 입력 시 키 값을 버퍼에 저장하는 코드가 ISR로 작동합니다.  
+CPU는 ISR 수행 후 원래 실행 중이던 프로세스로 복귀합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>12) 가상 함수 동작 (꼬리: vtable은 객체/클래스 어디?)</strong></summary>
-<strong>A.</strong> 각 객체는 vptr을 가지고, vptr은 클래스 단위로 존재하는 vtable을 가리킵니다. 호출 시 vtable에서 올바른 함수 포인터를 찾아 실행하는 런타임 바인딩이 일어납니다. vtable은 클래스별 1개, 객체마다 생기는 건 vptr입니다.
+<summary><strong>15️⃣ IRET 명령어란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+IRET(Interrupt Return)은 인터럽트 처리 후,  
+저장해두었던 이전 CPU 상태(레지스터, 플래그, 명령어 포인터)를 복원하고 원래 코드로 돌아가는 명령어입니다.
+
+---
+
+<strong>🔹 특징 및 상세설명</strong>  
+- **작동 원리:**  
+  - ISR 진입 시 CPU는 현재 실행 상태(PC, 플래그, 스택 등)를 스택에 저장  
+  - IRET은 이 상태를 복원하여 원래 실행 흐름으로 복귀  
+- **역할:**  
+  인터럽트 처리 후 시스템을 안정적으로 원래 컨텍스트로 되돌림  
+- **관련 명령:**  
+  - `CALL` / `RET` (일반 함수 호출)  
+  - `INT` / `IRET` (인터럽트 호출 및 복귀)
+
+---
+
+<strong>💬 면접식 답변</strong>  
+IRET 명령은 인터럽트 처리 후 CPU가 이전 실행 상태로 돌아가게 하는 복귀 명령어입니다.  
+ISR이 완료되면 IRET이 스택에 저장된 프로그램 카운터와 플래그를 복원하여 원래 명령으로 복귀합니다.  
+이 과정을 통해 인터럽트 전후의 실행 흐름이 일관되게 유지됩니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>13) 순수 가상함수/추상 클래스 (꼬리: C++ 인터페이스 구현)</strong></summary>
-<strong>A.</strong> <code>virtual void f() = 0;</code>처럼 구현 없는 순수 가상으로 인터페이스 계약을 정의합니다. 해당 클래스는 인스턴스화 불가하고 파생 클래스가 구현해야 합니다. C++ 인터페이스는 “모든 멤버가 순수 가상인 클래스”로 관례적으로 표현합니다.
+<summary><strong>16️⃣ Synchronous(동기)와 Asynchronous(비동기)의 차이는?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+동기(Synchronous)는 요청한 작업이 끝날 때까지 기다리는 방식이고,  
+비동기(Asynchronous)는 요청 후 바로 다음 작업을 수행하며 결과를 나중에 받는 방식입니다.
+
+---
+
+<strong>🔹 특징 및 상세설명</strong>  
+| 구분 | Synchronous | Asynchronous |
+|------|--------------|--------------|
+| **작동 방식** | 순차적 | 병렬 또는 비차단 |
+| **예시** | 파일 읽기 시 완료까지 대기 | 콜백으로 결과 수신 |
+| **장점** | 구현 간단, 예측 쉬움 | CPU 효율 높음 |
+| **단점** | 대기 시간 발생 | 구현 복잡, 동기화 필요 |
+
+---
+
+<strong>💬 면접식 답변</strong>  
+동기 방식은 작업이 끝날 때까지 다음 명령을 실행하지 않는 방식이고,  
+비동기 방식은 요청 후 다른 일을 처리하다가 결과를 나중에 받는 방식입니다.  
+예를 들어, Unity의 Coroutine이나 C#의 `async/await`가 대표적인 비동기 패턴입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>14) 다형성 (꼬리: 오버로딩 vs 오버라이딩)</strong></summary>
-<strong>A.</strong> 다형성은 동일 인터페이스로 다양한 실제 타입의 동작을 수행하는 능력입니다. 오버로딩은 같은 이름의 서로 다른 서명(컴파일타임 결정), 오버라이딩은 가상 함수의 런타임 재정의입니다. 유지보수성과 확장성 측면에서 오버라이딩이 구조적 이점을 줍니다.
+<summary><strong>17️⃣ Coroutine과 비동기의 차이는 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+Coroutine은 함수 실행을 중단하고 나중에 재개할 수 있는 구조이고,  
+비동기(Async)는 별도의 스레드나 이벤트 루프를 통해 병렬적으로 작업을 수행하는 개념입니다.
+
+---
+
+<strong>🔹 특징 및 상세설명</strong>  
+- **Coroutine:**  
+  - 싱글 스레드 내에서 실행 흐름을 일시 중단(`yield`) 후 재개  
+  - Unity, Lua, Python 등에서 사용  
+- **Async (비동기):**  
+  - OS나 런타임 레벨에서 백그라운드 스레드/이벤트로 동작  
+  - 예: `Task`, `Future`, `Promise`  
+- **차이점:**  
+  - Coroutine은 “동시성(Concurrency)”  
+  - Async는 “병렬성(Parallelism)”
+
+---
+
+<strong>💬 면접식 답변</strong>  
+Coroutine은 하나의 스레드에서 실행 흐름을 잠시 멈추고 나중에 이어가는 구조입니다.  
+반면 비동기 작업은 OS 스케줄러나 별도 스레드에서 병렬로 실행되어 결과를 콜백이나 await로 받습니다.  
+즉, Coroutine은 흐름 제어 중심이고, 비동기는 작업 분산 중심입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>15) 템플릿 목적 (꼬리: 인스턴스화 시점)</strong></summary>
-<strong>A.</strong> 템플릿은 타입/값을 매개변수화하여 제네릭 코드를 작성하게 합니다. 구체적 타입이 사용될 때(ODR 범위 내) 인스턴스화가 발생하며, 링크 단계에서 중복 제거가 이뤄집니다. 과도한 인스턴스화는 코드 부풀림을 초래할 수 있습니다.
+<summary><strong>18️⃣ Critical Section(임계구역)이란?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+Critical Section은 여러 스레드가 동시에 접근하면 문제가 발생할 수 있는 코드 영역입니다.
+
+---
+
+<strong>🔹 특징 및 상세설명</strong>  
+- **발생 원인:**  
+  공유 자원에 대한 동시 접근 (예: 전역 변수, 버퍼)  
+- **문제점:**  
+  Race Condition, 데이터 불일치, 시스템 오류  
+- **해결 방법:**  
+  1. Mutex  
+  2. Semaphore  
+  3. SpinLock  
+  4. Monitor / CriticalSection 객체 (Windows API)  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+임계구역은 여러 스레드가 동시에 접근하면 데이터 불일치가 발생할 수 있는 코드 부분입니다.  
+이를 보호하기 위해 락(Mutex, Semaphore 등)을 사용하여 한 번에 하나의 스레드만 접근하도록 보장합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>16) 다중 상속 장단 (꼬리: 다이아몬드 문제 해결)</strong></summary>
-<strong>A.</strong> 장점은 여러 인터페이스 조합, 단점은 모호성과 복잡도 상승입니다. 다이아몬드 문제는 가상 상속(<code>virtual</code> 상속)으로 베이스를 1회만 공유해 해결합니다. 가능하면 합성으로 대체하는 것이 단순합니다.
+<summary><strong>19️⃣ Semaphore란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+Semaphore는 동시에 접근할 수 있는 스레드의 개수를 제어하는 동기화 도구입니다.
+
+---
+
+<strong>🔹 특징 및 상세설명</strong>  
+- **구성요소:** 정수 값 `S` (허용 가능한 자원 수)  
+- **작동 방식:**  
+  - `wait()` → S 감소 (자원이 없으면 대기)  
+  - `signal()` → S 증가 (대기 중인 스레드 깨움)  
+- **유형:**  
+  - **Binary Semaphore:** S = 0 or 1 (Mutex와 유사)  
+  - **Counting Semaphore:** S > 1, 여러 자원 제어 가능  
+- **특징:** 여러 스레드가 동시에 접근 가능하나, S값 제한 존재  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+Semaphore는 한 번에 접근할 수 있는 스레드 수를 제어하는 기법입니다.  
+예를 들어, 데이터베이스 커넥션 풀의 최대 연결 개수를 제한할 때 사용됩니다.  
+S값이 0이면 다른 스레드는 대기하고, 자원이 반환되면 다시 접근할 수 있습니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>17) virtual 소멸자 필요성 (꼬리: 없으면?)</strong></summary>
-<strong>A.</strong> 베이스 포인터로 파생 객체를 삭제할 때 소멸자가 가상이 아니면 베이스 소멸자만 호출되어 리소스 누수가 발생합니다. 인터페이스/폴리모픽 베이스는 반드시 가상 소멸자를 둡니다. 값 타입 베이스라면 불필요할 수 있습니다.
+<summary><strong>20️⃣ Mutex란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+Mutex는 한 번에 하나의 스레드만 접근할 수 있도록 하는 상호 배제 동기화 객체입니다.
+
+---
+
+<strong>🔹 특징 및 상세설명</strong>  
+- **핵심 원리:** 자원을 잠그고(`lock`), 사용이 끝나면 해제(`unlock`)  
+- **특징:**  
+  - 소유자(Owner) 개념 존재 → 락을 획득한 스레드만 해제 가능  
+  - 교착 상태(Deadlock) 위험 존재  
+- **사용 예시:**  
+  - 파일 쓰기, 전역 변수 수정, UI 접근  
+- **차이점:**  
+  - Mutex: 한 스레드만 접근 가능  
+  - Semaphore: 여러 스레드 제한적 접근 가능  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+Mutex는 한 번에 하나의 스레드만 공유 자원에 접근하도록 하는 동기화 메커니즘입니다.  
+스레드가 자원을 잠근 후 반드시 해제해야 하며, 그렇지 않으면 교착 상태가 발생할 수 있습니다.  
+즉, Mutex는 완전한 상호 배제를 보장하는 락입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>18) friend 역할 (꼬리: 남용 단점)</strong></summary>
-<strong>A.</strong> <code>friend</code>는 캡슐화 경계를 넘는 접근을 허용하여 특정 함수/클래스에 내부 접근권을 줍니다. 디버깅/연산자 구현에 유용하지만, 남용하면 결합도가 증가하고 변경 영향 범위가 커집니다. 테스트/디버그 전용으로 최소화합니다.
+<summary><strong>21️⃣ 프로세스(Process)란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+프로세스는 실행 중인 프로그램의 인스턴스로,  
+코드, 데이터, 스택, 힙, 그리고 CPU 상태 등의 자원을 포함한 독립적인 실행 단위입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **구성요소:**  
+  - Code Section (명령어)  
+  - Data Section (전역/정적 변수)  
+  - Stack (함수 호출, 지역 변수)  
+  - Heap (동적 메모리)  
+- **특징:**  
+  - 고유한 **PID(Process ID)** 를 가짐  
+  - 서로 독립된 메모리 공간 사용  
+  - 운영체제가 **PCB(Process Control Block)** 으로 관리  
+- **상태 전이:** Ready → Running → Waiting → Terminated  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+프로세스는 실행 중인 프로그램 하나를 의미하며,  
+코드와 데이터를 포함해 독립된 메모리 공간을 가지고 있습니다.  
+운영체제는 각 프로세스를 PCB로 관리하며, CPU 스케줄링을 통해 실행 순서를 조정합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>19) 연산자 오버로딩 (꼬리: 멤버 vs 비멤버)</strong></summary>
-<strong>A.</strong> 의미적 일관성을 지키고 부수효과를 최소화해야 합니다. 대칭성 요구가 있는 이항 연산(<code>operator==, +</code>)은 비멤버/프렌드가 일반적이며, 할당/인덱스 등은 멤버가 적합합니다. 스트림 연산자는 보통 비멤버로 구현합니다.
+<summary><strong>22️⃣ 스레드(Thread)란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+스레드는 프로세스 내부에서 실행되는 가장 작은 실행 단위이며,  
+같은 프로세스 내에서 메모리 자원을 공유합니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **공유 자원:** Code, Data, Heap  
+- **개별 자원:** Stack, Register, Program Counter  
+- **장점:** 컨텍스트 스위치 비용 적음, 빠른 통신 가능  
+- **단점:** 동기화 문제(Race Condition), 디버깅 어려움  
+- **유형:**  
+  - User-Level Thread (경량, 빠름)  
+  - Kernel-Level Thread (시스템 관리 용이)
+
+---
+
+<strong>💬 면접식 답변</strong>  
+스레드는 프로세스 내부에서 동작하는 실행 단위입니다.  
+프로세스 자원을 공유하기 때문에 생성 속도가 빠르고 통신이 효율적이지만,  
+동시에 접근 시 동기화 문제가 발생할 수 있습니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>20) 복사/이동 생성자 차이 (꼬리: 왜 move?)</strong></summary>
-<strong>A.</strong> 복사는 자원을 새로 할당·복제하고, 이동은 소유권을 이전하며 원본을 안전한 비어있는 상태로 둡니다. 임시/대용량 리소스를 다룰 때 이동은 불필요한 할당/복사를 줄여 성능을 크게 개선합니다. 컨테이너 재할당, 반환 최적화에서도 이점이 큽니다.
-</details>
+<summary><strong>23️⃣ PCB(Process Control Block)란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+PCB는 운영체제가 각 프로세스를 관리하기 위해 유지하는 정보 구조체입니다.
 
 ---
 
-## 자료구조 & 알고리즘
+<strong>🔹 특징 / 상세설명</strong>  
+- **포함 정보:**  
+  - 프로세스 상태 (Running, Ready 등)  
+  - Program Counter  
+  - Register 값  
+  - 메모리 관리 정보 (Page Table)  
+  - I/O 상태, 파일 핸들  
+- **역할:**  
+  프로세스 전환(Context Switch) 시, 상태 저장 및 복구에 사용  
+- **저장 위치:**  
+  커널 영역 (Kernel Space)
 
-<details>
-<summary><strong>21) vector 내부 동작 (꼬리: push_back vs emplace_back)</strong></summary>
-<strong>A.</strong> <code>vector</code>는 연속 메모리에 요소를 보관하며, capacity가 차면 지수적으로 확장 후 기존 요소를 이동합니다. <code>push_back</code>은 완성된 객체를 복사/이동해 넣고, <code>emplace_back</code>은 인자에서 그 자리에서 직접 생성(퍼펙트 포워딩)해 임시·복사를 줄입니다. 이미 완성 객체가 있다면 차이는 적을 수 있지만, 복잡한 생성 비용을 아낄 때 emplace가 유리합니다.
+---
+
+<strong>💬 면접식 답변</strong>  
+PCB는 프로세스의 상태와 자원 정보를 저장한 운영체제 내부 구조체입니다.  
+CPU 스위칭 시 PCB를 이용해 이전 상태를 저장하고, 다음 프로세스의 상태를 복원합니다.  
+즉, 프로세스의 ‘신분증’ 역할을 하는 구조입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>22) map vs unordered_map (꼬리: 충돌 처리)</strong></summary>
-<strong>A.</strong> <code>map</code>은 균형 이진트리로 정렬/범위 탐색에 유리하고 O(log n) 보장, <code>unordered_map</code>은 해시 기반으로 평균 O(1) 탐색이 장점입니다. <code>unordered_map</code>은 보통 <strong>chaining</strong>으로 충돌을 해결하며 삭제/반복자 안정성이 좋아 표준 요구에 부합합니다. 부하율이 높으면 <code>rehash</code>/<code>reserve</code>로 조절합니다.
+<summary><strong>24️⃣ 프로세스의 상태(State)는 어떻게 나뉘나요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+프로세스는 실행 상태에 따라 **New, Ready, Running, Waiting, Terminated** 로 구분됩니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+1. **New:** 프로세스 생성 중  
+2. **Ready:** 실행 대기 중 (CPU 할당 대기)  
+3. **Running:** CPU에서 실제 실행 중  
+4. **Waiting (Blocked):** I/O나 이벤트 대기 중  
+5. **Terminated:** 실행 완료  
+- **상태 전이:**  
+  - Dispatch: Ready → Running  
+  - Timeout: Running → Ready  
+  - Wait: Running → Waiting  
+  - Wakeup: Waiting → Ready  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+프로세스는 생성(New)부터 실행(Running), 종료(Terminated)까지 여러 상태를 오갑니다.  
+예를 들어, CPU 점유가 끝나면 Ready로 돌아가고, I/O 대기 시에는 Waiting으로 전환됩니다.  
+이러한 상태 전이는 스케줄러가 관리합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>23) set vs multiset (꼬리: unordered_set 구조)</strong></summary>
-<strong>A.</strong> <code>set</code>은 유일 키, <code>multiset</code>은 중복 허용입니다. 둘 다 보통 균형트리(레드블랙)로 정렬 순서가 유지됩니다. <code>unordered_set</code>은 해시 테이블(보통 chaining)을 사용합니다.
+<summary><strong>25️⃣ 프로세스 메모리 구조는 어떻게 되어있나요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+프로세스 메모리는 **Code, Data, Heap, Stack** 영역으로 나뉩니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+| 영역 | 내용 | 크기 변화 |
+|------|------|-----------|
+| Code | 프로그램 명령어 | 고정 |
+| Data | 전역/정적 변수 | 고정 |
+| Heap | 동적 메모리(new, malloc) | 증가/감소 |
+| Stack | 함수 호출, 지역 변수 | 함수 호출 시 증가, 리턴 시 감소 |
+
+- **특징:**  
+  - Stack은 높은 주소 → 낮은 주소 방향으로 성장  
+  - Heap은 낮은 주소 → 높은 주소 방향으로 성장  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+프로세스는 코드, 데이터, 힙, 스택 영역으로 나뉘며,  
+코드는 실행 명령, 데이터는 전역 변수, 스택은 함수 호출 정보, 힙은 동적 메모리를 저장합니다.  
+특히 스택과 힙은 반대 방향으로 확장되어 충돌을 방지합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>24) priority_queue 구현 (꼬리: 최소 힙으로 쓰고 싶다면?)</strong></summary>
-<strong>A.</strong> 기본은 최대 힙이며 내부적으로 <code>vector</code> + 힙 알고리즘(<code>push_heap/pop_heap</code>)로 구성됩니다. 최소 힙이 필요하면 비교자를 <code>std::greater&lt;T&gt;</code>로 주거나 요소를 음수화하는 등 사용자 비교자를 지정합니다. 커스텀 타입은 <code>operator&lt;</code> 또는 비교자 제공이 필요합니다.
+<summary><strong>26️⃣ Stack 메모리가 높은 주소에서 낮은 주소로 확장되는 이유는?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+스택과 힙이 서로 반대 방향으로 확장되도록 하여,  
+서로 충돌하지 않고 효율적으로 메모리를 사용할 수 있기 때문입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **Heap:** 동적 메모리 → 낮은 주소부터 위로 증가  
+- **Stack:** 함수 호출 → 높은 주소부터 아래로 감소  
+- **이유:**  
+  1. 메모리의 양끝에서 서로 향하도록 하여 공간을 유연하게 공유  
+  2. 예측 가능한 오버플로 감지 용이  
+  3. CPU 구조상 스택 포인터의 감소 연산이 효율적
+
+---
+
+<strong>💬 면접식 답변</strong>  
+스택은 높은 주소에서 낮은 주소로, 힙은 반대로 확장됩니다.  
+이 구조 덕분에 두 영역이 동적으로 메모리를 공유하며,  
+프로그램이 사용하는 메모리 공간을 효율적으로 조절할 수 있습니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>25) std::sort 내부 (꼬리: 왜 작은 파티션은 삽입정렬?)</strong></summary>
-<strong>A.</strong> <code>std::sort</code>는 Introsort: QuickSort로 시작해 깊이가 임계치를 넘으면 HeapSort로 전환, 작은 파티션은 Insertion Sort로 마무리합니다. 작은 구간에서는 분기/재귀 오버헤드보다 단순한 이동이 빠르고 캐시 적중률이 높기 때문에 삽입정렬이 실성능이 좋습니다. 이렇게 평균/최악/상수항을 모두 잡습니다.
+<summary><strong>27️⃣ Heap 메모리 관리에서 주의해야 할 점은 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+Heap은 동적 메모리 공간으로,  
+메모리 누수나 단편화 등의 문제가 발생하지 않도록 관리가 필요합니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **주의사항:**  
+  1. `new` / `malloc`으로 할당 후 반드시 `delete` / `free` 필요  
+  2. 중복 해제(Double Free) 금지  
+  3. Dangling Pointer(유효하지 않은 포인터 참조) 주의  
+  4. 단편화(Heap Fragmentation) 발생 가능  
+- **해결책:**  
+  - 스마트 포인터 (C++)  
+  - 풀 할당(Memory Pool)  
+  - Garbage Collection (C#, Java)
+
+---
+
+<strong>💬 면접식 답변</strong>  
+Heap은 동적으로 메모리를 관리하기 때문에 누수나 단편화가 쉽게 발생합니다.  
+그래서 C++에서는 스마트 포인터를, C#에서는 GC를 사용해 안전하게 관리하며,  
+사용이 끝난 메모리는 반드시 해제해야 합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>26) stack vs queue (꼬리: 스택 두 개로 큐 만들기)</strong></summary>
-<strong>A.</strong> 스택은 LIFO, 큐는 FIFO입니다. 스택 두 개로 큐를 만들 때, 입력 스택에 push, 출력 스택에서 pop하며, 출력이 비었을 때 입력을 모두 옮깁니다. 각 원소는 최대 1회 이동되므로 분할상환 O(1)입니다.
+<summary><strong>28️⃣ 내부 단편화(Internal Fragmentation)란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+내부 단편화는 고정된 블록을 할당할 때 실제 사용보다 더 큰 공간이 낭비되는 현상입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **예시:**  
+  4KB 블록 단위 할당 시, 3.6KB만 사용하면 0.4KB 낭비  
+- **원인:**  
+  고정 크기 메모리 블록 또는 페이지 기반 관리  
+- **해결방법:**  
+  - 동적 크기 할당 (Buddy System)  
+  - 페이지 크기 조정  
+  - 세그멘테이션과 결합
+
+---
+
+<strong>💬 면접식 답변</strong>  
+내부 단편화는 프로세스가 필요한 양보다 큰 블록을 할당받아 낭비되는 공간입니다.  
+예를 들어, 4KB 페이지에 3KB만 사용하면 남는 1KB가 낭비됩니다.  
+이 문제는 가변 크기 블록이나 세그멘테이션 기법으로 완화할 수 있습니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>27) 해시 충돌 해결 (꼬리: C++이 chaining을 쓰는 이유)</strong></summary>
-<strong>A.</strong> Chaining(버킷에 연결리스트/소형벡터)과 Open Addressing(선형/제곱/이중해시)이 대표적입니다. C++의 <code>unordered_*</code>가 chaining을 선호하는 이유는 삭제 용이, 반복자 안정성, 고부하에서도 성능 예측 가능, 할당자/노드 기반 구현과의 궁합 때문입니다. 충돌이 잦다면 테이블 크기 확장과 더 좋은 해시를 선택합니다.
+<summary><strong>29️⃣ 외부 단편화(External Fragmentation)란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+외부 단편화는 메모리 중간중간에 작은 빈 공간이 생겨,  
+총합은 충분하지만 연속된 공간을 할당할 수 없는 현상입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **예시:**  
+  10MB 중 2MB + 3MB + 5MB로 나뉘어 존재 시,  
+  6MB 프로세스를 연속적으로 배치 불가능  
+- **해결방법:**  
+  - **Compaction(압축)**: 메모리 공간 재배치  
+  - **Paging**: 연속되지 않은 페이지 단위 관리  
+  - **Segmentation + Paging 결합**  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+외부 단편화는 메모리 중간중간이 잘게 쪼개져 연속된 큰 공간을 할당할 수 없는 문제입니다.  
+이 문제는 페이지 단위로 메모리를 분할하거나, 압축(Compaction)을 통해 완화할 수 있습니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>28) 링크드 리스트 뒤집기 (꼬리: 재귀/반복/스택 장단)</strong></summary>
-<strong>A.</strong> 반복 포인터법이 O(n)/O(1)로 가장 실용적이고, 재귀는 코드가 간결하지만 스택 오버플로우 위험이 있습니다. 스택 사용은 직관적이지만 O(n) 추가 공간을 소모합니다. 상황과 제약에 따라 선택합니다.
+<summary><strong>30️⃣ Memory Pool(메모리 풀)이란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+Memory Pool은 자주 할당/해제되는 작은 객체들을 미리 확보해두고 재사용하는 메모리 관리 기법입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **장점:**  
+  - `malloc` / `free` 호출 감소 → 성능 향상  
+  - 단편화 방지  
+  - 예측 가능한 메모리 사용량  
+- **구조:**  
+  - 고정 크기 블록의 리스트를 유지  
+  - 필요 시 즉시 제공 후 반환 시 재사용  
+- **활용 예시:**  
+  - 게임 오브젝트 관리 (Unity Object Pool)  
+  - 네트워크 버퍼 관리  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+Memory Pool은 작은 객체를 반복적으로 할당할 때,  
+미리 확보해둔 블록을 재사용하는 방식입니다.  
+이를 통해 메모리 단편화를 줄이고, 할당/해제 속도를 크게 향상시킬 수 있습니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>29) 힙 정렬 시간복잡도와 이유 (꼬리: 우선순위 큐와 차이)</strong></summary>
-<strong>A.</strong> 힙 정렬은 힙 구성 O(n) + n회 추출×재힙화 O(log n)으로 항상 O(n log n)입니다. 우선순위 큐는 “정렬”이 아니라 “항상 최상위 원소 접근/갱신”이 목적이며, 스트리밍 상황에서 유리합니다. 힙정렬은 제자리 정렬/비안정, 우선순위 큐는 동적 작업에 최적화된 자료구조입니다.
+<summary><strong>31️⃣ Virtual Memory(가상 메모리)란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+가상 메모리는 실제 물리 메모리보다 큰 공간을 사용하는 것처럼 보이게 하는 메모리 관리 기법으로,  
+프로세스마다 독립된 주소 공간을 제공하여 안정성과 효율성을 높입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **핵심 아이디어:**  
+  프로세스는 가상의 주소 공간(Virtual Address Space)을 사용하고,  
+  MMU가 이를 실제 물리 주소로 변환합니다.  
+- **장점:**  
+  - 프로세스 간 메모리 보호  
+  - 메모리 효율적 사용 (Demand Paging)  
+  - 큰 프로그램 실행 가능  
+- **구성:**  
+  - Virtual Address ↔ Physical Address 매핑  
+  - Page Table, TLB, MMU가 변환 담당  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+가상 메모리는 프로세스가 실제 물리 메모리보다 큰 공간을 사용할 수 있도록 하는 시스템입니다.  
+이를 통해 메모리 보호, 프로세스 간 독립성, 효율적인 자원 분배가 가능해집니다.  
+MMU가 주소 변환을 담당하고, 필요할 때만 페이지를 로드합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>30) 좋은 해시 함수 조건 (꼬리: 충돌 과다 시 대처)</strong></summary>
-<strong>A.</strong> 균등 분포, 빠른 계산, 입력 민감도를 갖추어야 합니다. 충돌이 과다하면 테이블 확장(로드 팩터 낮춤), 다른 해시 함수 채택, 키 정규화·프리해싱, 혹은 자료구조 자체를 트리 계열로 교체를 검토합니다.
-</details>
+<summary><strong>32️⃣ Paging(페이징)이란 무엇인가요?</strong></summary>
 
+<strong>🧠 핵심 요약</strong>  
+페이징은 가상 메모리를 일정한 크기의 블록(Page)으로 나누고,  
+이를 물리 메모리의 프레임(Frame)과 매핑하는 메모리 관리 기법입니다.
+
 ---
 
-## 고급 C++ & Modern C++
+<strong>🔹 특징 / 상세설명</strong>  
+- **Page:** 가상 메모리의 고정 단위 (보통 4KB)  
+- **Frame:** 물리 메모리의 고정 단위  
+- **Page Table:** Page ↔ Frame 매핑 정보 저장  
+- **장점:** 외부 단편화 해결  
+- **단점:** 내부 단편화 발생 가능  
 
-<details>
-<summary><strong>31) 스마트 포인터 종류/차이 (꼬리: 순환 참조 해결)</strong></summary>
-<strong>A.</strong> <code>unique_ptr</code> 단독 소유, 이동만 허용. <code>shared_ptr</code> 참조 카운트 기반 공유. <code>weak_ptr</code>은 비소유 참조로 순환을 끊습니다. <code>shared_ptr</code> 순환은 한 쪽을 <code>weak_ptr</code>로 바꿔 해결합니다.
+---
+
+<strong>💬 면접식 답변</strong>  
+페이징은 메모리를 일정한 단위로 나누어 관리함으로써 외부 단편화를 제거한 기법입니다.  
+가상 페이지를 실제 프레임에 매핑하는 구조로, 각 프로세스마다 페이지 테이블을 가집니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>32) rvalue/lvalue (꼬리: std::move vs std::forward)</strong></summary>
-<strong>A.</strong> lvalue는 재참조 가능한 이름 있는 객체, rvalue는 일시적·소모 가능한 값입니다. <code>std::move</code>는 lvalue를 rvalue로 캐스팅하는 신호(실제 이동 여부는 타입이 결정), <code>std::forward</code>는 전달 참조에서 원래 값 범주를 보존해 퍼펙트 포워딩을 가능케 합니다.
+<summary><strong>33️⃣ Page Table이란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+페이지 테이블은 가상 주소와 물리 주소의 대응 관계를 저장하는 자료구조입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **구조:**  
+  - Page Number → Frame Number 매핑  
+  - Valid Bit: 존재 여부  
+  - Dirty Bit: 수정 여부  
+  - Access Bit: 접근 기록  
+- **종류:**  
+  - 단일 페이지 테이블  
+  - 다단계 페이지 테이블 (2-Level, 3-Level)  
+  - Inverted Page Table  
+- **문제점:**  
+  - 메모리 낭비 → 다단계 페이지 테이블로 개선  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+페이지 테이블은 가상 주소의 페이지 번호를 물리 메모리의 프레임 번호로 변환하는 자료구조입니다.  
+이 정보를 통해 CPU가 주소 변환을 수행하며, 다단계 구조로 효율을 높입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>33) 람다 vs 일반 함수 (꼬리: 캡처 방식 차이)</strong></summary>
-<strong>A.</strong> 람다는 클로저 객체를 생성하며 지역 변수 캡처가 가능합니다. 값 캡처는 복사본을 보관해 안전하지만 비용이 있고, 참조 캡처는 원본에 접근해 비용이 적으나 수명에 주의해야 합니다. 무상태 람다는 함수 포인터로 변환될 수 있습니다.
+<summary><strong>34️⃣ Page Fault란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+페이지 폴트는 CPU가 접근하려는 페이지가 물리 메모리에 없는 경우 발생하는 예외(Interrupt)입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **발생 과정:**  
+  1. CPU가 페이지 접근  
+  2. 페이지 테이블에서 Valid Bit = 0 확인  
+  3. OS가 디스크에서 해당 페이지를 로드  
+  4. 페이지 테이블 갱신 후 재시도  
+- **원인:**  
+  - Demand Paging  
+  - Swapping  
+- **성능 영향:**  
+  - 디스크 접근이 느리므로 성능 저하  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+페이지 폴트는 CPU가 메모리에 없는 페이지를 접근할 때 발생하는 인터럽트입니다.  
+운영체제는 이를 감지하고 필요한 페이지를 디스크에서 로드해 페이지 테이블을 갱신합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>34) constexpr vs const (꼬리: constexpr 함수 실행 시점)</strong></summary>
-<strong>A.</strong> <code>const</code>는 변경 불가를 의미하고, <code>constexpr</code>는 컴파일타임 계산 가능성을 의미합니다. <code>constexpr</code> 함수/변수는 조건이 맞으면 컴파일타임에 평가되고, 아니면 런타임에 평가될 수 있습니다. 상수식 요구 컨텍스트에서 성능·안전성을 제공합니다.
+<summary><strong>35️⃣ Page Replacement Algorithm이란?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+페이지 교체 알고리즘은 새로운 페이지를 메모리에 올리기 위해  
+어떤 페이지를 제거할지를 결정하는 정책입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **주요 알고리즘:**  
+  1. FIFO (First In First Out): 오래된 페이지 제거  
+  2. LRU (Least Recently Used): 최근에 사용되지 않은 페이지 제거  
+  3. LFU (Least Frequently Used): 사용 빈도 낮은 페이지 제거  
+  4. Optimal: 앞으로 가장 오래 사용되지 않을 페이지 제거 (이론적)  
+- **성능 지표:**  
+  Page Fault Rate  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+페이지 교체 알고리즘은 메모리가 가득 찼을 때 어떤 페이지를 제거할지를 결정하는 방식입니다.  
+가장 널리 쓰이는 알고리즘은 LRU이며, 실제 시스템에서는 효율을 위해 하이브리드 형태로 구현됩니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>35) decltype vs auto (꼬리: 템플릿 타입 추론 차이)</strong></summary>
-<strong>A.</strong> <code>auto</code>는 초기화식으로부터 타입을 추론하고, <code>decltype</code>은 표현식의 타입(값 범주 포함)을 가져옵니다. 템플릿에서는 전달 규칙(참조 붕괴 등) 차이로 결과가 달라질 수 있어 의도를 명확히 해야 합니다. 반환 타입 지연(<code>auto f() -&gt; decltype(expr)</code>) 패턴이 자주 쓰입니다.
+<summary><strong>36️⃣ TLB(Translation Lookaside Buffer)란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+TLB는 최근 사용된 페이지 매핑 정보를 캐싱하는 고속 메모리로,  
+주소 변환 속도를 향상시키는 하드웨어 장치입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **기능:** Virtual Page → Physical Frame 매핑 캐시  
+- **구조:**  
+  - Associative Memory로 구성 (병렬 검색)  
+  - Miss 시 페이지 테이블 접근  
+- **장점:** 주소 변환 시간 대폭 단축  
+- **관련 용어:** TLB Hit / Miss  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+TLB는 페이지 테이블의 일부를 캐싱하여 주소 변환 속도를 높이는 장치입니다.  
+최근 접근한 페이지 정보를 저장하고, TLB Miss 시에만 페이지 테이블을 참조합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>36) noexcept 의미 (꼬리: 던지면?)</strong></summary>
-<strong>A.</strong> <code>noexcept</code>는 함수가 예외를 던지지 않음을 약속하여 최적화와 강한 보장을 가능케 합니다. 만약 던지면 <code>std::terminate</code>가 호출됩니다. 이동 생성자/대입에 <code>noexcept</code>를 붙이면 컨테이너 최적화가 활성화됩니다.
+<summary><strong>37️⃣ Swapping이란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+Swapping은 프로세스 전체를 디스크로 내보내거나 다시 메모리로 불러오는 기법으로,  
+메모리 공간을 효율적으로 활용하기 위한 방법입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **방식:**  
+  - 메모리 부족 시 비활성 프로세스를 디스크로 내보냄  
+  - 필요 시 다시 로드  
+- **장점:** 많은 프로세스 동시 실행 가능  
+- **단점:** 디스크 I/O 오버헤드 (느림)  
+- **현대 OS:** 부분 스왑 (페이징 기반)  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+Swapping은 실행 중인 프로세스를 디스크로 내보내거나 다시 불러오는 기술로,  
+메모리를 절약하고 동시에 많은 프로세스를 처리할 수 있게 해줍니다.  
+하지만 디스크 접근이 느려 자주 발생하면 성능이 떨어집니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>37) 스레드 실행 (꼬리: join vs detach)</strong></summary>
-<strong>A.</strong> <code>std::thread</code>에 호출 대상 전달로 스레드를 시작합니다. <code>join()</code>은 종료까지 대기하여 리소스를 수거하고, <code>detach()</code>는 백그라운드로 분리하여 join할 수 없게 합니다(수명/리소스 누수 주의). 스레드 풀·태스크 기반을 선호합니다.
+<summary><strong>38️⃣ Thrashing(스래싱)이란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+Thrashing은 페이지 교체가 너무 자주 발생해 CPU가 실제 작업보다  
+페이지 교체에 더 많은 시간을 소비하는 현상입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **원인:**  
+  - 메모리 부족  
+  - 과도한 멀티프로세싱  
+  - Working Set보다 작은 메모리  
+- **결과:**  
+  - CPU 이용률 급감  
+  - 디스크 I/O 폭증  
+- **해결책:**  
+  - 프로세스 수 조절  
+  - Working Set 관리  
+  - Page Fault Rate 모니터링  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+스래싱은 메모리가 부족해 페이지 교체가 반복되면서 CPU가 거의 일하지 못하는 상태입니다.  
+운영체제는 프로세스의 작업 집합 크기를 추적해 이를 방지합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>38) future vs promise (꼬리: async 동작)</strong></summary>
-<strong>A.</strong> <code>promise</code>는 값을 세팅하는 쪽, <code>future</code>는 결과를 받는 쪽입니다. <code>std::async</code>는 작업을 비동기 실행하여 <code>future</code>를 반환하며 정책에 따라 즉시/지연 실행될 수 있습니다. <code>get()</code>은 결과 준비까지 블록합니다.
+<summary><strong>39️⃣ MMU(Memory Management Unit)이란?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+MMU는 가상 주소를 물리 주소로 변환하고, 접근 권한을 검사하는 하드웨어 장치입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **주요 기능:**  
+  - 주소 변환 (Virtual → Physical)  
+  - 접근 보호 (Read/Write 권한 확인)  
+  - 캐시 관리 및 페이지 테이블 참조  
+- **구성 요소:**  
+  - TLB  
+  - Page Table Base Register  
+- **장점:**  
+  - CPU와 메모리 간 분리  
+  - 보안성 강화  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+MMU는 CPU가 사용하는 가상 주소를 실제 물리 주소로 변환하는 하드웨어입니다.  
+또한 접근 권한을 관리해, 프로세스 간 메모리 보호를 담당합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>39) 메모리 풀을 구현하는 이유 (꼬리: 게임에서 오브젝트 풀링)</strong></summary>
-<strong>A.</strong> 동형·소형 객체의 빈번한 new/delete를 줄여 단편화와 할당 비용을 낮춥니다. 고정 크기 블록 슬라브/프리리스트로 O(1) 할당을 제공합니다. 게임에서는 총알/이펙트 같은 오브젝트를 재사용해 스파이크 없는 프레임을 유지합니다.
+<summary><strong>40️⃣ Working Set이란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+Working Set은 특정 시간 동안 프로세스가 자주 사용하는 페이지들의 집합으로,  
+프로세스의 “활성 메모리 영역”을 의미합니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **목적:**  
+  Thrashing 방지, 메모리 효율 향상  
+- **정의:**  
+  최근 일정 시간 동안 참조된 페이지의 집합  
+- **특징:**  
+  - Working Set이 너무 작으면 Thrashing  
+  - 너무 크면 메모리 낭비  
+- **운영체제 역할:**  
+  동적 조정 (Working Set Model)
+
+---
+
+<strong>💬 면접식 답변</strong>  
+Working Set은 프로세스가 일정 시간 동안 실제로 사용하는 페이지의 집합입니다.  
+운영체제는 이를 기준으로 메모리 할당을 조정해 Thrashing을 방지합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>40) explicit 생성자 필요성 (꼬리: 없으면 문제?)</strong></summary>
-<strong>A.</strong> 단일 인자 생성자를 <code>explicit</code>로 지정하면 암시적 변환을 막아 모호·실수 호출을 방지합니다. 없으면 의도치 않은 변환으로 오버로드 해석이 흐트러지고 성능·정확성 문제가 생길 수 있습니다. API는 명시성이 중요합니다.
-</details>
+<summary><strong>41️⃣ I/O System(입출력 시스템)이란?</strong></summary>
 
+<strong>🧠 핵심 요약</strong>  
+입출력 시스템은 CPU, 메모리, 주변 장치 간 데이터 교환을 관리하는 운영체제의 핵심 부분입니다.
+
 ---
 
-## 디자인 원칙 & 실무 응용
+<strong>🔹 특징 / 상세설명</strong>  
+- **I/O 구성 요소:**  
+  - Device Controller (하드웨어 제어기)  
+  - Device Driver (소프트웨어 제어기)  
+  - Buffering / Spooling / DMA 관리  
+- **주요 역할:**  
+  - CPU와 I/O 동시 병행 수행  
+  - 장치 독립성 보장 (추상화)  
+  - 에러 처리 및 자원 스케줄링  
+- **I/O 구조:**  
+  Application → System Call → Kernel I/O Subsystem → Device Driver → Hardware  
 
-<details>
-<summary><strong>41) SOLID 원칙 (꼬리: 모두 중요하다면 적용 방안)</strong></summary>
-<strong>A.</strong> <strong>S</strong> 단일 책임: 변경 이유 하나로 모듈 분리. <strong>O</strong> 개방-폐쇄: 인터페이스/전략으로 확장, 기존 수정 최소화. <strong>L</strong> 리스코프 치환: 계약 준수·공변 반환으로 대체 가능성 확보. <strong>I</strong> 인터페이스 분리: 비대한 인터페이스를 역할별로 분할. <strong>D</strong> 의존 역전: 고수준이 구현이 아니라 추상에 의존, DI/팩토리로 주입. 모두 중요하므로 아키텍처 가이드·리뷰 체크리스트·테스트 전략에 각 원칙을 명문화합니다.
+---
+
+<strong>💬 면접식 답변</strong>  
+입출력 시스템은 CPU와 주변 장치 간의 데이터 교환을 효율적으로 관리하는 운영체제의 핵심 기능입니다.  
+디바이스 드라이버와 버퍼링, DMA 등을 통해 CPU 부하를 줄이고, 입출력 효율을 높입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>42) 싱글톤 구현 (꼬리: 멀티스레드 안전)</strong></summary>
-<strong>A.</strong> 마이어스 싱글톤(함수 지역 정적)으로 간단히 구현합니다. C++11 이후 정적 초기화는 스레드 안전이 보장됩니다. 전역 상태·테스트 어려움·수명 관리 문제로 남용은 피하고 DI를 고려합니다.
+<summary><strong>42️⃣ Interrupt(인터럽트)란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+인터럽트는 CPU가 작업 중이더라도 예외적인 이벤트나 외부 신호에 즉시 반응하도록 하는 메커니즘입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **종류:**  
+  - 하드웨어 인터럽트: I/O 장치, 타이머 등  
+  - 소프트웨어 인터럽트: 시스템 콜, 예외(Exception)  
+- **처리 절차:**  
+  1. 현재 명령 중단 및 상태 저장  
+  2. 인터럽트 벡터 테이블 참조  
+  3. ISR(Interrupt Service Routine) 실행  
+  4. 상태 복원 후 재개  
+- **장점:**  
+  CPU 자원 낭비 감소 (Polling 대비)  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+인터럽트는 CPU가 외부 장치나 시스템 이벤트에 즉시 반응하도록 하는 기능입니다.  
+현재 작업을 일시 중단하고 ISR을 실행한 뒤, 다시 원래 작업으로 복귀합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>43) 팩토리 패턴 (꼬리: 추상 팩토리 유용성)</strong></summary>
-<strong>A.</strong> 생성 로직을 캡슐화해 클라이언트가 구체 타입을 모르게 합니다. 추상 팩토리는 제품군(서로 연관된 객체 집합)을 일관되게 생성할 때 유용하며, 교체·테마링이 쉬워집니다. DI 컨테이너와 궁합이 좋습니다.
+<summary><strong>43️⃣ DMA(Direct Memory Access)란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+DMA는 CPU의 개입 없이 I/O 장치가 메모리에 직접 접근하여 데이터를 전송하는 기술입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **구조:** DMA Controller가 CPU 대신 데이터 전송을 수행  
+- **장점:**  
+  - CPU 부하 감소  
+  - I/O 처리 속도 향상  
+- **작동 과정:**  
+  1. CPU가 DMA에 전송 명령  
+  2. DMA가 직접 메모리 접근  
+  3. 완료 후 CPU에 인터럽트 전달  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+DMA는 CPU 대신 I/O 장치가 직접 메모리에 데이터를 전송하도록 하는 방식입니다.  
+CPU는 전송 명령만 내리고, 나머지는 DMA 컨트롤러가 처리하여 효율을 높입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>44) Observer 패턴 (꼬리: 이벤트 디스패처와 차이)</strong></summary>
-<strong>A.</strong> 주체가 상태 변화 시 구독자에게 알리는 비동기 알림 구조입니다. 이벤트 디스패처/버스는 더 범용적이며 큐잉/필터링/우선순위 같은 인프라 기능이 추가됩니다. 결합을 낮추지만 무분별한 브로드캐스트는 디버깅을 어렵게 합니다.
+<summary><strong>44️⃣ Buffering(버퍼링)과 Spooling(스풀링)의 차이는 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+Buffering은 데이터 전송 속도 차이를 완화하기 위한 임시 저장이고,  
+Spooling은 여러 작업의 출력을 디스크에 임시 저장해 순차적으로 처리하는 기법입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **Buffering:**  
+  - 메모리(RAM) 기반 임시 저장  
+  - 생산자-소비자 속도 불일치 해결  
+- **Spooling:**  
+  - 디스크 기반 큐잉 시스템  
+  - 프린터, 배치 작업 등에서 사용  
+  - 병렬성 향상 (다중 사용자 환경)  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+버퍼링은 속도 차이를 줄이기 위해 데이터를 임시 저장하는 방식이고,  
+스풀링은 작업을 디스크에 저장해 순서대로 처리하는 시스템입니다.  
+프린터 출력 대기열이 스풀링의 대표적인 예시입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>45) Command 패턴 (꼬리: Undo/Redo 설계)</strong></summary>
-<strong>A.</strong> 요청을 객체로 캡슐화하여 큐잉/로깅/취소를 가능케 합니다. Undo/Redo는 <em>do/undo</em> 연산을 보관하거나 Memento로 상태 스냅샷을 관리합니다. 명령 병합/기록 한도/영속화 정책을 함께 설계합니다.
+<summary><strong>45️⃣ Synchronous(동기)와 Asynchronous(비동기)의 차이는?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+동기는 작업이 끝날 때까지 대기하는 방식이고,  
+비동기는 작업 완료 여부와 상관없이 다음 작업을 수행하는 방식입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **Synchronous:**  
+  - 함수 호출 시 반환 전까지 블록  
+  - 직렬 처리  
+- **Asynchronous:**  
+  - 콜백, 이벤트 기반 처리  
+  - 병렬성 활용 가능  
+- **비교:**  
+  - 동기는 예측 가능성 높음  
+  - 비동기는 효율성과 응답성 높음  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+동기는 호출한 작업이 끝날 때까지 기다리는 구조이고,  
+비동기는 결과와 상관없이 다음 명령을 수행합니다.  
+Unity의 Coroutine이나 C#의 async/await는 비동기 처리를 대표하는 예입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>46) 템플릿 메타프로그래밍(TMP) (꼬리: 장단점)</strong></summary>
-<strong>A.</strong> 컴파일타임 계산·분기·타입 조작으로 런타임 오버헤드를 제거합니다(컨셉/if constexpr로 가독성 개선). 장점은 제로오버헤드·강한 타입 안전성, 단점은 컴파일 시간 증가·에러 메시지 난해함·코드 복잡도 상승입니다.
+<summary><strong>46️⃣ Deadlock(교착 상태)이란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+교착 상태는 두 개 이상의 프로세스가 서로의 자원을 기다리며  
+영원히 대기하는 상태를 말합니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **발생 조건 (Coffman 조건 4가지):**  
+  1. 상호 배제 (Mutual Exclusion)  
+  2. 점유와 대기 (Hold and Wait)  
+  3. 비선점 (No Preemption)  
+  4. 순환 대기 (Circular Wait)  
+- **해결 방법:**  
+  - 예방 (Prevention)  
+  - 회피 (Avoidance, Banker's Algorithm)  
+  - 탐지 및 복구 (Detection & Recovery)  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+데드락은 여러 프로세스가 자원을 점유한 채 서로의 자원을 기다리는 상황입니다.  
+이를 방지하기 위해 자원 할당 순서를 지정하거나, Banker's Algorithm 같은 회피 기법을 사용합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>47) C++ 모듈 vs 헤더 (꼬리: 빌드 속도 개선)</strong></summary>
-<strong>A.</strong> 모듈은 파싱 결과를 BMI로 캐시해 중복 파싱을 제거하고 ODR 문제/매크로 오염을 줄입니다. 대규모 코드에서 빌드 시간을 크게 감소시킵니다. 점진 도입 시 모듈 경계 설계와 서드파티 호환을 검토합니다.
+<summary><strong>47️⃣ Concurrency(동시성)과 Parallelism(병렬성)의 차이는?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+동시성은 여러 작업이 번갈아가며 실행되는 것이고,  
+병렬성은 여러 작업이 실제로 동시에 수행되는 것입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **Concurrency:**  
+  - 논리적 병행 (싱글 코어도 가능)  
+  - 스케줄러에 의해 번갈아 실행  
+- **Parallelism:**  
+  - 물리적 병행 (멀티 코어 필요)  
+  - 진짜 동시 실행  
+- **비교:**  
+  - 동시성: 구조적 복잡성  
+  - 병렬성: 성능 향상 중심  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+동시성은 여러 작업이 한정된 자원을 번갈아 사용하는 구조이고,  
+병렬성은 여러 코어에서 동시에 작업이 수행되는 구조입니다.  
+멀티스레딩은 동시성과 병렬성을 모두 활용할 수 있습니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>48) 빌드 최적화 O1/O2/O3/Ofast (꼬리: O3 위험성)</strong></summary>
-<strong>A.</strong> O1은 기본, O2는 균형잡힌 최적화, O3/Ofast는 공격적인 벡터화/루프 변환·정확성 무시(UB 가정 확대)를 수행합니다. O3는 미세한 UB가 성능은↑ 버그도↑를 야기할 수 있어 검증이 중요합니다. 코어 루틴만 선택적으로 상향하는 전략이 현실적입니다.
+<summary><strong>48️⃣ CPU-bound와 I/O-bound 작업의 차이는?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+CPU-bound는 연산 중심의 작업, I/O-bound는 입출력 중심의 작업입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **CPU-bound:**  
+  - 연산 위주 (예: 수학 연산, 암호화, AI 계산)  
+  - CPU 성능이 병목  
+- **I/O-bound:**  
+  - 디스크/네트워크 중심  
+  - I/O 대기 시간이 병목  
+- **운영체제 스케줄링:**  
+  - CPU-bound → Long Quantum  
+  - I/O-bound → Short Quantum  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+CPU-bound는 연산이 많아 CPU 속도가 중요하고,  
+I/O-bound는 입출력 대기 시간이 많아 디스크나 네트워크 성능이 중요합니다.  
+운영체제는 이를 고려해 각기 다른 스케줄링 정책을 적용합니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>49) 디버그 vs 릴리즈 (꼬리: 디버그에서 inline?)</summary>
-<strong>A.</strong> 디버그는 어서션·심볼·최적화 해제, 릴리즈는 최적화 활성·심볼 축소입니다. 디버그에서는 인라인 치환이 제한되거나 비활성화되어 호출 경로가 유지됩니다. 릴리즈에서만 드러나는 타이밍/최적화 이슈도 있으므로 양쪽 테스트가 필수입니다.
+<summary><strong>49️⃣ Disk Scheduling Algorithm에는 어떤 것들이 있나요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+디스크 스케줄링 알고리즘은 헤드 이동 거리를 최소화하여 접근 시간을 줄이는 알고리즘입니다.
+
+---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **FCFS:** 요청 순서대로 처리  
+- **SSTF:** 가장 가까운 트랙 우선 (Shortest Seek Time First)  
+- **SCAN:** 엘리베이터 알고리즘 (왕복 이동)  
+- **C-SCAN:** 한 방향으로만 이동  
+- **LOOK / C-LOOK:** 실제 요청 위치까지만 이동  
+- **평가 기준:** 평균 탐색 시간, 응답 시간  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+디스크 스케줄링은 요청된 I/O 작업의 순서를 결정해 성능을 최적화하는 알고리즘입니다.  
+SSTF와 SCAN이 가장 자주 사용되며, C-LOOK은 고성능 디스크 환경에서 효율적입니다.
+
 </details>
 
 ---
 
 <details>
-<summary><strong>50) 게임 개발에서 C++을 쓰는 이유 (꼬리: 엔진에 유리한 특성)</strong></summary>
-<strong>A.</strong> 성능·메모리 제어·하드웨어 접근·언어 생태(툴/엔진)가 강력하고, 제로오버헤드 추상화로 고수준 인터페이스와 저수준 제어를 동시에 제공합니다. 이동语义/맞춤 할당자/지속 메모리/멀티스레딩 지원이 엔진 코어에 적합합니다. 타 언어 스크립팅과의 하이브리드도 용이합니다.
-</details>
+<summary><strong>50️⃣ RAID 구조란 무엇인가요?</strong></summary>
+
+<strong>🧠 핵심 요약</strong>  
+RAID는 여러 개의 디스크를 하나처럼 묶어 성능 향상과 데이터 안정성을 동시에 얻는 기술입니다.
 
 ---
+
+<strong>🔹 특징 / 상세설명</strong>  
+- **RAID 0:** Striping (성능 향상, 안정성 없음)  
+- **RAID 1:** Mirroring (복제, 안정성 높음)  
+- **RAID 5:** Parity 기반 (속도 + 안정성 균형)  
+- **RAID 10:** 1과 0의 혼합 (고속 + 고안정성)  
+- **장점:**  
+  - 읽기/쓰기 속도 향상  
+  - 데이터 손실 대비  
+
+---
+
+<strong>💬 면접식 답변</strong>  
+RAID는 여러 하드디스크를 하나의 논리적 장치로 묶어 성능과 안정성을 높이는 기술입니다.  
+RAID 0은 속도, RAID 1은 복구 안정성, RAID 5/10은 균형형으로 자주 사용됩니다.
+
+</details>
