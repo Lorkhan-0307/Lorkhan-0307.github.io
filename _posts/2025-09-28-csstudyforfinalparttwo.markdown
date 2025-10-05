@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "기술면접 대비 CS 공부 - 01"
+title: "기술면접 대비 CS 공부 - Unity, UE 기본"
 date: 2025-09-28 16:00:00 +0900
 categories: [Tech Interview, Study Plan]
 tags: [c++, c-sharp, computer-science, algorithm, data-structure, operating-system, network, database, design-pattern, unity, unreal]
