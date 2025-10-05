@@ -15,7 +15,7 @@ slug: csstudyforfinalpartfive
 ---
 
 <details markdown="1">
-<summary><strong>1️⃣ 빅-오(Big-O), 빅-오메가(Ω), 빅-세타(Θ)의 차이를 설명해주세요.</strong></summary>
+<summary><strong>1. 빅-오(Big-O), 빅-오메가(Ω), 빅-세타(Θ)의 차이를 설명해주세요.</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -49,7 +49,7 @@ Big-O는 "최악의 경우", Big-Ω는 "최선의 경우", Big-Θ는 "평균적�
 ---
 
 <details markdown="1">
-<summary><strong>2️⃣ 재귀(Recursion)와 반복(Iteration)의 차이는 무엇인가요?</strong></summary>
+<summary><strong>2. 재귀(Recursion)와 반복(Iteration)의 차이는 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -87,7 +87,7 @@ Big-O는 "최악의 경우", Big-Ω는 "최선의 경우", Big-Θ는 "평균적�
 ---
 
 <details markdown="1">
-<summary><strong>3️⃣ 분할 정복(Divide and Conquer)이란?</strong></summary>
+<summary><strong>3. 분할 정복(Divide and Conquer)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -120,7 +120,7 @@ Big-O는 "최악의 경우", Big-Ω는 "최선의 경우", Big-Θ는 "평균적�
 ---
 
 <details markdown="1">
-<summary><strong>4️⃣ 재귀 호출의 공간 복잡도는 왜 높을까요?</strong></summary>
+<summary><strong>4. 재귀 호출의 공간 복잡도는 왜 높을까요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -148,7 +148,7 @@ Big-O는 "최악의 경우", Big-Ω는 "최선의 경우", Big-Θ는 "평균적�
 ---
 
 <details markdown="1">
-<summary><strong>5️⃣ 슬라이딩 윈도우(Sliding Window) 알고리즘이란?</strong></summary>
+<summary><strong>5. 슬라이딩 윈도우(Sliding Window) 알고리즘이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -182,7 +182,7 @@ O(n) 시간 복잡도의 최적화 알고리즘입니다.
 ---
 
 <details markdown="1">
-<summary><strong>6️⃣ 투 포인터(Two Pointers)와 이진 탐색(Binary Search)의 차이는?</strong></summary>
+<summary><strong>6. 투 포인터(Two Pointers)와 이진 탐색(Binary Search)의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -217,7 +217,7 @@ O(n) 시간 복잡도의 최적화 알고리즘입니다.
 ---
 
 <details markdown="1">
-<summary><strong>7️⃣ KMP 알고리즘은 어떤 방식으로 문자열 검색을 빠르게 하나요?</strong></summary>
+<summary><strong>7. KMP 알고리즘은 어떤 방식으로 문자열 검색을 빠르게 하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -245,7 +245,7 @@ KMP는 문자열 검색 시 접두사/접미사 일치 정보를 미리 계산�
 ---
 
 <details markdown="1">
-<summary><strong>8️⃣ 단일 연결 리스트에서 중간 노드를 삭제하려면 어떻게 하나요?</strong></summary>
+<summary><strong>8. 단일 연결 리스트에서 중간 노드를 삭제하려면 어떻게 하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -276,7 +276,7 @@ KMP는 문자열 검색 시 접두사/접미사 일치 정보를 미리 계산�
 ---
 
 <details markdown="1">
-<summary><strong>9️⃣ BFS와 DFS의 차이점은?</strong></summary>
+<summary><strong>9. BFS와 DFS의 차이점은?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -310,7 +310,7 @@ DFS는 한 경로를 끝까지 탐색하며 스택을 사용합니다.
 ---
 
 <details markdown="1">
-<summary><strong>🔟 힙 정렬(Heap Sort)과 우선순위 큐의 차이는?</strong></summary>
+<summary><strong>10. 힙 정렬(Heap Sort)과 우선순위 큐의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -590,6 +590,7 @@ C++의 `lower_bound`를 활용한 방식이 대표적입니다.
 ---
 
 <strong>🔹 상세설명</strong>  
+
 | 컨테이너 | 내부 구조 | 랜덤 접근 | 삽입/삭제 | 특징 |
 |-----------|------------|-------------|-------------|--------|
 | vector | 배열 | O(1) | O(n) | 캐시 효율 우수 |
@@ -617,6 +618,7 @@ deque는 양쪽 끝 삽입/삭제에 최적화되어 있습니다.
 ---
 
 <strong>🔹 상세설명</strong>  
+
 | 구분 | map | unordered_map |
 |------|-----|----------------|
 | 내부 구조 | Red-Black Tree | Hash Table |
@@ -678,6 +680,7 @@ unordered_map은 해시 기반으로 평균 O(1) 속도를 가지지만,
 ---
 
 <strong>🔹 상세설명</strong>  
+
 | 구분 | 체이닝 | 오픈 어드레싱 |
 |------|--------|----------------|
 | 구조 | 버킷마다 연결 리스트 | 한 배열 내에서 재배치 |
@@ -836,6 +839,7 @@ C++의 std::sort가 이 방식을 사용합니다.
 ---
 
 <strong>🔹 상세설명</strong>  
+
 | 구분 | 그리디 | 동적 계획법 |
 |------|--------|--------------|
 | 접근 방식 | 순간의 최선 선택 | 전체 상태 저장 |
@@ -1090,6 +1094,7 @@ remove는 단순히 값들을 앞으로 당길 뿐 실제 삭제를 하지 않�
 ---
 
 <strong>🔹 상세설명</strong>  
+
 | 함수 | 특징 | 시간복잡도 |
 |-------|--------|-------------|
 | sort | 전체 정렬, 불안정 | O(n log n) |

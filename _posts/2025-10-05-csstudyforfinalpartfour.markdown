@@ -15,7 +15,7 @@ slug: csstudyforfinalpartfour
 ---
 
 <details markdown="1">
-<summary><strong>1️⃣ 운영체제란 무엇인가요?</strong></summary>
+<summary><strong>1. 운영체제란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -51,7 +51,7 @@ CPU, 메모리, 파일 시스템 등의 자원을 효율적으로 관리하면�
 ---
 
 <details markdown="1">
-<summary><strong>2️⃣ 커널(Kernel)이란 무엇인가요?</strong></summary>
+<summary><strong>2. 커널(Kernel)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -87,7 +87,7 @@ CPU, 메모리, 파일 시스템 등의 자원을 효율적으로 관리하면�
 ---
 
 <details markdown="1">
-<summary><strong>3️⃣ 커널 스케줄링(Kernel Scheduling)이란 무엇인가요?</strong></summary>
+<summary><strong>3. 커널 스케줄링(Kernel Scheduling)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -126,7 +126,7 @@ CPU, 메모리, 파일 시스템 등의 자원을 효율적으로 관리하면�
 ---
 
 <details markdown="1">
-<summary><strong>4️⃣ 커널은 네트워크 계층 중 어디를 담당하나요?</strong></summary>
+<summary><strong>4. 커널은 네트워크 계층 중 어디를 담당하나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -164,7 +164,7 @@ CPU, 메모리, 파일 시스템 등의 자원을 효율적으로 관리하면�
 ---
 
 <details markdown="1">
-<summary><strong>5️⃣ CPU 스케줄링 알고리즘에 대해 설명해주세요.</strong></summary>
+<summary><strong>5. CPU 스케줄링 알고리즘에 대해 설명해주세요.</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -200,7 +200,7 @@ CPU 스케줄링은 여러 프로세스가 CPU를 효율적으로 사용할 수 
 ---
 
 <details markdown="1">
-<summary><strong>6️⃣ 우선순위 기반 Preemptive Scheduling이란?</strong></summary>
+<summary><strong>6. 우선순위 기반 Preemptive Scheduling이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -235,7 +235,7 @@ CPU 스케줄링은 여러 프로세스가 CPU를 효율적으로 사용할 수 
 ---
 
 <details markdown="1">
-<summary><strong>7️⃣ MLFQ(Multi-Level Feedback Queue)란 무엇인가요?</strong></summary>
+<summary><strong>7. MLFQ(Multi-Level Feedback Queue)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -270,7 +270,7 @@ CPU를 오래 사용하는 작업은 하위 큐로, 입출력 중심의 작업�
 ---
 
 <details markdown="1">
-<summary><strong>8️⃣ User Mode란 무엇인가요?</strong></summary>
+<summary><strong>8. User Mode란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -305,7 +305,7 @@ User Mode는 일반 애플리케이션이 실행되는 제한된 권한 모드�
 ---
 
 <details markdown="1">
-<summary><strong>9️⃣ 32bit와 64bit의 차이는 무엇인가요?</strong></summary>
+<summary><strong>9. 32bit와 64bit의 차이는 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -340,7 +340,7 @@ User Mode는 일반 애플리케이션이 실행되는 제한된 권한 모드�
 ---
 
 <details markdown="1">
-<summary><strong>🔟 주소 버스(Address Bus)란 무엇인가요?</strong></summary>
+<summary><strong>10. 주소 버스(Address Bus)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -376,7 +376,7 @@ User Mode는 일반 애플리케이션이 실행되는 제한된 권한 모드�
 ---
 
 <details markdown="1">
-<summary><strong>11️⃣ System Call이란 무엇인가요?</strong></summary>
+<summary><strong>11. System Call이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>
 
@@ -414,7 +414,7 @@ System Call은 사용자 프로그램이 커널 기능을 요청하는 인터페
 ---
 
 <details markdown="1">
-<summary><strong>12️⃣ Interrupt(인터럽트)란 무엇인가요?</strong></summary>
+<summary><strong>12. Interrupt(인터럽트)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 인터럽트는 CPU가 실행 중인 작업을 잠시 중단하고,  
@@ -445,7 +445,7 @@ System Call은 사용자 프로그램이 커널 기능을 요청하는 인터페
 ---
 
 <details markdown="1">
-<summary><strong>13️⃣ Interrupt Vector Table(IVT)이란?</strong></summary>
+<summary><strong>13. Interrupt Vector Table(IVT)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 IVT는 각 인터럽트 번호에 대응하는 ISR(Interrupt Service Routine)의 주소를 저장하는 테이블입니다.
@@ -474,7 +474,7 @@ CPU는 인터럽트가 발생하면 IVT에서 해당 ISR의 주소를 찾아 즉
 ---
 
 <details markdown="1">
-<summary><strong>14️⃣ ISR(Interrupt Service Routine)이란?</strong></summary>
+<summary><strong>14. ISR(Interrupt Service Routine)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 ISR은 인터럽트가 발생했을 때 실행되는 함수(핸들러)로,  
@@ -506,7 +506,7 @@ CPU는 ISR 수행 후 원래 실행 중이던 프로세스로 복귀합니다.
 ---
 
 <details markdown="1">
-<summary><strong>15️⃣ IRET 명령어란 무엇인가요?</strong></summary>
+<summary><strong>15. IRET 명령어란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 IRET(Interrupt Return)은 인터럽트 처리 후,  
@@ -536,7 +536,7 @@ ISR이 완료되면 IRET이 스택에 저장된 프로그램 카운터와 플래
 ---
 
 <details markdown="1">
-<summary><strong>16️⃣ Synchronous(동기)와 Asynchronous(비동기)의 차이는?</strong></summary>
+<summary><strong>16. Synchronous(동기)와 Asynchronous(비동기)의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 동기(Synchronous)는 요청한 작업이 끝날 때까지 기다리는 방식이고,  
@@ -545,6 +545,7 @@ ISR이 완료되면 IRET이 스택에 저장된 프로그램 카운터와 플래
 ---
 
 <strong>🔹 특징 및 상세설명</strong>  
+
 | 구분 | Synchronous | Asynchronous |
 |------|--------------|--------------|
 | **작동 방식** | 순차적 | 병렬 또는 비차단 |
@@ -564,7 +565,7 @@ ISR이 완료되면 IRET이 스택에 저장된 프로그램 카운터와 플래
 ---
 
 <details markdown="1">
-<summary><strong>17️⃣ Coroutine과 비동기의 차이는 무엇인가요?</strong></summary>
+<summary><strong>17. Coroutine과 비동기의 차이는 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 Coroutine은 함수 실행을 중단하고 나중에 재개할 수 있는 구조이고,  
@@ -595,7 +596,7 @@ Coroutine은 하나의 스레드에서 실행 흐름을 잠시 멈추고 나중�
 ---
 
 <details markdown="1">
-<summary><strong>18️⃣ Critical Section(임계구역)이란?</strong></summary>
+<summary><strong>18. Critical Section(임계구역)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 Critical Section은 여러 스레드가 동시에 접근하면 문제가 발생할 수 있는 코드 영역입니다.
@@ -624,7 +625,7 @@ Critical Section은 여러 스레드가 동시에 접근하면 문제가 발생�
 ---
 
 <details markdown="1">
-<summary><strong>19️⃣ Semaphore란 무엇인가요?</strong></summary>
+<summary><strong>19. Semaphore란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 Semaphore는 동시에 접근할 수 있는 스레드의 개수를 제어하는 동기화 도구입니다.
@@ -683,7 +684,7 @@ Mutex는 한 번에 하나의 스레드만 공유 자원에 접근하도록 하�
 ---
 
 <details markdown="1">
-<summary><strong>21️⃣ 프로세스(Process)란 무엇인가요?</strong></summary>
+<summary><strong>21. 프로세스(Process)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 프로세스는 실행 중인 프로그램의 인스턴스로,  
@@ -715,7 +716,7 @@ Mutex는 한 번에 하나의 스레드만 공유 자원에 접근하도록 하�
 ---
 
 <details markdown="1">
-<summary><strong>22️⃣ 스레드(Thread)란 무엇인가요?</strong></summary>
+<summary><strong>22. 스레드(Thread)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 스레드는 프로세스 내부에서 실행되는 가장 작은 실행 단위이며,  
@@ -744,7 +745,7 @@ Mutex는 한 번에 하나의 스레드만 공유 자원에 접근하도록 하�
 ---
 
 <details markdown="1">
-<summary><strong>23️⃣ PCB(Process Control Block)란 무엇인가요?</strong></summary>
+<summary><strong>23. PCB(Process Control Block)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 PCB는 운영체제가 각 프로세스를 관리하기 위해 유지하는 정보 구조체입니다.
@@ -775,7 +776,7 @@ CPU 스위칭 시 PCB를 이용해 이전 상태를 저장하고, 다음 프로�
 ---
 
 <details markdown="1">
-<summary><strong>24️⃣ 프로세스의 상태(State)는 어떻게 나뉘나요?</strong></summary>
+<summary><strong>24. 프로세스의 상태(State)는 어떻게 나뉘나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 프로세스는 실행 상태에 따라 **New, Ready, Running, Waiting, Terminated** 로 구분됩니다.
@@ -806,7 +807,7 @@ CPU 스위칭 시 PCB를 이용해 이전 상태를 저장하고, 다음 프로�
 ---
 
 <details markdown="1">
-<summary><strong>25️⃣ 프로세스 메모리 구조는 어떻게 되어있나요?</strong></summary>
+<summary><strong>25. 프로세스 메모리 구조는 어떻게 되어있나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 프로세스 메모리는 **Code, Data, Heap, Stack** 영역으로 나뉩니다.
@@ -814,6 +815,7 @@ CPU 스위칭 시 PCB를 이용해 이전 상태를 저장하고, 다음 프로�
 ---
 
 <strong>🔹 특징 / 상세설명</strong>  
+
 | 영역 | 내용 | 크기 변화 |
 |------|------|-----------|
 | Code | 프로그램 명령어 | 고정 |
@@ -837,7 +839,7 @@ CPU 스위칭 시 PCB를 이용해 이전 상태를 저장하고, 다음 프로�
 ---
 
 <details markdown="1">
-<summary><strong>26️⃣ Stack 메모리가 높은 주소에서 낮은 주소로 확장되는 이유는?</strong></summary>
+<summary><strong>26. Stack 메모리가 높은 주소에서 낮은 주소로 확장되는 이유는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 스택과 힙이 서로 반대 방향으로 확장되도록 하여,  
@@ -865,7 +867,7 @@ CPU 스위칭 시 PCB를 이용해 이전 상태를 저장하고, 다음 프로�
 ---
 
 <details markdown="1">
-<summary><strong>27️⃣ Heap 메모리 관리에서 주의해야 할 점은 무엇인가요?</strong></summary>
+<summary><strong>27. Heap 메모리 관리에서 주의해야 할 점은 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 Heap은 동적 메모리 공간으로,  
@@ -896,7 +898,7 @@ Heap은 동적으로 메모리를 관리하기 때문에 누수나 단편화가 
 ---
 
 <details markdown="1">
-<summary><strong>28️⃣ 내부 단편화(Internal Fragmentation)란 무엇인가요?</strong></summary>
+<summary><strong>28. 내부 단편화(Internal Fragmentation)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 내부 단편화는 고정된 블록을 할당할 때 실제 사용보다 더 큰 공간이 낭비되는 현상입니다.
@@ -925,7 +927,7 @@ Heap은 동적으로 메모리를 관리하기 때문에 누수나 단편화가 
 ---
 
 <details markdown="1">
-<summary><strong>29️⃣ 외부 단편화(External Fragmentation)란 무엇인가요?</strong></summary>
+<summary><strong>29. 외부 단편화(External Fragmentation)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 외부 단편화는 메모리 중간중간에 작은 빈 공간이 생겨,  
@@ -984,7 +986,7 @@ Memory Pool은 작은 객체를 반복적으로 할당할 때,
 ---
 
 <details markdown="1">
-<summary><strong>31️⃣ Virtual Memory(가상 메모리)란 무엇인가요?</strong></summary>
+<summary><strong>31. Virtual Memory(가상 메모리)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 가상 메모리는 실제 물리 메모리보다 큰 공간을 사용하는 것처럼 보이게 하는 메모리 관리 기법으로,  
@@ -1016,7 +1018,7 @@ MMU가 주소 변환을 담당하고, 필요할 때만 페이지를 로드합니
 ---
 
 <details markdown="1">
-<summary><strong>32️⃣ Paging(페이징)이란 무엇인가요?</strong></summary>
+<summary><strong>32. Paging(페이징)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 페이징은 가상 메모리를 일정한 크기의 블록(Page)으로 나누고,  
@@ -1042,7 +1044,7 @@ MMU가 주소 변환을 담당하고, 필요할 때만 페이지를 로드합니
 ---
 
 <details markdown="1">
-<summary><strong>33️⃣ Page Table이란 무엇인가요?</strong></summary>
+<summary><strong>33. Page Table이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 페이지 테이블은 가상 주소와 물리 주소의 대응 관계를 저장하는 자료구조입니다.
@@ -1073,7 +1075,7 @@ MMU가 주소 변환을 담당하고, 필요할 때만 페이지를 로드합니
 ---
 
 <details markdown="1">
-<summary><strong>34️⃣ Page Fault란 무엇인가요?</strong></summary>
+<summary><strong>34. Page Fault란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 페이지 폴트는 CPU가 접근하려는 페이지가 물리 메모리에 없는 경우 발생하는 예외(Interrupt)입니다.
@@ -1103,7 +1105,7 @@ MMU가 주소 변환을 담당하고, 필요할 때만 페이지를 로드합니
 ---
 
 <details markdown="1">
-<summary><strong>35️⃣ Page Replacement Algorithm이란?</strong></summary>
+<summary><strong>35. Page Replacement Algorithm이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 페이지 교체 알고리즘은 새로운 페이지를 메모리에 올리기 위해  
@@ -1131,7 +1133,7 @@ MMU가 주소 변환을 담당하고, 필요할 때만 페이지를 로드합니
 ---
 
 <details markdown="1">
-<summary><strong>36️⃣ TLB(Translation Lookaside Buffer)란 무엇인가요?</strong></summary>
+<summary><strong>36. TLB(Translation Lookaside Buffer)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 TLB는 최근 사용된 페이지 매핑 정보를 캐싱하는 고속 메모리로,  
@@ -1158,7 +1160,7 @@ TLB는 페이지 테이블의 일부를 캐싱하여 주소 변환 속도를 높
 ---
 
 <details markdown="1">
-<summary><strong>37️⃣ Swapping이란 무엇인가요?</strong></summary>
+<summary><strong>37. Swapping이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 Swapping은 프로세스 전체를 디스크로 내보내거나 다시 메모리로 불러오는 기법으로,  
@@ -1186,7 +1188,7 @@ Swapping은 실행 중인 프로세스를 디스크로 내보내거나 다시 �
 ---
 
 <details markdown="1">
-<summary><strong>38️⃣ Thrashing(스래싱)이란 무엇인가요?</strong></summary>
+<summary><strong>38. Thrashing(스래싱)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 Thrashing은 페이지 교체가 너무 자주 발생해 CPU가 실제 작업보다  
@@ -1218,7 +1220,7 @@ Thrashing은 페이지 교체가 너무 자주 발생해 CPU가 실제 작업보
 ---
 
 <details markdown="1">
-<summary><strong>39️⃣ MMU(Memory Management Unit)이란?</strong></summary>
+<summary><strong>39. MMU(Memory Management Unit)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 MMU는 가상 주소를 물리 주소로 변환하고, 접근 권한을 검사하는 하드웨어 장치입니다.
@@ -1278,7 +1280,7 @@ Working Set은 프로세스가 일정 시간 동안 실제로 사용하는 페�
 ---
 
 <details markdown="1">
-<summary><strong>41️⃣ I/O System(입출력 시스템)이란?</strong></summary>
+<summary><strong>41. I/O System(입출력 시스템)이란?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 입출력 시스템은 CPU, 메모리, 주변 장치 간 데이터 교환을 관리하는 운영체제의 핵심 부분입니다.
@@ -1308,7 +1310,7 @@ Working Set은 프로세스가 일정 시간 동안 실제로 사용하는 페�
 ---
 
 <details markdown="1">
-<summary><strong>42️⃣ Interrupt(인터럽트)란 무엇인가요?</strong></summary>
+<summary><strong>42. Interrupt(인터럽트)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 인터럽트는 CPU가 작업 중이더라도 예외적인 이벤트나 외부 신호에 즉시 반응하도록 하는 메커니즘입니다.
@@ -1338,7 +1340,7 @@ Working Set은 프로세스가 일정 시간 동안 실제로 사용하는 페�
 ---
 
 <details markdown="1">
-<summary><strong>43️⃣ DMA(Direct Memory Access)란 무엇인가요?</strong></summary>
+<summary><strong>43. DMA(Direct Memory Access)란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 DMA는 CPU의 개입 없이 I/O 장치가 메모리에 직접 접근하여 데이터를 전송하는 기술입니다.
@@ -1366,7 +1368,7 @@ CPU는 전송 명령만 내리고, 나머지는 DMA 컨트롤러가 처리하여
 ---
 
 <details markdown="1">
-<summary><strong>44️⃣ Buffering(버퍼링)과 Spooling(스풀링)의 차이는 무엇인가요?</strong></summary>
+<summary><strong>44. Buffering(버퍼링)과 Spooling(스풀링)의 차이는 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 Buffering은 데이터 전송 속도 차이를 완화하기 위한 임시 저장이고,  
@@ -1395,7 +1397,7 @@ Spooling은 여러 작업의 출력을 디스크에 임시 저장해 순차적�
 ---
 
 <details markdown="1">
-<summary><strong>45️⃣ Synchronous(동기)와 Asynchronous(비동기)의 차이는?</strong></summary>
+<summary><strong>45. Synchronous(동기)와 Asynchronous(비동기)의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 동기는 작업이 끝날 때까지 대기하는 방식이고,  
@@ -1426,7 +1428,7 @@ Unity의 Coroutine이나 C#의 async/await는 비동기 처리를 대표하는 �
 ---
 
 <details markdown="1">
-<summary><strong>46️⃣ Deadlock(교착 상태)이란 무엇인가요?</strong></summary>
+<summary><strong>46. Deadlock(교착 상태)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 교착 상태는 두 개 이상의 프로세스가 서로의 자원을 기다리며  
@@ -1456,7 +1458,7 @@ Unity의 Coroutine이나 C#의 async/await는 비동기 처리를 대표하는 �
 ---
 
 <details markdown="1">
-<summary><strong>47️⃣ Concurrency(동시성)과 Parallelism(병렬성)의 차이는?</strong></summary>
+<summary><strong>47. Concurrency(동시성)과 Parallelism(병렬성)의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 동시성은 여러 작업이 번갈아가며 실행되는 것이고,  
@@ -1487,7 +1489,7 @@ Unity의 Coroutine이나 C#의 async/await는 비동기 처리를 대표하는 �
 ---
 
 <details markdown="1">
-<summary><strong>48️⃣ CPU-bound와 I/O-bound 작업의 차이는?</strong></summary>
+<summary><strong>48. CPU-bound와 I/O-bound 작업의 차이는?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 CPU-bound는 연산 중심의 작업, I/O-bound는 입출력 중심의 작업입니다.
@@ -1517,7 +1519,7 @@ I/O-bound는 입출력 대기 시간이 많아 디스크나 네트워크 성능�
 ---
 
 <details markdown="1">
-<summary><strong>49️⃣ Disk Scheduling Algorithm에는 어떤 것들이 있나요?</strong></summary>
+<summary><strong>49. Disk Scheduling Algorithm에는 어떤 것들이 있나요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 디스크 스케줄링 알고리즘은 헤드 이동 거리를 최소화하여 접근 시간을 줄이는 알고리즘입니다.
