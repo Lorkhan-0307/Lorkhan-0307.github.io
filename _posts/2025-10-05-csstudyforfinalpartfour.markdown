@@ -654,7 +654,7 @@ S값이 0이면 다른 스레드는 대기하고, 자원이 반환되면 다시 
 ---
 
 <details markdown="1">
-<summary><strong>20️⃣ Mutex란 무엇인가요?</strong></summary>
+<summary><strong>20 Mutex란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 Mutex는 한 번에 하나의 스레드만 접근할 수 있도록 하는 상호 배제 동기화 객체입니다.
@@ -955,7 +955,7 @@ Heap은 동적으로 메모리를 관리하기 때문에 누수나 단편화가 
 ---
 
 <details markdown="1">
-<summary><strong>30️⃣ Memory Pool(메모리 풀)이란 무엇인가요?</strong></summary>
+<summary><strong>30 Memory Pool(메모리 풀)이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 Memory Pool은 자주 할당/해제되는 작은 객체들을 미리 확보해두고 재사용하는 메모리 관리 기법입니다.
@@ -1250,7 +1250,7 @@ MMU는 CPU가 사용하는 가상 주소를 실제 물리 주소로 변환하는
 ---
 
 <details markdown="1">
-<summary><strong>40️⃣ Working Set이란 무엇인가요?</strong></summary>
+<summary><strong>40 Working Set이란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 Working Set은 특정 시간 동안 프로세스가 자주 사용하는 페이지들의 집합으로,  
@@ -1545,7 +1545,7 @@ SSTF와 SCAN이 가장 자주 사용되며, C-LOOK은 고성능 디스크 환경
 ---
 
 <details markdown="1">
-<summary><strong>50️⃣ RAID 구조란 무엇인가요?</strong></summary>
+<summary><strong>50 RAID 구조란 무엇인가요?</strong></summary>
 
 <strong>🧠 핵심 요약</strong>  
 RAID는 여러 개의 디스크를 하나처럼 묶어 성능 향상과 데이터 안정성을 동시에 얻는 기술입니다.
