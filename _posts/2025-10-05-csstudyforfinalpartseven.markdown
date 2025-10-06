@@ -10,7 +10,7 @@ slug: csstudyforfinalpartseven
 # 면접 대비 사전 QnA 정리 - Unreal Engine
 
 <details markdown="1">
-<summary>**1. Unreal Engine의 핵심 클래스 계층을 설명해주세요.**</summary>
+<summary> **1. Unreal Engine의 핵심 클래스 계층을 설명해주세요.** </summary>
 
 ---
 
@@ -44,7 +44,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**2. UObject와 AActor의 차이는 무엇인가요?**</summary>
+<summary> **2. UObject와 AActor의 차이는 무엇인가요?** </summary>
 
 ---
 
@@ -76,7 +76,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**3. Tick() 함수는 언제 호출되며, 어디에 사용하는 게 적절한가요?**</summary>
+<summary> **3. Tick() 함수는 언제 호출되며, 어디에 사용하는 게 적절한가요?** </summary>
 
 ---
 
@@ -106,7 +106,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**4. Blueprint와 C++의 차이점과 상호 보완 방식은?**</summary>
+<summary> **4. Blueprint와 C++의 차이점과 상호 보완 방식은?** </summary>
 
 ---
 
@@ -142,7 +142,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**5. GameMode, GameState, PlayerState의 차이를 설명해주세요.**</summary>
+<summary> **5. GameMode, GameState, PlayerState의 차이를 설명해주세요.** </summary>
 
 ---
 
@@ -184,7 +184,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**6. Component 시스템의 개념과 활용 사례를 설명해주세요.**</summary>
+<summary> **6. Component 시스템의 개념과 활용 사례를 설명해주세요.** </summary>
 
 ---
 
@@ -223,7 +223,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**7. Level과 World의 차이를 설명해주세요.**</summary>
+<summary> **7. Level과 World의 차이를 설명해주세요.** </summary>
 
 ---
 
@@ -259,7 +259,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**8. PlayerController, AIController, 그리고 Possess()의 역할은 무엇인가요?**</summary>
+<summary> **8. PlayerController, AIController, 그리고 Possess()의 역할은 무엇인가요?** </summary>
 
 ---
 
@@ -300,7 +300,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**9. Subsystem이란 무엇이며, 어떤 종류가 있나요?**</summary>
+<summary> **9. Subsystem이란 무엇이며, 어떤 종류가 있나요?** </summary>
 
 ---
 
@@ -340,7 +340,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**10. Unreal의 Garbage Collection(GC) 시스템은 어떻게 동작하나요?**</summary>
+<summary> **10. Unreal의 Garbage Collection(GC) 시스템은 어떻게 동작하나요?** </summary>
 
 ---
 
@@ -377,7 +377,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**11. UE5의 Garbage Collection(GC)과 Smart Pointer의 차이를 설명해주세요.**</summary>
+<summary> **11. UE5의 Garbage Collection(GC)과 Smart Pointer의 차이를 설명해주세요.** </summary>
 
 ---
 
@@ -401,6 +401,7 @@ slug: csstudyforfinalpartseven
   - 참조 카운트를 기반으로, 범위를 벗어나면 자동 해제된다.
 
 - **차이점 요약**  
+
   | 구분 | Garbage Collection | Smart Pointer |
   |------|------------------|----------------|
   | 적용 대상 | UObject | 일반 C++ 객체 |
@@ -422,7 +423,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**12. UPROPERTY()의 역할과 주요 지정자들을 설명해주세요.**</summary>
+<summary> **12. UPROPERTY()의 역할과 주요 지정자들을 설명해주세요.** </summary>
 
 ---
 
@@ -459,7 +460,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**13. UE5에서 발생할 수 있는 메모리 누수의 원인은 무엇이며, 어떻게 진단하나요?**</summary>
+<summary> **13. UE5에서 발생할 수 있는 메모리 누수의 원인은 무엇이며, 어떻게 진단하나요?** </summary>
 
 ---
 
@@ -495,7 +496,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**14. Draw Call이란 무엇이며, 이를 줄이는 방법은?**</summary>
+<summary> **14. Draw Call이란 무엇이며, 이를 줄이는 방법은?** </summary>
 
 ---
 
@@ -533,7 +534,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**15. LOD(Level of Detail) 시스템의 원리와 설정 방법을 설명해주세요.**</summary>
+<summary> **15. LOD(Level of Detail) 시스템의 원리와 설정 방법을 설명해주세요.** </summary>
 
 ---
 
@@ -568,7 +569,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**16. Unreal Insights의 주요 기능과 활용 목적은 무엇인가요?**</summary>
+<summary> **16. Unreal Insights의 주요 기능과 활용 목적은 무엇인가요?** </summary>
 
 ---
 
@@ -603,7 +604,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**17. Unreal에서 멀티스레딩은 어떻게 관리되나요? (TaskGraph / AsyncTask)**</summary>
+<summary> **17. Unreal에서 멀티스레딩은 어떻게 관리되나요? (TaskGraph / AsyncTask)** </summary>
 
 ---
 
@@ -641,7 +642,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**18. Level Streaming과 World Partition의 차이는 무엇인가요?**</summary>
+<summary> **18. Level Streaming과 World Partition의 차이는 무엇인가요?** </summary>
 
 ---
 
@@ -673,7 +674,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**19. Tick 성능 최적화를 위한 방법에는 어떤 것이 있나요?**</summary>
+<summary> **19. Tick 성능 최적화를 위한 방법에는 어떤 것이 있나요?** </summary>
 
 ---
 
@@ -707,7 +708,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**20. Unreal에서 Garbage Collection을 수동으로 실행하거나 제어할 수 있나요?**</summary>
+<summary> **20. Unreal에서 Garbage Collection을 수동으로 실행하거나 제어할 수 있나요?** </summary>
 
 ---
 
@@ -741,7 +742,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**21. Unreal의 Replication(복제) 시스템은 무엇인가요?**</summary>
+<summary> **21. Unreal의 Replication(복제) 시스템은 무엇인가요?** </summary>
 
 ---
 
@@ -773,7 +774,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**22. RPC(Remote Procedure Call)의 종류와 차이를 설명해주세요.**</summary>
+<summary> **22. RPC(Remote Procedure Call)의 종류와 차이를 설명해주세요.** </summary>
 
 ---
 
@@ -806,7 +807,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**23. Client Prediction과 Server Reconciliation은 무엇인가요?**</summary>
+<summary> **23. Client Prediction과 Server Reconciliation은 무엇인가요?** </summary>
 
 ---
 
@@ -841,7 +842,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**24. Unreal에서 네트워크 Relevancy(관련성)란 무엇인가요?**</summary>
+<summary> **24. Unreal에서 네트워크 Relevancy(관련성)란 무엇인가요?** </summary>
 
 ---
 
@@ -872,7 +873,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**25. Dedicated Server와 Listen Server의 차이는 무엇인가요?**</summary>
+<summary> **25. Dedicated Server와 Listen Server의 차이는 무엇인가요?** </summary>
 
 ---
 
@@ -902,7 +903,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**26. Unreal의 GAS(Gameplay Ability System)는 무엇인가요?**</summary>
+<summary> **26. Unreal의 GAS(Gameplay Ability System)는 무엇인가요?** </summary>
 
 ---
 
@@ -936,7 +937,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**27. GameplayEffect의 Duration 타입에는 어떤 것이 있나요?**</summary>
+<summary> **27. GameplayEffect의 Duration 타입에는 어떤 것이 있나요?** </summary>
 
 ---
 
@@ -964,7 +965,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**28. AttributeSet이란 무엇이며, 능력치 변경 시 어떤 순서로 실행되나요?**</summary>
+<summary> **28. AttributeSet이란 무엇이며, 능력치 변경 시 어떤 순서로 실행되나요?** </summary>
 
 ---
 
@@ -995,7 +996,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**29. GAS에서 GameplayTag의 역할은 무엇인가요?**</summary>
+<summary> **29. GAS에서 GameplayTag의 역할은 무엇인가요?** </summary>
 
 ---
 
@@ -1025,7 +1026,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**30. GAS의 Client Prediction은 어떻게 동작하나요?**</summary>
+<summary> **30. GAS의 Client Prediction은 어떻게 동작하나요?** </summary>
 
 ---
 
@@ -1057,7 +1058,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**31. Animation Blueprint의 State Machine이란 무엇인가요?**</summary>
+<summary> **31. Animation Blueprint의 State Machine이란 무엇인가요?** </summary>
 
 ---
 
@@ -1089,7 +1090,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**32. Blend Space란 무엇이며 언제 사용하나요?**</summary>
+<summary> **32. Blend Space란 무엇이며 언제 사용하나요?** </summary>
 
 ---
 
@@ -1119,7 +1120,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**33. Anim Montage의 역할은 무엇인가요?**</summary>
+<summary> **33. Anim Montage의 역할은 무엇인가요?** </summary>
 
 ---
 
@@ -1149,7 +1150,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**34. Blueprint Interface와 Event Dispatcher의 차이점을 설명해주세요.**</summary>
+<summary> **34. Blueprint Interface와 Event Dispatcher의 차이점을 설명해주세요.** </summary>
 
 ---
 
@@ -1181,7 +1182,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**35. Unreal의 Garbage Collection(GC)은 어떻게 동작하나요?**</summary>
+<summary> **35. Unreal의 Garbage Collection(GC)은 어떻게 동작하나요?** </summary>
 
 ---
 
@@ -1212,7 +1213,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**36. UE5의 Lumen은 어떤 방식으로 동작하나요?**</summary>
+<summary> **36. UE5의 Lumen은 어떤 방식으로 동작하나요?** </summary>
 
 ---
 
@@ -1246,7 +1247,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**37. Nanite의 핵심 원리와 장점은 무엇인가요?**</summary>
+<summary> **37. Nanite의 핵심 원리와 장점은 무엇인가요?** </summary>
 
 ---
 
@@ -1277,7 +1278,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**38. Occlusion Culling과 Frustum Culling의 차이를 설명해주세요.**</summary>
+<summary> **38. Occlusion Culling과 Frustum Culling의 차이를 설명해주세요.** </summary>
 
 ---
 
@@ -1306,7 +1307,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**39. Level Streaming이란 무엇이며, 어떤 방식으로 사용되나요?**</summary>
+<summary> **39. Level Streaming이란 무엇이며, 어떤 방식으로 사용되나요?** </summary>
 
 ---
 
@@ -1337,7 +1338,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**40. Unreal의 Build 과정에서 Generate Files는 왜 필요한가요?**</summary>
+<summary> **40. Unreal의 Build 과정에서 Generate Files는 왜 필요한가요?** </summary>
 
 ---
 
@@ -1365,7 +1366,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**41. Subsystem이란 무엇이며 종류에는 어떤 것이 있나요?**</summary>
+<summary> **41. Subsystem이란 무엇이며 종류에는 어떤 것이 있나요?** </summary>
 
 ---
 
@@ -1400,7 +1401,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**42. Unreal Build System(UBT)의 역할은 무엇인가요?**</summary>
+<summary> **42. Unreal Build System(UBT)의 역할은 무엇인가요?** </summary>
 
 ---
 
@@ -1431,7 +1432,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**43. Unreal의 리플렉션 시스템(Reflection)은 왜 필요한가요?**</summary>
+<summary> **43. Unreal의 리플렉션 시스템(Reflection)은 왜 필요한가요?** </summary>
 
 ---
 
@@ -1461,7 +1462,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**44. Unreal에서 멀티스레딩을 구현하는 방법에는 어떤 것이 있나요?**</summary>
+<summary> **44. Unreal에서 멀티스레딩을 구현하는 방법에는 어떤 것이 있나요?** </summary>
 
 ---
 
@@ -1494,7 +1495,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**45. Unreal에서 Draw Call을 줄이기 위한 방법에는 어떤 것들이 있나요?**</summary>
+<summary> **45. Unreal에서 Draw Call을 줄이기 위한 방법에는 어떤 것들이 있나요?** </summary>
 
 ---
 
@@ -1522,7 +1523,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**46. Unreal Editor 확장은 어떻게 이루어지나요?**</summary>
+<summary> **46. Unreal Editor 확장은 어떻게 이루어지나요?** </summary>
 
 ---
 
@@ -1553,7 +1554,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**47. Plugin 시스템의 구조와 장점은 무엇인가요?**</summary>
+<summary> **47. Plugin 시스템의 구조와 장점은 무엇인가요?** </summary>
 
 ---
 
@@ -1585,7 +1586,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**48. Unreal의 쿠킹(Cooking) 과정이란 무엇인가요?**</summary>
+<summary> **48. Unreal의 쿠킹(Cooking) 과정이란 무엇인가요?** </summary>
 
 ---
 
@@ -1617,7 +1618,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**49. Unreal의 프로파일링 도구에는 어떤 것이 있나요?**</summary>
+<summary> **49. Unreal의 프로파일링 도구에는 어떤 것이 있나요?** </summary>
 
 ---
 
@@ -1627,6 +1628,7 @@ slug: csstudyforfinalpartseven
 ---
 
 **🔹 특징 및 상세설명**  
+
 | 도구 | 주요 용도 |
 |------|-----------|
 | `Unreal Insights` | CPU/GPU 타임라인, 이벤트 분석 |
@@ -1647,7 +1649,7 @@ slug: csstudyforfinalpartseven
 ---
 
 <details markdown="1">
-<summary>**50. Unreal에서 프로젝트 최적화를 위한 일반적인 전략은 무엇인가요?**</summary>
+<summary> **50. Unreal에서 프로젝트 최적화를 위한 일반적인 전략은 무엇인가요?** </summary>
 
 ---
 
