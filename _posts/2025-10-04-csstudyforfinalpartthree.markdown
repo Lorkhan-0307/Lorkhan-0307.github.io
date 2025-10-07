@@ -682,14 +682,14 @@ slug: csstudyforfinalpartthree
 <strong>🔹 특징 및 상세설명</strong>  
 - lvalue: 변수처럼 메모리 주소가 존재하고 재사용 가능.  
 - rvalue: 임시 객체, 즉시 소멸(리터럴, 연산 결과 등).  
-- 이동 시멘틱(`std::move`)은 lvalue를 rvalue로 캐스팅하여 이동 시멘틱을 유도.  
+- 무브 시멘틱(`std::move`)은 lvalue를 rvalue로 캐스팅하여 무브 시멘틱을 유도.  
 - rvalue 참조(`T&&`)는 성능 최적화(이동 생성자 등)에 핵심적 역할을 한다.  
 
 ---
 
 <strong>💬 면접식 답변</strong>  
 > lvalue는 이름이 있는 메모리 객체이고, rvalue는 일시적인 임시 값입니다.  
-> 이동 시멘틱은 rvalue 참조를 이용해 복사를 생략하고 자원을 효율적으로 이전합니다.
+> 무브 시멘틱은 rvalue 참조를 이용해 복사를 생략하고 자원을 효율적으로 이전합니다.
 
 </details>
 
@@ -1367,7 +1367,7 @@ slug: csstudyforfinalpartthree
 ---
 
 <strong>🔹 특징 및 상세설명</strong>  
-- **이동 시멘틱** 활용 (`std::move`, `emplace_back`)  
+- **무브 시멘틱** 활용 (`std::move`, `emplace_back`)  
 - **reserve()** / **shrink_to_fit()**로 vector 재할당 최소화  
 - **메모리 풀, 커스텀 알로케이터**로 동적 할당 최적화  
 - 구조체 정렬(padding) 최소화로 메모리 낭비 방지  
@@ -1377,6 +1377,65 @@ slug: csstudyforfinalpartthree
 
 <strong>💬 면접식 답변</strong>  
 > 메모리 최적화는 복사 제거, 캐시 효율, 동적 할당 최소화가 핵심입니다.  
-> 특히 이동 시멘틱(Move Semantics: 복사 대신 자원의 소유권을 이전(move) 하는 기능)과 메모리 풀 사용은 실무 성능에 큰 차이를 만듭니다.
+> 특히 무브 시멘틱(Move Semantics: 복사 대신 자원의 소유권을 이전(move) 하는 기능)과 메모리 풀 사용은 실무 성능에 큰 차이를 만듭니다.
+
+</details>
+
+---
+
+<details markdown="1">  
+<summary><strong>51) C++에서 enum class란 무엇인가요?</strong></summary>  
+
+---
+
+<strong>🧠 핵심 요약</strong>  
+- C++11부터 도입된 **타입 안전한 열거형(enum)**  
+- 기존 enum의 **스코프 충돌** 및 **암묵적 변환 문제** 해결  
+- **명시적 범위 지정(Color::Red)** 과 **형변환 제한**이 특징  
+
+---
+
+<strong>🔹 특징 및 상세설명</strong>  
+- 기존 `enum`은 전역 스코프에 노출되어 이름 충돌 위험이 높고, `int`로 암묵 변환되어 **타입 안정성이 부족**함  
+- `enum class`는 자체 스코프를 가져서 **이름 충돌을 방지**하고, **암묵적 형변환이 불가능**함  
+- 서로 다른 enum class 간 비교 불가능 → **타입 안전성 보장**  
+- 필요 시 명시적 캐스팅 사용 가능  
+  ```cpp
+  int n = static_cast<int>(Color::Green);
+  ```  
+- 기본 자료형 지정으로 메모리 절약 가능  
+  ```cpp
+  enum class ErrorCode : uint8_t { OK = 0, NotFound = 1, Unknown = 255 };
+  ```  
+
+---
+
+<strong>💬 코드 예시</strong>  
+```cpp
+#include <iostream>
+using namespace std;
+
+enum class Color { Red, Green, Blue };
+enum class Fruit { Apple, Banana, Orange };
+
+int main() {
+    Color c = Color::Red;
+    Fruit f = Fruit::Apple;
+
+    // if (c == f) ❌ 오류: 타입이 다름
+    // int x = c; ❌ 암묵적 변환 불가
+    int x = static_cast<int>(Color::Green); // ✅ 명시적 변환
+
+    cout << "x = " << x << endl;
+}
+```
+
+---
+
+<strong>💬 면접식 답변</strong>  
+> `enum class`는 C++11부터 도입된 타입 안전한 열거형입니다.  
+> 기존 enum은 전역 스코프와 암묵적 형변환 문제로 안전하지 않았지만,  
+> enum class는 자체 스코프를 가져 이름 충돌을 막고 암묵 변환을 제한해  
+> **명확하고 안전한 코드 작성이 가능합니다.**
 
 </details>
