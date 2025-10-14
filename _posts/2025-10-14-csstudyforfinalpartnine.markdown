@@ -317,9 +317,31 @@ Factory는 생성 책임을 캡슐화, Singleton은 전역적 유일 인스턴�
 파생 클래스가 **자기 자신을 템플릿 인자로 기반 클래스에 전달**하는 패턴으로,  
 정적 다형성과 믹스인 구현에 사용됩니다.
 
+- “자식 클래스가 자기 자신을 부모 클래스의 템플릿 인자로 넘겨주는 패턴”
+
+```cpp
+// 일반적인 상속 관계
+class Base {};
+class Child : public Base {};
+```
+
+```cpp
+// CRTP
+template <typename T>
+class Base {};
+
+class Child : public Base<Child> {};
+```
+
+
+
 **특징 및 상세설명**  
 - 가상 호출 없이 파생 타입별 최적화/바인딩.  
 - 정책 기반 설계(policy-based design)에 유용.
+
+- virtual 없이 컴파일 타임에 호출 대상이 결정됨
+- 함수 포인터(vtable) 없음 → 오버헤드 0
+- 인라인 최적화 가능 → 매우 빠름
 
 **면접식 답변**  
 > 런타임 오버헤드 없이 다형적 확장을 구현할 때 CRTP를 고려합니다.
